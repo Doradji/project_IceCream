@@ -40,3 +40,4 @@ update account set email='bb@naver.com' where id='aa';
 
 -- delete
 delete account where id='aa';
+
