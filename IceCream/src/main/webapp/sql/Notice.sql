@@ -18,4 +18,4 @@ insert into notice values (notice_seq.nextval, '제목1', '내용1', 0, sysdate,
 update notice set title='', content='', hit=?, logTime='', fileName='' where num=?;
 update notice set hit = hit+1 where num=?;
 
-delete notice where num=?;
+delete notice where num=?; 

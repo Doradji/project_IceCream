@@ -18,4 +18,4 @@ insert into event values (event_seq.nextval, '제목1', '내용1', 0, sysdate, '
 update event set title='', content='', hit=?, logTime='', fileName='' where num=?;
 update event set hit = hit+1 where num=?;
 
-delete event where num=?;
+delete event where num=?; 
