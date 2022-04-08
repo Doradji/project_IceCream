@@ -12,6 +12,7 @@
 	<!-- 어노테이션 사용 준비 -->
 	<context:component-scan base-package="shop"/>
 	<context:component-scan base-package="voice"/>
+	<context:component-scan base-package="notice"/>
 
 	<!-- 어노테이션 등록 -->
 	<annotation-driven />
