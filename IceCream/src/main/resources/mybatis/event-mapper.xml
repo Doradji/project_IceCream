@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.event">
+    <!-- select : 개별 조회 -->
+    <select id="selectOne" parameterType="int" resultType="eventDTO">
+       select * from event where num=#{num}
+    </select>
+    
+    <!-- select : 게시물 전체 갯수 -->
+    <select id="selectTotal" resultType="int">
+       select count(*) from event
+    </select>
+    
+    <!-- select : 리스트 조회 -->
+    <select id="selectList" parameterType="java.util.Map" resultType="eventDTO">
+        <![CDATA[
+        select *
+        from (select ROWNUM rn, tt.* from (select * from event order by num asc) tt)
+        where rn >= #{startNum}
+          and rn <= #{endNum}
+        ]]>
+    </select>
+    
+    <!-- insert : 게시물 등록 -->
+    <insert id="insert" parameterType="eventDTO">
+         insert into event values (event_seq.nextval, #{title}, #{content}, 0, sysdate, #{fileName})
+    </insert>
+    
+   <!-- update : 게시물 수정 -->
+    <update id="modify" parameterType="eventDTO">
+        update event set title=#{title}, content=#{content}, logTime=#{sysdate}, fileName=#{fileName} 
+        where num=#{num}
+    </update>
+    
+    <!-- update : 조회수 수정 -->
+    <update id="updateHit" parameterType="int">
+        update event set hit = hit+1 where num=#{num}
+    </update>
+    
+    <!--delete : 게시물 삭제  -->
+    <delete id="delete" parameterType="int">
+		delete event where num=#{num}
+	</delete>
+</mapper>
