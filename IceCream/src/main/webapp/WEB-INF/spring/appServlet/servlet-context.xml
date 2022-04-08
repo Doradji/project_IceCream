@@ -10,7 +10,8 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- 어노테이션 사용 준비 -->
-	<context:component-scan base-package="account"/>
+	<context:component-scan base-package="shop"/>
+	<context:component-scan base-package="voice"/>
 
 	<!-- 어노테이션 등록 -->
 	<annotation-driven />
