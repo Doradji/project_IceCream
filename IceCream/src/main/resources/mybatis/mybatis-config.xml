@@ -8,7 +8,7 @@
         <typeAlias type="shop.dto.ShopDTO" alias="shopDTO"/>
         <typeAlias type="voice.dto.VoiceDTO" alias="voiceDTO"/>
         <typeAlias type="notice.dto.NoticeDTO" alias="noticeDTO"/>
-        
+        <typeAlias type="notice.dto.NoticeDTO" alias="eventDTO"/>
         
     </typeAliases>
     <!-- SQL mapper 등록 -->
@@ -17,5 +17,6 @@
         <mapper resource="mybatis/shop-mapper.xml"/>
         <mapper resource="mybatis/voice-mapper.xml"/>
         <mapper resource="mybatis/notice-mapper.xml"/>
+        <mapper resource="mybatis/event-mapper.xml"/>
     </mappers>
 </configuration>

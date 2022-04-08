@@ -13,6 +13,16 @@
        select count(*) from notice
     </select>
     
+     <!-- select : 리스트 조회 -->
+    <select id="selectList" parameterType="java.util.Map" resultType="noticeDTO">
+        <![CDATA[
+        select *
+        from (select ROWNUM rn, tt.* from (select * from notice order by num asc) tt)
+        where rn >= #{startNum}
+          and rn <= #{endNum}
+        ]]>
+    </select>
+    
     <!-- insert : 게시물 등록 -->
     <insert id="insert" parameterType="noticeDTO">
          insert into notice values (notice_seq.nextval, #{title}, #{content}, 0, sysdate, #{fileName})

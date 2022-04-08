@@ -1,20 +1,28 @@
 package notice.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import event.dto.EventDTO;
 import notice.dto.NoticeDTO;
 
+@Repository
 public class NoticeDAO {
 	@Autowired
-	private SqlSessionTemplate sqlSession;
+	private SqlSessionTemplate sqlSessionTemplate;
 	
 	// select : 개별 조회
 	public NoticeDTO selectOne(int num) {
 		NoticeDTO dto = new NoticeDTO();
 		
 		try {
-			dto = sqlSession.selectOne("mybatis.notice.getTotalA", num);
+			dto = sqlSessionTemplate.selectOne("mybatis.notice.selectOne", num);
 		} catch (Throwable t) {
 			System.out.println("NoticeDTO selectOne 실패");
 			System.out.println(t);
@@ -27,22 +35,38 @@ public class NoticeDAO {
 		int result = 0;
 		
 		try {
-			result = sqlSession.selectOne("mybatis.notice.selectTotal");
+			result = sqlSessionTemplate.selectOne("mybatis.notice.selectTotal");
 		} catch (Throwable t) {
-			System.out.println("NoticeDTO selectOne 실패");
+			System.out.println("NoticeDTO selectTotal 실패");
 			System.out.println(t);
 		}
 		return result;
 	}
+	
+	// selsectList : 리스트 조회
+    public List<NoticeDTO> selectList(int startNum, int endNum){
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("startNum", startNum);
+        map.put("endNum", endNum);
+
+        List<NoticeDTO> list = new ArrayList<NoticeDTO>();
+        try {
+            list = sqlSessionTemplate.selectList("mybatis.notice.selectList", map);
+        } catch (Throwable t) {
+            System.out.println("NoticeDTO selectList 실패");
+            System.out.println(t);
+        }
+        return list;
+    }
 	
 	// insert : 게시물 등록
 	public int insert(NoticeDTO dto) {
 		int result = 0;
 		
 		try {
-			result = sqlSession.insert("mybatis.notice.insert", dto);
+			result = sqlSessionTemplate.insert("mybatis.notice.insert", dto);
 		} catch (Throwable t) {
-			System.out.println("NoticeDTO selectOne 실패");
+			System.out.println("NoticeDTO insert 실패");
 			System.out.println(t);
 		}
 		return result;
@@ -53,9 +77,9 @@ public class NoticeDAO {
 		int result = 0;
 		
 		try {
-			result = sqlSession.update("mybatis.notice.modify", dto);
+			result = sqlSessionTemplate.update("mybatis.notice.modify", dto);
 		} catch (Throwable t) {
-			System.out.println("NoticeDTO selectOne 실패");
+			System.out.println("NoticeDTO modify 실패");
 			System.out.println(t);
 		}
 		return result;
@@ -66,9 +90,9 @@ public class NoticeDAO {
 		int result = 0;
 		
 		try {
-			result = sqlSession.update("mybatis.notice.updateHit", num);
+			result = sqlSessionTemplate.update("mybatis.notice.updateHit", num);
 		} catch (Throwable t) {
-			System.out.println("NoticeDTO selectOne 실패");
+			System.out.println("NoticeDTO updateHit 실패");
 			System.out.println(t);
 		}
 		return result;
@@ -79,9 +103,9 @@ public class NoticeDAO {
 		int result = 0;
 		
 		try {
-			result = sqlSession.delete("mybatis.notice.delete", num);
+			result = sqlSessionTemplate.delete("mybatis.notice.delete", num);
 		} catch (Throwable t) {
-			System.out.println("NoticeDTO selectOne 실패");
+			System.out.println("NoticeDTO delete 실패");
 			System.out.println(t);
 		}
 		return result;

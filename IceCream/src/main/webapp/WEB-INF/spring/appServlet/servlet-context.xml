@@ -13,6 +13,7 @@
 	<context:component-scan base-package="shop"/>
 	<context:component-scan base-package="voice"/>
 	<context:component-scan base-package="notice"/>
+	<context:component-scan base-package="event"/>
 
 	<!-- 어노테이션 등록 -->
 	<annotation-driven />
