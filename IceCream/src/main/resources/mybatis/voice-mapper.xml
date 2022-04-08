@@ -3,5 +3,63 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.voice">
+    <!-- 게시물 추가(덧글 아님) -->
+    <insert id="insert" parameterType="voiceDTO">
+        insert into voice
+        values (#{id}, #{content}, #{title}, voice_seq.nextval,
+                #{fileName}, voice_seq.currval, 0, 0, sysdate)
+    </insert>
+
+    <!-- 덧글 추가전 사전 준비 -->
+    <update id="increase" parameterType="voiceDTO">
+        update voice
+        set voice_re_seq = voice_re_seq + 1
+        where voice_re_ref = #{voice_re_ref}
+          and voice_re_seq > #{voice_re_seq}
+    </update>
+    <!-- 덧글 추가 -->
+    <insert id="insertComment" parameterType="voiceDTO">
+        insert into voice
+        values (#{id}, #{content}, #{title}, voice_seq.nextval,
+                #{fileName}, #{voice_re_ref}, #{voice_re_lev}, #{voice_re_seq}, sysdate)
+    </insert>
+
+    <!-- 삭제 -->
+    <delete id="delete" parameterType="int">
+        delete voice
+        where num = #{num}
+    </delete>
+
+    <!-- 게시물 개수 조회 -->
+    <select id="selectTotal" resultType="int">
+        select count(*) as cnt
+        from voice
+    </select>
+
+    <!-- 수정 -->
+    <update id="modify" parameterType="voiceDTO">
+        update voice
+        set content  = #{content},
+            title    = #{title},
+            fileName = #{fileName}
+        where num = #{num}
+    </update>
+
+    <!-- 한개 조회 -->
+    <select id="selectOne" parameterType="int" resultType="voiceDTO">
+        select *
+        from voice
+        where num = #{num}
+    </select>
+
+    <!-- 리스트 조회 -->
+    <select id="selectList" parameterType="java.util.Map" resultType="voiceDTO">
+        <![CDATA[
+        select *
+        from (select ROWNUM rn, tt.* from (select * from voice order by voice_re_ref desc, voice_re_seq asc) tt)
+        where rn >= #{startNum}
+          and rn <= #{endNum}
+        ]]>
+    </select>
 
 </mapper>

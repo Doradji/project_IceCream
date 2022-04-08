@@ -1,15 +1,18 @@
 -- 테이블 생성
 create table voice (
-    id varchar2(25) primary key,        -- 작성자(아이디)
+    id varchar2(25) not null ,        -- 작성자(아이디)
     content varchar2(2000) not null,    -- 내용
     title varchar2(100) not null,       -- 제목
-    num number not null,          -- 글번호
+    num number primary key,          -- 글번호
     fileName varchar2(2000),            -- 첨부파일
     voice_re_ref number,                -- 관련 글번호
     voice_re_lev number,                -- 답글 레벨
     voice_re_seq number,                -- 관련글 중 출력 순서
     logTime varchar2(100) not null      -- 작성일
 );
+
+-- 테이블 삭제
+drop table voice purge;
 
 -- 시퀀스 추가
 create sequence voice_seq nocycle nocache;

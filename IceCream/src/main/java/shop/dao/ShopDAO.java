@@ -15,10 +15,10 @@ public class ShopDAO {
     @Autowired
     private SqlSessionTemplate sqlSessionTemplate;
 
-    // 삽입
-    public int insert(ShopDTO dto){
+    // 가계 신규 등록
+    public int insert(ShopDTO dto) {
         int result = 0;
-        try{
+        try {
             result = sqlSessionTemplate.insert("mybatis.shop.insert", dto);
         } catch (Throwable t) {
             System.out.println("ShopDAO insert 실패");
@@ -57,7 +57,7 @@ public class ShopDAO {
         return list;
     }
 
-    // 전체 갯수 조회
+    // 전체 개수 조회
     public int selectTotal() {
         int result = 0;
         try {
