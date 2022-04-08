@@ -199,6 +199,21 @@
 			<version>21.3.0.0</version>
 		</dependency>
 
+		<!--Spring Connection Pool 셋팅용-->
+		<!--https://mvnrepository.com/artifact/org.springframework/spring-jdbc-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>5.3.16</version>
+		</dependency>
+
+		<!--https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp-->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+
 		<!--Servlet용-->
 
 		<!--https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api-->
