@@ -30,7 +30,11 @@ public class AccountDAO {
 	}
 	
 	// 로그인
-	public AccountDTO login(String id, String pass) {
+	public AccountDTO login(String id, String pass) {		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pwd", pass);
+		
 		AccountDTO dto = null;
 		
 		try {
