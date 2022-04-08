@@ -5,13 +5,13 @@
 <mapper namespace="mybatis.shop">
     <insert id="insert" parameterType="shopDTO">
         insert into shop
-        values (#{name}, #{addr}, #{tel})
+        values (SHOP_SEQ.nextval, #{name}, #{addr}, #{tel})
     </insert>
 
-    <select id="selectOne" parameterType="String" resultType="shopDTO">
+    <select id="selectOne" parameterType="int" resultType="shopDTO">
         select *
         from shop
-        where name = #{name}
+        where num = #{num}
     </select>
 
     <select id="selectList" parameterType="java.util.Map" resultType="shopDTO">
@@ -27,11 +27,11 @@
         select count(*) as cnt from shop
     </select>
 
-    <delete id="delete" parameterType="String">
-        delete from shop where name = #{name}
+    <delete id="delete" parameterType="int">
+        delete from shop where num = #{num}
     </delete>
 
     <update id="modify" parameterType="shopDTO">
-        update shop set name = #{name}, addr = #{addr}, tel = #{tel} where name = #{name}
+        update shop set name = #{name}, addr = #{addr}, tel = #{tel} where num = #{num}
     </update>
 </mapper>

@@ -29,10 +29,10 @@ public class ShopDAO {
     }
 
     // 개별 조회
-    public ShopDTO selectOne(String name) {
+    public ShopDTO selectOne(int num) {
         ShopDTO dto = null;
         try {
-            dto = sqlSessionTemplate.selectOne("mybatis.shop.selectOne", name);
+            dto = sqlSessionTemplate.selectOne("mybatis.shop.selectOne", num);
         } catch (Throwable t) {
             System.out.println("ShopDAO selectOne 실패");
             System.out.println(t);
@@ -70,10 +70,10 @@ public class ShopDAO {
     }
 
     // 삭제
-    public int delete(String name) {
+    public int delete(int num) {
         int result = 0;
         try {
-            result = sqlSessionTemplate.delete("mybatis.shop.delete", name);
+            result = sqlSessionTemplate.delete("mybatis.shop.delete", num);
         } catch (Throwable t) {
             System.out.println("ShopDAO delete 실패");
             System.out.println(t);
