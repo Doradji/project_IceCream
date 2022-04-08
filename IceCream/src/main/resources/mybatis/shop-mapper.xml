@@ -3,5 +3,35 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.shop">
+    <insert id="insert" parameterType="shopDTO">
+        insert into shop
+        values (#{name}, #{addr}, #{tel})
+    </insert>
 
+    <select id="selectOne" parameterType="String" resultType="shopDTO">
+        select *
+        from shop
+        where name = #{name}
+    </select>
+
+    <select id="selectList" parameterType="java.util.Map" resultType="shopDTO">
+        <![CDATA[
+        select *
+        from (select ROWNUM rn, tt.* from (select * from shop order by name asc) tt)
+        where rn >= #{startNum}
+          and rn <= #{endNum}
+        ]]>
+    </select>
+
+    <select id="selectTotal" resultType="int">
+        select count(*) as cnt from shop
+    </select>
+
+    <delete id="delete" parameterType="String">
+        delete from shop where name = #{name}
+    </delete>
+
+    <update id="modify" parameterType="shopDTO">
+        update shop set name = #{name}, addr = #{addr}, tel = #{tel} where name = #{name}
+    </update>
 </mapper>

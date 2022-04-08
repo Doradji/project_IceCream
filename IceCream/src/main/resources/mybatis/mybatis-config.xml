@@ -5,9 +5,13 @@
 <configuration>
     <!-- 클래스 별명 설정 -->
     <typeAliases>
+        <typeAlias type="shop.dto.ShopDTO" alias="shopDTO"/>
+        <typeAlias type="voice.dto.VoiceDTO" alias="voiceDTO"/>
     </typeAliases>
     <!-- SQL mapper 등록 -->
     <mappers>
         <mapper resource="mybatis/mapperSample.xml"/>
+        <mapper resource="mybatis/shop-mapper.xml"/>
+        <mapper resource="mybatis/voice-mapper.xml"/>
     </mappers>
 </configuration>
