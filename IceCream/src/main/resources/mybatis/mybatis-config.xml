@@ -5,9 +5,11 @@
 <configuration>
     <!-- 클래스 별명 설정 -->
     <typeAliases>
+    	<typeAlias type="notice.dto.NoticeDTO" alias="dto"/>
     </typeAliases>
     <!-- SQL mapper 등록 -->
     <mappers>
         <mapper resource="mybatis/mapperSample.xml"/>
+        <mapper resource="mybatis/notice-mapper.xml"/>
     </mappers>
 </configuration>
