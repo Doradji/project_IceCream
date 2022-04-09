@@ -3,33 +3,50 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.product">
-		<select id="selectOne" parameterType="java.util.Map" resultType="dto">
-			<![CDATA[select * from
-			(select rownum rn,tt.* from
-			(select * from product order by num asc) tt)
-			where rn>=#{startNum} and rn<=#{endNum}]]>
-						
+	<!--리스트 조회 -->
+		<select id="selectList" parameterType="java.util.Map" resultType="productDTO">
+			 <![CDATA[
+			select * 
+			from(select rownum rn,tt.* from(select * from product order by num asc) tt)
+			where rn>=#{startNum}
+			  and rn<=#{endNum}	
+			 ]]>			
 		</select>
 		
+	<!-- 전체 개수 조회 -->
 		<select id="selectTotal" resultType="int">
-			select count(*) as cnt from product
+			select count(*) as cnt 
+			from product
 		</select>
 		
-		<select id="selectone" parameterType="int" resultType="dto">
-			select * from product where num=#{num}
-		
+	<!-- 개별 조회 -->
+		<select id="selectone" parameterType="int" resultType="productDTO">
+			select * 
+			from product 
+			where num=#{num}		
 		</select>
 		
-		<insert id="insert" parameterType="dto">
-			insert into product values(seq_product.nextval,#{name},#{explain},#{fileName},#{productType})
+	<!-- 제품등록 -->
+		<insert id="insert" parameterType="productDTO">
+			insert into product 
+			values(seq_product.nextval,#{name},#{explain},#{fileName},#{productType})
 		
 		</insert>
 		
-		<update id="update" parameterType="int">
-		     update product set name=#{name}, explain=#{explain}, fileName=#{fileName}, productType=#{productType} where num=#{num};
+	<!-- 재품 수정 -->
+		<update id="modify" parameterType="productDTO">
+		     update product 
+		     set name=#{name}, 
+		     	 explain=#{explain}, 
+		     	 fileName=#{fileName}, 
+		     	 productType=#{productType} 
+		     where num=#{num}
 		</update>
 		
+	<!-- 삭제 -->	
 		<delete id="delete" parameterType="int">
-			delete board where num=#{num};		
+			delete 
+			from product
+			where num=#{num}		
 		</delete>
 </mapper>

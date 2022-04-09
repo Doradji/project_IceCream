@@ -1,20 +1,40 @@
 create table product(
-	num number primary key, --Á¦Ç°¹øÈ£
-	name varchar2(25) not null, --Á¦Ç°¸í
-	explain varchar2(200) not null,--Á¦Ç°¼³¸í
-	fileName varchar2(2000),--Ã·ºÎÆÄÀÏ
-	productType varchar2(25)--Á¦Ç°Å¸ÀÔ
+	num number primary key, --ì œí’ˆë²ˆí˜¸
+	name varchar2(25) not null, --ì œí’ˆëª…
+	explain varchar2(200) not null,--ì œí’ˆì„¤ëª…
+	fileName varchar2(2000),--ì²¨ë¶€íŒŒì¼
+	productType varchar2(25)--ì œí’ˆíƒ€ì…
 
 );
---2)Å×ÀÌºí»èÁ¦
+--2)í…Œì´ë¸”ì‚­ì œ
 drop table product purge;
---3)Å×ÀÌºí È®ÀÎ
+--3)í…Œì´ë¸” í™•ì¸
 select* from tab;
 
--- 4) ½ÃÄö½º °´Ã¼ »ı¼º
+-- 4) ì‹œí€€ìŠ¤ ê°ì²´ ìƒì„±
 create sequence seq_product nocache nocycle;
 
--- 5) ½ÃÄö½º °´Ã¼ »èÁ¦
+-- 5) ì‹œí€€ìŠ¤ ê°ì²´ ì‚­ì œ
 drop sequence seq_product;
---6)
+--6)ì œí’ˆ ì‚½ì…
 insert into product values(seq_product.nextval,'aaa','bbb','ccc','ddd');
+insert into product values(1,'aaa','bbb','ccc','ddd');
+--7)ì œí’ˆëª©ë¡
+select * from
+			(select rownum rn,tt.* from
+			(select * from product order by num asc) tt)
+			where rn>=1 and rn<=5;
+            
+--8)ì „ì²´ê°¯ìˆ˜
+select count(*) as cnt from product;
+--9)íŠ¹ì • ì¡°íšŒ
+select * from product where num=1;
+--10)ìˆ˜ì •
+update product set name='aa', explain='bb', fileName='aa', productType='bb' 
+where num=1;
+--11)ì‚­ì œ
+delete from product where num=1;
+-12)ì €ì¥
+commit;
+--13)ì „ì²´í™•ì¸
+select *from product;

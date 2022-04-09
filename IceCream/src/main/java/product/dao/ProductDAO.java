@@ -16,7 +16,7 @@ public class ProductDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	//삽입
+	//제품 등록
 	public int insert(ProductDTO dto) {
 		int result=0;
 		try {
@@ -30,7 +30,7 @@ public class ProductDAO {
 	return result;
 	}
 	//개별 조회
-	public ProductDTO selectone(String num) {
+	public ProductDTO selectone(int num) { //질문!!
 		ProductDTO dto=null;
 		try {
 			dto= sqlSessionTemplate.selectOne("mybatis.product.selectone",num);			

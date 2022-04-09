@@ -10,7 +10,7 @@
         <typeAlias type="notice.dto.NoticeDTO" alias="noticeDTO"/>
         <typeAlias type="notice.dto.NoticeDTO" alias="eventDTO"/>
         <typeAlias type="account.dto.AccountDTO" alias="accountDTO"/>
-        
+        <typeAlias type="product.dto.ProductDTO" alias="productDTO"/>
     </typeAliases>
     <!-- SQL mapper 등록 -->
     <mappers>
@@ -20,5 +20,6 @@
         <mapper resource="mybatis/notice-mapper.xml"/>
         <mapper resource="mybatis/event-mapper.xml"/>
         <mapper resource="mybatis/account-mapper.xml"/>
+        <mapper resource="mybatis/product-mapper.xml"/>
     </mappers>
 </configuration>
