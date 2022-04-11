@@ -4,38 +4,54 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.account">
 
-	<insert id="insert" parameterType="accountDTO">
-		insert into account values (#{id}, #{pass}, #{accountType}, sysdate, 
-		#{gender}, #{tel}, #{addr}, #{email}, #{birth})
-	</insert>
-	
-	<select id="login" parameterType="java.util.Map" resultType="accountDTO">
-		select name from account where id=#{id} and pass=#{pass}
-	</select>		
-	
-	<select id="selectOne" parameterType="String" resultType="accountDTO">
-		select * from member where id=#{id}
+    <insert id="insert" parameterType="accountDTO">
+        insert into account
+        values (#{id}, #{pass}, #{accountType}, sysdate,
+                #{gender}, #{tel}, #{addr}, #{email}, #{birth})
+    </insert>
+
+    <select id="login" parameterType="java.util.Map" resultType="accountDTO">
+        select name
+        from account
+        where id = #{id}
+          and pass = #{pass}
+    </select>
+
+    <select id="selectOne" parameterType="String" resultType="accountDTO">
+        select *
+        from member
+        where id = #{id}
+    </select>
+
+    <select id="selectList" parameterType="java.util.Map" resultType="accountDTO">
+		<![CDATA[
+        select *
+        from (select rownum rn, tt.*
+              from (select * from account order by id asc) tt)
+        where rn >= #{startNum}
+          and rn <= #{endNum}
+        ]]>
 	</select>
-	
-	<select id="selectList" parameterType="java.util.Map" resultType="accountDTO">
-		<![CDATA[ select * from
-		(select rownum rn, tt.* from
-		(select * from account order by id asc) tt)
-		where rn>=#{startNum} and rn<=#{endNum}]]>
-	</select>
-	
-	<select id="selectTotal" resultType="int">
-		select count(*) as cnt from account
-	</select>
-	
-	<update id="modify" parameterType="accountDTO">
-		update account 
-		set pass=#{pass}, gender=#{gender}, tel=#{tel}, 
-		addr=#{addr}, email=#{email}, birth=#{birth} where id=#{id}
-	</update>
-	
-	<delete id="delete" parameterType="String">
-		delete account where id=#{id}
-	</delete>
+
+    <select id="selectTotal" resultType="int">
+        select count(*) as cnt
+        from account
+    </select>
+
+    <update id="modify" parameterType="accountDTO">
+        update account
+        set pass=#{pass},
+            gender=#{gender},
+            tel=#{tel},
+            addr=#{addr},
+            email=#{email},
+            birth=#{birth}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        delete account
+        where id = #{id}
+    </delete>
 
 </mapper>
