@@ -48,7 +48,7 @@
     <hr>
     <a href="/notice/selectOne.do">selectOne.do</a><br>
     <a href="/event/selectOne.do">selectOne.do</a><br>
-   
+    
 </aside>
 <section>
     <c:if test="${req == null}">
