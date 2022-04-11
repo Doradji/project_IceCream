@@ -9,8 +9,9 @@
 <html>
 <head>
     <title>sample</title>
+    <link rel="stylesheet" href="../css/sample.css">
 </head>
 <body>
-sample이다아아아Aㅏ
+<img src="../resources/Chunsik02.jpg" width="800px">
 </body>
 </html>

@@ -23,6 +23,6 @@
 
 	<!-- 리소스 사용 폴더 등록 -->
 	<resources mapping="/resources/**" location="/resources/" />
-	
+	<resources mapping="/css/**" location="/css/"/>
 
 </beans:beans>

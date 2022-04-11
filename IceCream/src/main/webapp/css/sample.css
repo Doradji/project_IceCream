@@ -1,0 +1,33 @@
+header {
+    width: auto;
+    height: 150px;
+    background: aquamarine;
+    border-bottom: 1px dotted black;
+    padding: 1%;
+    text-align: center;
+}
+aside{
+    float: left;
+    text-align: left;
+    width: 15%;
+    height: 100%;
+    min-height: 1200px;
+    padding: 1%;
+    background: beige;
+    border-right: 1px dotted black;
+}
+section{
+    float: left;
+    width: 80.9%;
+    height: 100%;
+    min-height: 1200px;
+    padding: 1%;
+    background: antiquewhite;
+}
+footer {
+    clear: both;
+    width: auto;
+    height: 100px;
+    background: aquamarine;
+    text-align: center;
+}

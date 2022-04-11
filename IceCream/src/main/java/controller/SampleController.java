@@ -9,7 +9,8 @@ public class SampleController {
     @RequestMapping("/sample/sample.do")
     public ModelAndView sampleWriteForm() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("sample.jsp");
+        modelAndView.addObject("req", "sample/sample.jsp");
+        modelAndView.setViewName("/");
 
         return modelAndView;
     }
