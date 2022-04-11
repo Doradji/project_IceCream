@@ -18,7 +18,25 @@
 </header>
 <aside>
     <a href="/">처음으로</a><br>
-    <a href="/sample/sample.do">샘플페이지</a>
+    <a href="/sample/sample.do">샘플페이지</a><br>
+   
+    <hr>
+    <a href="/notice/selectOne.do">selectOne.do</a><br>
+    <a href="/notice/selectTotal.do">selectTotal.do</a><br>
+    <a href="/notice/selectList.do">selsectList.do</a><br>
+    <a href="/notice/insert.do">insert.do</a><br>
+    <a href="/notice/modify.do">modify.do</a><br>
+    <a href="/notice/updateHit.do">updateHit.do</a><br>
+    <a href="/notice/delete.do">delete.do</a><br>
+    <hr>
+    <a href="/event/selectOne.do">selectOne.do</a><br>
+    <a href="/event/selectTotal.do">selectTotal.do</a><br>
+    <a href="/event/selectList.do">selsectList.do</a><br>
+    <a href="/event/insert.do">insert.do</a><br>
+    <a href="/event/modify.do">modify.do</a><br>
+    <a href="/event/updateHit.do">updateHit.do</a><br>
+    <a href="/event/delete.do">delete.do</a><br>
+    
 </aside>
 <section>
     <c:if test="${req == null}">
