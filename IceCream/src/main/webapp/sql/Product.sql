@@ -1,9 +1,9 @@
-create table product(
+create table product(    
 	num number primary key, --제품번호
 	name varchar2(25) not null, --제품명
 	explain varchar2(200) not null,--제품설명
 	fileName varchar2(2000),--첨부파일
-	productType varchar2(25)--제품타입
+	productType varchar2(25)--제품타입 
 
 );
 --2)테이블삭제
