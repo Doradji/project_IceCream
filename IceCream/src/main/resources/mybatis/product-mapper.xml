@@ -20,7 +20,7 @@
 		</select>
 		
 	<!-- 개별 조회 -->
-		<select id="selectone" parameterType="int" resultType="productDTO">
+		<select id="selectOne" parameterType="int" resultType="productDTO">
 			select * 
 			from product 
 			where num=#{num}		

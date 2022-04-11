@@ -33,9 +33,9 @@ public class ProductDAO {
 	public ProductDTO selectOne(int num) { //질문!!
 		ProductDTO dto=null;
 		try {
-			dto= sqlSessionTemplate.selectOne("mybatis.product.selectone",num);			
+			dto= sqlSessionTemplate.selectOne("mybatis.product.selectOne",num);			
 		} catch (Throwable t) {
-			System.out.println("ProductDAO selectone 실패");
+			System.out.println("ProductDAO selectOne 실패");
 			System.out.println(t);
 		}
 		return dto;
