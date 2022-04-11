@@ -30,7 +30,7 @@ public class ProductDAO {
 	return result;
 	}
 	//개별 조회
-	public ProductDTO selectone(int num) { //질문!!
+	public ProductDTO selectOne(int num) { //질문!!
 		ProductDTO dto=null;
 		try {
 			dto= sqlSessionTemplate.selectOne("mybatis.product.selectone",num);			
