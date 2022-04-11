@@ -6,7 +6,7 @@
     <!-- 가계 신규 등록 -->
     <insert id="insert" parameterType="shopDTO">
         insert into shop
-        values (SHOP_SEQ.nextval, #{name}, #{addr}, #{tel})
+        values (#{name}, #{addr}, #{tel}, SHOP_SEQ.nextval)
     </insert>
 
     <!-- 개별 조회 -->

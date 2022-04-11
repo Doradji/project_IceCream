@@ -11,6 +11,30 @@
 <head>
     <title>기능 테스트</title>
     <link rel="stylesheet" href="css/sample.css?v=2">
+    <script type="text/javascript">
+        function dialog(message){
+            let dialog = document.getElementById("dialog");
+            let p = document.getElementById("p");
+
+            p.innerHTML = message;
+            dialog.showModal();
+        }
+
+        function closeDialog(){
+            let dialog = document.getElementById("dialog");
+            dialog.close();
+        }
+
+        window.onload = function (){
+            if(${result != null}) {
+                if(${result > 0 && req == "shop/write.jsp"}) {
+                    dialog("가계 추가 성공");
+                } else if (${result == 0 && req == "shop/write.jsp"}) {
+                    dialog("가계 추가 실패");
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -19,24 +43,7 @@
 <aside>
     <a href="/">처음으로</a><br>
     <a href="/sample/sample.do">샘플페이지</a><br>
-   
-    <hr>
-    <a href="/notice/selectOne.do">selectOne.do</a><br>
-    <a href="/notice/selectTotal.do">selectTotal.do</a><br>
-    <a href="/notice/selectList.do">selsectList.do</a><br>
-    <a href="/notice/insert.do">insert.do</a><br>
-    <a href="/notice/modify.do">modify.do</a><br>
-    <a href="/notice/updateHit.do">updateHit.do</a><br>
-    <a href="/notice/delete.do">delete.do</a><br>
-    <hr>
-    <a href="/event/selectOne.do">selectOne.do</a><br>
-    <a href="/event/selectTotal.do">selectTotal.do</a><br>
-    <a href="/event/selectList.do">selsectList.do</a><br>
-    <a href="/event/insert.do">insert.do</a><br>
-    <a href="/event/modify.do">modify.do</a><br>
-    <a href="/event/updateHit.do">updateHit.do</a><br>
-    <a href="/event/delete.do">delete.do</a><br>
-    
+    <a href="/shop/writeForm.do">가계 등록</a>
 </aside>
 <section>
     <c:if test="${req == null}">
@@ -49,5 +56,9 @@
 <footer>
     <h1>footer 영역</h1>
 </footer>
+<dialog id="dialog">
+    <p id="p"></p>
+    <button type="button" onclick="closeDialog()">확인</button>
+</dialog>
 </body>
 </html>

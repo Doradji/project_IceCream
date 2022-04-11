@@ -24,5 +24,7 @@
 	<!-- 리소스 사용 폴더 등록 -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/css/**" location="/css/"/>
+	<resources mapping="/upload/**" location="/upload/"/>
+	<resources mapping="/script/**" location="/script/"/>
 
 </beans:beans>
