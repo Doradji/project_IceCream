@@ -49,3 +49,8 @@ td > input{
 .content{
     text-align: center;
 }
+#form1 {
+	width: 400px;
+	height: 100px;
+	margin: auto;
+}

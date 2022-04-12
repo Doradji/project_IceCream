@@ -49,6 +49,8 @@
     <a href="/notice/selectOne.do">selectOne.do</a><br>
     <a href="/event/selectOne.do">selectOne.do</a><br>
     
+    <hr>
+    <a href="/account/loginForm.do">로그인</a>
 </aside>
 <section>
     <c:if test="${req == null}">
