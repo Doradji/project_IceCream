@@ -14,4 +14,22 @@ public class SampleController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "/sample/sampleMapDefault.do")
+    public ModelAndView sampleMapDefault() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("req", "sample/mapDefault.jsp");
+        modelAndView.setViewName("/");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/sample/sampleMapMarker.do")
+    public ModelAndView sampleMapMarker() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("req", "sample/mapMarker.jsp");
+        modelAndView.setViewName("/");
+
+        return modelAndView;
+    }
 }

@@ -45,6 +45,10 @@
     <a href="/sample/sample.do">샘플페이지</a><br>
     <a href="/shop/writeForm.do">가계 등록</a><br>
     <a href="/shop/list.do">가계 리스트</a>
+    <hr>
+    <label>지도 테스트</label><br>
+    <a href="/sample/sampleMapDefault.do">기본 지도</a><br>
+    <a href="/sample/sampleMapMarker.do">마커 및 다이얼로그 표시 지도</a>
 
     <hr>
     <a href="/notice/selectOne.do">selectOne.do</a><br>
