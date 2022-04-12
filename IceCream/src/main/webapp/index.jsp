@@ -43,7 +43,8 @@
 <aside>
     <a href="/">처음으로</a><br>
     <a href="/sample/sample.do">샘플페이지</a><br>
-    <a href="/shop/writeForm.do">가계 등록</a>
+    <a href="/shop/writeForm.do">가계 등록</a><br>
+    <a href="/shop/list.do">가계 리스트</a>
 
     <hr>
     <a href="/notice/selectOne.do">selectOne.do</a><br>

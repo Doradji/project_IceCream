@@ -32,7 +32,7 @@ values (SHOP_SEQ.nextval ,?, ?, ?);
 -- 삭제
 delete
 from shop
-where num = ?;
+where num = 2;
 
 -- 테이블 삭제
 drop table shop purge;
