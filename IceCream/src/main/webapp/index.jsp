@@ -56,6 +56,10 @@
     
     <hr>
     <a href="/account/loginForm.do">로그인</a>
+    <a href="/account/writeForm.do">회원가입</a>
+    <hr>
+    <label>주소 테스트</label><br>
+    <a href="/sample/sampleAddress.do">주소 입력</a>
 </aside>
 <section>
     <c:if test="${req == null}">

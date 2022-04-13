@@ -32,4 +32,13 @@ public class SampleController {
 
         return modelAndView;
     }
+    
+    @RequestMapping(value = "/sample/sampleAddress.do")
+    public ModelAndView sampleAddress() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("req", "sample/address.jsp");
+		modelAndView.setViewName("/");
+		
+		return modelAndView;
+	}
 }
