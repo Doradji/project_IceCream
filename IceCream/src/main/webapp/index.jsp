@@ -51,6 +51,9 @@
     <a href="/sample/sampleMapMarker.do">마커 및 다이얼로그 표시 지도</a>
 
     <hr>
+    <a href="/sample/sampleSmartEditor.do">텍스트에디터(only text)</a>
+
+    <hr>
     <a href="/notice/selectOne.do">selectOne.do</a><br>
     <a href="/event/selectOne.do">selectOne.do</a><br>
     

@@ -26,5 +26,6 @@
 	<resources mapping="/css/**" location="/css/"/>
 	<resources mapping="/upload/**" location="/upload/"/>
 	<resources mapping="/script/**" location="/script/"/>
+	<resources mapping="/smartEditor_2.10.0/**" location="/smartEditor_2.10.0/"/>
 
 </beans:beans>
