@@ -73,12 +73,17 @@ public class AccountController {
 	
 	// checkId
 	@RequestMapping(value="/account/checkId.do")
-	public ModelAndView checkId() {
-
+	public ModelAndView checkId(HttpServletRequest request) {
+		// 데이터 처리
+		String id = request.getParameter("id");
+		
+		boolean exist = service.isExistId(id);
+		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.addObject("req", "account/login.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.addObject("id", id);
+		modelAndView.addObject("exist", exist);
+		modelAndView.setViewName("account/checkId.jsp");
 		
 		return modelAndView;
 	
@@ -99,7 +104,7 @@ public class AccountController {
 	// 회원가입
 	@RequestMapping(value="/account/write.do")
 	public ModelAndView write(HttpServletRequest request) throws IOException{
-		/* 데이터 처리 */
+		// 데이터 처리
 		request.setCharacterEncoding("utf-8"); // 한글 인코딩 설정
 		
 		String id = request.getParameter("id");
@@ -109,7 +114,10 @@ public class AccountController {
 		String tel1 = request.getParameter("tel1");
 		String tel2 = request.getParameter("tel2");
 		String tel3 = request.getParameter("tel3");
-		String addr = request.getParameter("addr");
+		String addr1 = request.getParameter("addr1");
+		String addr2 = request.getParameter("addr2");
+		String addr3 = request.getParameter("addr3");
+		String addr4 = request.getParameter("addr4");
 		String email = request.getParameter("email");
 		String birth = request.getParameter("birth");
 		String tel = tel1 + "-" + tel2 + "-" + tel3;
@@ -120,7 +128,10 @@ public class AccountController {
 		dto.setName(name);
 		dto.setGender(gender);
 		dto.setTel(tel);
-		dto.setAddr(addr);
+		dto.setAddr1(addr1);
+		dto.setAddr2(addr2);
+		dto.setAddr3(addr3);
+		dto.setAddr4(addr4);
 		dto.setEmail(email);
 		dto.setBirth(birth);
 		

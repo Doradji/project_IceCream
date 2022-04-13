@@ -23,6 +23,15 @@ public class AccountService {
 		return accountDAO.login(id, pass);
 	}
 	
+	// 아이디 중복체크
+	public boolean isExistId(String id) {
+		boolean result = false;
+		if(accountDAO.selectOne(id) != null) {	// 값이 존재하면 ture
+			result = true;
+		}
+		return result;
+	}
+	
 	// 고객 개별 조회
 	public AccountDTO selectOne(String id) {
 		return accountDAO.selectOne(id);

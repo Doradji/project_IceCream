@@ -87,7 +87,7 @@
 </style>
 </head>
 <body>
-	<form action="write.do" name="form" id="form1" method="post" onsubmit="inputCheck() return false()">
+	<form action="write.do" name="form" id="form1" method="post" onsubmit="inputCheck(); return false;">
 		<div>
 			<table>
 				<tr>
@@ -136,13 +136,12 @@
 				<tr>
 					<th class="center">주소</th>
 					<td>
-						<input type="text" id="sample4_postcode" placeholder="우편번호">
+						<input type="text" name="addr1" id="sample4_postcode" placeholder="우편번호" readonly>
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-						<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+						<input type="text" name="addr2" id="sample4_roadAddress" placeholder="도로명주소" readonly>
+						<input type="text" name="addr3" id="sample4_jibunAddress" placeholder="지번주소" readonly>
 						<span id="guide" style="color:#999;display:none"></span>
-						<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-						<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+						<input style="width: 80%" name="addr4" type="text" id="sample4_detailAddress" placeholder="상세주소">
 					</td>
 				</tr>
 				<tr>
@@ -154,7 +153,7 @@
 				<tr>
 					<th class="center">생일</th>
 					<td>
-						<input style="width: 80px" type="text" name="birth">
+						<input style="width: 80px" type="date" name="birth">
 					</td>
 				</tr>
 				<tr>
