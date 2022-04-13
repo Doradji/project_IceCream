@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="accountDTO">
         insert into account
-        values (#{id}, #{pass}, #{accountType}, sysdate,
+        values (#{id}, #{pass}, 2, sysdate,
                 #{gender}, #{tel}, #{addr}, #{email}, #{birth})
     </insert>
 

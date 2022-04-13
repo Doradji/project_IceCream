@@ -33,6 +33,15 @@
                     dialog("가계 추가 실패");
                 }
             }
+            
+            window.onload = function () {
+    			if(${result != null}) {
+    				if(${result > 0 && req == "account/write.jsp"}) {
+    					dialog("회원가입 성공");
+    				} else if (${result == 0 && req == "account/write.jsp"}) {
+    					dialog("회원가입 실패");
+    				}
+    			}
         }
     </script>
 </head>

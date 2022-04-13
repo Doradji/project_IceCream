@@ -1,17 +1,22 @@
 package controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import account.dto.AccountDTO;
 import service.AccountService;
 
 @Controller
 public class AccountController {
 	@Autowired
 	AccountService service;
-	
+
 	// loginForm
 	@RequestMapping(value = "/account/loginForm.do")
 	public ModelAndView loginForm() {
@@ -84,7 +89,7 @@ public class AccountController {
 	public ModelAndView writeForm() {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.addObject("req", "account/login.jsp");
+		modelAndView.addObject("req", "account/writeForm.jsp");
 		modelAndView.setViewName("/");
 		
 		return modelAndView;
@@ -93,11 +98,39 @@ public class AccountController {
 	
 	// 회원가입
 	@RequestMapping(value="/account/write.do")
-	public ModelAndView write(){
-
+	public ModelAndView write(HttpServletRequest request) throws IOException{
+		/* 데이터 처리 */
+		request.setCharacterEncoding("utf-8"); // 한글 인코딩 설정
+		
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		String name = request.getParameter("name");
+		String gender = request.getParameter("gender");
+		String tel1 = request.getParameter("tel1");
+		String tel2 = request.getParameter("tel2");
+		String tel3 = request.getParameter("tel3");
+		String addr = request.getParameter("addr");
+		String email = request.getParameter("email");
+		String birth = request.getParameter("birth");
+		String tel = tel1 + "-" + tel2 + "-" + tel3;
+		// DB 처리
+		AccountDTO dto = new AccountDTO();
+		dto.setId(id);
+		dto.setPass(pass);
+		dto.setName(name);
+		dto.setGender(gender);
+		dto.setTel(tel);
+		dto.setAddr(addr);
+		dto.setEmail(email);
+		dto.setBirth(birth);
+		
+		int result = service.insert(dto);
+		
+		// 뷰 처리
 		ModelAndView modelAndView = new ModelAndView();
-
-		modelAndView.addObject("req", "account/login.jsp");
+		
+		modelAndView.addObject("req", "account/write.jsp");
+		modelAndView.addObject("result", result);
 		modelAndView.setViewName("/");
 		
 		return modelAndView;
