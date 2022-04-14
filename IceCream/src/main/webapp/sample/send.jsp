@@ -41,7 +41,7 @@ input[type="submit"] {
 		</div>
 		<div class="field">
 			<label for="to_name">to_name</label> <input type="text"
-				name="to_name" id="to_name">
+				name="to_name" id="to_name"> 
 		</div>
 		<div class="field">
 			<label for="message">message</label> <input type="text"
