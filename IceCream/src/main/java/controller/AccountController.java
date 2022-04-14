@@ -83,7 +83,7 @@ public class AccountController {
 		
 		modelAndView.addObject("id", id);
 		modelAndView.addObject("exist", exist);
-		modelAndView.setViewName("account/checkId.jsp");
+		modelAndView.setViewName("checkId.jsp");
 		
 		return modelAndView;
 	

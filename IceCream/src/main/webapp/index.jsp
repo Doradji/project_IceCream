@@ -33,15 +33,15 @@
                     dialog("가계 추가 실패");
                 }
             }
-            
+        } 
             window.onload = function () {
     			if(${result != null}) {
     				if(${result > 0 && req == "account/write.jsp"}) {
     					dialog("회원가입 성공");
     				} else if (${result == 0 && req == "account/write.jsp"}) {
     					dialog("회원가입 실패");
-    				}
     			}
+   			}
         }
     </script>
 </head>
@@ -67,8 +67,9 @@
     <a href="/event/selectOne.do">selectOne.do</a><br>
     
     <hr>
-    <a href="/account/loginForm.do">로그인</a>
+    <a href="/account/loginForm.do">로그인</a><br>
     <a href="/account/writeForm.do">회원가입</a>
+    <a href="/account/deleteForm.do">회원탈퇴</a>
     <hr>
     <label>주소 테스트</label><br>
     <a href="/sample/sampleAddress.do">주소 입력</a>
