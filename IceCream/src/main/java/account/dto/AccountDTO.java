@@ -8,7 +8,10 @@ public class AccountDTO {
 	private String join;		// 가입날짜
 	private String gender;		// 성별
 	private String tel;			// 전화번호
-	private String addr;		// 주소
+	private String addr1;		// 우편번호
+	private String addr2;		// 도로명주소
+	private String addr3;		// 지번주소
+	private String addr4;		// 상세주소
 	private String email;		// 이메일
 	private String birth;		// 생일
 	
@@ -55,11 +58,30 @@ public class AccountDTO {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getAddr() {
-		return addr;
+
+	public String getAddr1() {
+		return addr1;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
+	public String getAddr3() {
+		return addr3;
+	}
+	public void setAddr3(String addr3) {
+		this.addr3 = addr3;
+	}
+	public String getAddr4() {
+		return addr4;
+	}
+	public void setAddr4(String addr4) {
+		this.addr4 = addr4;
 	}
 	public String getEmail() {
 		return email;

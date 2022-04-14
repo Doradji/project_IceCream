@@ -6,8 +6,7 @@
 
     <insert id="insert" parameterType="accountDTO">
         insert into account
-        values (#{id}, #{pass}, #{accountType}, sysdate,
-                #{gender}, #{tel}, #{addr}, #{email}, #{birth})
+        values (#{id}, #{pass}, #{name}, 2, sysdate, #{gender}, #{tel}, #{addr1}, #{addr2}, #{addr3}, #{addr4}, #{email}, #{birth})
     </insert>
 
     <select id="login" parameterType="java.util.Map" resultType="accountDTO">
@@ -19,7 +18,7 @@
 
     <select id="selectOne" parameterType="String" resultType="accountDTO">
         select *
-        from member
+        from account
         where id = #{id}
     </select>
 

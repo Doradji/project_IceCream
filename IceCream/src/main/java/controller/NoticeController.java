@@ -4,15 +4,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+
 @Controller
 public class NoticeController {
 	// select : 개별 조회
 	@RequestMapping("/notice/selectOne.do")
 	public ModelAndView selectOne() {
 		ModelAndView modelAndView = new ModelAndView();
-		
+
 		System.out.println("/notice/selectOne.do 들어옴");
-		
+
 		modelAndView.addObject("req", "notice/sample.jsp");
 		modelAndView.setViewName("/");
 
@@ -93,6 +96,26 @@ public class NoticeController {
 		
 		modelAndView.addObject("req", "notice/sample.jsp");
 		modelAndView.setViewName("/");
+
+		return modelAndView;
+	}
+
+	// 저장 테스트
+	@RequestMapping("/notice/write.do")
+	public ModelAndView write(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String content = request.getParameter("content");
+		System.out.println(content);
+
+		modelAndView.setViewName("/");
+		modelAndView.addObject("req", "notice/resultTest.jsp");
+		modelAndView.addObject("content", content);
 
 		return modelAndView;
 	}
