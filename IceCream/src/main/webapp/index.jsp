@@ -63,7 +63,7 @@
     <a href="/sample/sampleSmartEditor.do">텍스트에디터(only text)</a>
 
     <hr>
-    <a href="/notice/selectOne.do">selectOne.do</a><br>
+    <a href="/notice/selectOne.do">Notice</a><br>
     <a href="/event/selectOne.do">selectOne.do</a><br>
     
     <hr>
