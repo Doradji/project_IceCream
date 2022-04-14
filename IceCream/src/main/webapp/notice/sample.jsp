@@ -24,9 +24,11 @@
 	Notice Sample 페이지
 
 	<!-- summernote  form-->
-	<form method="post" name="form" action="../test.jsp">
+	<form method="post" name="form" id="frm" action="write.do">
 		<div id="summernote"></div>
-		<button id="save" class="btn btn-primary" onclick="editorWrite()" type="button">저장</button>
+		<button class="btn btn-primary" onclick="CheckContent()" type="button">작성내용확인</button>
+		<button class="btn btn-primary" onclick="testSubmit()" type="button">저장 테스트</button>
+		<input type="text" hidden id="content" name="content">
 	</form>
 
 	<script>
@@ -44,9 +46,19 @@
 		});
 
 		// 게시물 내용 가져오기
-		function editorWrite() {
-			var markupStr = $('#summernote').summernote('code');
-			console.log(markupStr);
+		function CheckContent() {
+			let markupStr = $('#summernote').summernote('code');
+			alert(markupStr);
+		}
+
+		// 게시물 내용 저장
+		function testSubmit() {
+			let markupStr = $('#summernote').summernote('code');
+			let content = $('#content');
+			content.attr('value', markupStr);
+
+			let frm = $('#frm');
+			frm.submit();
 		}
 
 		// 이미지 업로드
