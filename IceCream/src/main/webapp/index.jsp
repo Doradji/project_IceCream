@@ -68,7 +68,7 @@
     <a href="/sample/sendMail.do">단순 메일 보내기</a>
 
     <hr>
-    <a href="/notice/selectOne.do">Notice</a><br>
+    <a href="/notice/writeForm.do">공지사항</a><br>
     <a href="/event/selectOne.do">selectOne.do</a><br>
     
     <hr>
