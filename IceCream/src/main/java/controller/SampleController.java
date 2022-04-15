@@ -71,4 +71,26 @@ public class SampleController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "/sample/sendMail.do")
+    public ModelAndView sendMail(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/");
+        modelAndView.addObject("req", "sample/sendMail.jsp");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/sample/sendMailOk.do")
+    public ModelAndView sendMailOk(HttpServletRequest request){
+        // 데이터 처리
+
+        // 뷰처리 및 데이터 공유
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("req", "sample/sendMailOk.jsp");
+        modelAndView.setViewName("/");
+
+        return modelAndView;
+    }
+
 }

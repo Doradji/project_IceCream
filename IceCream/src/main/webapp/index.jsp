@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>기능 테스트</title>
+    <title>기능 테스트 샘플페이지</title>
     <link rel="stylesheet" href="css/sample.css?v=2">
     <script type="text/javascript">
         function dialog(message){
@@ -50,6 +50,8 @@
     <h1>헤더 영역</h1>
 </header>
 <aside>
+    <a href="/main.do">제작페이지</a>
+    <hr>
     <a href="/">처음으로</a><br>
     <a href="/sample/sample.do">샘플페이지</a><br>
     <a href="/shop/writeForm.do">가계 등록</a><br>
@@ -61,6 +63,9 @@
 
     <hr>
     <a href="/sample/sampleSmartEditor.do">텍스트에디터(only text)</a>
+    <hr>
+    <label>메일 테스트</label><br>
+    <a href="/sample/sendMail.do">단순 메일 보내기</a>
 
     <hr>
     <a href="/notice/selectOne.do">Notice</a><br>
