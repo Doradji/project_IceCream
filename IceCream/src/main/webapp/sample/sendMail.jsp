@@ -8,13 +8,12 @@ String cp = request.getContextPath();
 <!DOCTYPE html>
 <html>
 <head>
-<
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메일보내기</title>
-
+<link rel="stylesheet" href="../css/sample.css">
 
 </head>
-<form action="sendMail_ok.do" method="post">
+<form action="sendMailOk.do" method="post">
 	<table border="1" align="center" style="font-size: 10pt;"
 		cellpadding="0" cellspacing="0">
 		<tr>
