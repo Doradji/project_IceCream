@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,20 +31,44 @@ public class AccountController {
 	
 	// login
 	@RequestMapping(value = "/account/login.do")
-	public ModelAndView login() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("req", "account/login.jsp");
-		modelAndView.setViewName("/");
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// 데이터 처리
+		request.setCharacterEncoding("UTF-8");	// 인코딩 설정
 		
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		
+		String name = service.login(id, pass);
+		
+		// 뷰처리
+		ModelAndView modelAndView = new ModelAndView();
+		// 페이지 이동
+		if(name != null) { // 로그인 성공
+			HttpSession session = request.getSession();
+			session.setAttribute("memName", name);
+			session.setAttribute("memId", id);
+			
+			modelAndView.setViewName("redirect:loginOk.do");
+		} else {
+			modelAndView.setViewName("redirect:loginFail.do");
+		}		
 		return modelAndView;
 	}
+	
 	// loginOk
 	@RequestMapping(value="/account/loginOk.do")
-	public ModelAndView loginOk() {
-
+	public ModelAndView loginOk(HttpServletRequest request, HttpServletResponse response) {
+		// 데이터 처리
+		HttpSession session = request.getSession();
+		String name = (String)session.getAttribute("memName");
+		String id = (String)session.getAttribute("memId");
+		
+		// 뷰처리
 		ModelAndView modelAndView = new ModelAndView();
-
-		modelAndView.addObject("req", "account/login.jsp");
+		
+		modelAndView.addObject("id", id);
+		modelAndView.addObject("name", name);
+		modelAndView.addObject("req_sec", "account/loginOk.jsp");
 		modelAndView.setViewName("/");
 		
 		return modelAndView;
@@ -52,7 +78,7 @@ public class AccountController {
 	@RequestMapping(value="/account/loginFail.do")
 	public ModelAndView loginFail() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("req", "account/login.jsp");
+		modelAndView.addObject("req_sec", "account/loginFail.jsp");
 		modelAndView.setViewName("/");
 		
 		return modelAndView;

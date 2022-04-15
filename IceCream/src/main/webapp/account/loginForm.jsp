@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../script/loginCheck.js"></script>
+<script type="text/javascript" src="../script/accountCheck.js"></script>
 <link rel="stylesheet" href="../css/sample.css">
 </head>
 <body>
-	<form action="login.do" name="form" method="post" id="form1">
+	<form action="../account/login.do" name="form" method="post" id="form1">
 		<div id="container">
 			<table>
 				<tr>

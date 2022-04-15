@@ -9,11 +9,10 @@
         values (#{id}, #{pass}, #{name}, 2, sysdate, #{gender}, #{tel}, #{addr1}, #{addr2}, #{addr3}, #{addr4}, #{email}, #{birth})
     </insert>
 
-    <select id="login" parameterType="java.util.Map" resultType="accountDTO">
+    <select id="login" parameterType="java.util.Map" resultType="String">
         select name
         from account
-        where id = #{id}
-          and pass = #{pass}
+        where id = #{id} and pass = #{pass}
     </select>
 
     <select id="selectOne" parameterType="String" resultType="accountDTO">

@@ -8,6 +8,6 @@
 <link rel="stylesheet" href="../css/sample.css">
 </head>
 <body>
-로그인 페이지
+	<p>아이디 또는 비밀번호가 틀렸으니 재로그인 하세요.</p>
 </body>
 </html>

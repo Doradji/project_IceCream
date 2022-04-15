@@ -19,7 +19,7 @@ public class AccountService {
 	}
 	
 	// 로그인
-	public AccountDTO login(String id, String pass) {
+	public String login(String id, String pass) {
 		return accountDAO.login(id, pass);
 	}
 	

@@ -30,20 +30,20 @@ public class AccountDAO {
 	}
 	
 	// 로그인
-	public AccountDTO login(String id, String pass) {		
+	public String login(String id, String pass) {		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
-		map.put("pwd", pass);
+		map.put("pass", pass);
 		
-		AccountDTO dto = null;
+		String result = null;
 		
 		try {
-			dto = sqlSessionTemplate.selectOne("mybatis.account.login", dto);
+			result = sqlSessionTemplate.selectOne("mybatis.account.login", map);
 		} catch (Throwable t) {
 			System.out.println("AccountDAO login 실패");
 			System.out.println(t);
 		}
-		return dto;
+		return result;
 	}
 		
 	// 고객 개별 조회
