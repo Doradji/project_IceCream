@@ -11,9 +11,9 @@ String cp = request.getContextPath();
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메일보내기</title>
 <link rel="stylesheet" href="../css/sample.css">
-
+<script type="text/javascript" src="../script/sendMailScript.js?v=1"></script>
 </head>
-<form action="sendMailOk.do" method="post">
+<form action="sendMailOk.do" method="post" name="sendMail" onsubmit="check();return false;">
 	<table border="1" align="center" style="font-size: 10pt;"
 		cellpadding="0" cellspacing="0">
 		<tr>

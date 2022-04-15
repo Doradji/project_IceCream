@@ -80,25 +80,12 @@
     <a href="/sample/sampleAddress.do">주소 입력</a>
 </aside>
 <section>
-	<div>
-		<c:if test="${memId == null}">
-			<!-- 로그인 전 화면 -->
-			<jsp:include page="/account/loginForm.jsp"/>
-		</c:if>
-		<c:if test="${req_sec != null}">
-			<!-- 로그인 후 화면 -->
-			<jsp:include page="${req_sec}"/>
-		</c:if>		
-	</div>
-	
-	<div>
-	    <c:if test="${req == null}">
-	        <jsp:include page="resources/body.html"/>
-	    </c:if>
-	    <c:if test="${req != null}">
-	        <jsp:include page="${req}"/>
-	    </c:if>
-    </div>
+    <c:if test="${req == null}">
+        <jsp:include page="resources/body.html"/>
+    </c:if>
+    <c:if test="${req != null}">
+        <jsp:include page="${req}"/>
+    </c:if>
 </section>
 <footer>
     <h1>footer 영역</h1>
