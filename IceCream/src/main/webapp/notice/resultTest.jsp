@@ -11,10 +11,23 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../css/sample.css">
+<script type="text/javascript">
+	window.onload = function(){
+		let dialog = document.getElementById("write_dialog");
+		dialog.showModal();
+	}
+</script>
 </head>
 <body>
-<h1>content 전달 내용</h1>
+${result}
 <hr>
-${content}
+<dialog id="write_dialog" align="center">
+		<c:if test="${result > 0 }">
+			<p>작성하신 글을 저장하였습니다.</p>
+		</c:if>
+		<c:if test="${!(result > 0)}">
+			<p>작성하신 글을 저장하지 못하였습니다.</p>
+		</c:if>
+	</dialog>
 </body>
 </html>

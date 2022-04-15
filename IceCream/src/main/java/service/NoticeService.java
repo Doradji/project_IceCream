@@ -3,11 +3,12 @@ package service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import notice.dao.NoticeDAO;
 import notice.dto.NoticeDTO;
 
-
+@Service
 public class NoticeService {
 	@Autowired
 	NoticeDAO noticeDAO;
