@@ -74,6 +74,7 @@
 			});
 		}
 
+		
 		// 게시물 내용 저장
 		function testSubmit() {
 			let markupStr = $('#summernote').summernote('code');

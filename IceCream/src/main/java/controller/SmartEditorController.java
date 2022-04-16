@@ -38,6 +38,7 @@ public class SmartEditorController {
 		String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
 		String fileRoot = contextRoot + "resources/fileupload/";
 
+		
 		System.out.println("contextRoot =========" + contextRoot);
 		System.out.println("fileRoot ===========" + fileRoot);
 
