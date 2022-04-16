@@ -143,27 +143,48 @@ public class NoticeController {
 		return modelAndView;
 	}
 
-	// selectTotal : 게시물 전체 갯수
-	@RequestMapping("/notice/selectTotal.do")
-	public ModelAndView selectTotal() {
+	
+	// modifyForm 이동
+	@RequestMapping("/notice/modifyForm.do")
+	public ModelAndView modifyForm(HttpServletRequest request) {
+		System.out.println("****Controller******* = /notice/modifyForm.do 들어옴");
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		NoticeDTO dto = noticeService.selectOne(num);
+		
 		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("/notice/selectTotal.do 들어옴");
-
-		modelAndView.addObject("req", "notice/sample.jsp");
+		modelAndView.addObject("num", num);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("req", "notice/modifyForm.jsp");
 		modelAndView.setViewName("/");
-
+		
 		return modelAndView;
 	}
 
 	// modify : 게시물 수정
 	@RequestMapping("/notice/modify.do")
-	public ModelAndView modify() {
+	public ModelAndView modify(HttpServletRequest request) throws IOException {
+		System.out.println("****Controller******* = /notice/modify.do 들어옴");
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		NoticeDTO dto = new NoticeDTO();
+		dto.setNum(num);
+		dto.setTitle(request.getParameter("title"));
+		dto.setContent(request.getParameter("content"));
+		dto.setFileName(request.getParameter("fileName"));
+		
+		int result = noticeService.modify(dto);
+		
 		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("/notice/modify.do 들어옴");
-
-		modelAndView.addObject("req", "notice/sample.jsp");
+		modelAndView.addObject("num", num);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("result", result);
+		modelAndView.addObject("req", "notice/noticeList.jsp");
 		modelAndView.setViewName("/");
 
 		return modelAndView;
@@ -184,12 +205,20 @@ public class NoticeController {
 
 	// delete : 게시물 삭제
 	@RequestMapping("/notice/delete.do")
-	public ModelAndView delete() {
+	public ModelAndView delete(HttpServletRequest request) {
+		System.out.println("****Controller******* = /notice/delete.do 들어옴");
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		int result = noticeService.delete(num);
+		
+		System.out.println("삭제 결과 ::" + result);
+
 		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("/notice/delete.do 들어옴");
-
-		modelAndView.addObject("req", "notice/sample.jsp");
+		modelAndView.addObject("result", result);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("req", "notice/noticeList.jsp");
 		modelAndView.setViewName("/");
 
 		return modelAndView;

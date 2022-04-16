@@ -6,6 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/sample.css">
+<script type="text/javascript">
+		function deleteView(num){
+			console.log("삭제 가자");
+			location.href="/notice/delete.do"+"?num="+num+"&pg="+${pg};
+		}
+		
+		function modifyView(num){
+			console.log("수정 가자");
+			location.href="/notice/modifyForm.do"+"?num="+num+"&pg="+${pg};
+		}
+</script>
 </head>
 <body>
 <h1>NOTICE-VIEW</h1>
@@ -20,5 +31,7 @@
 		</tr>
 	</table>
 	
+	<input type="button" value="수정" onclick="modifyView(${dto.num})">
+	<input type="button" value="삭제" onclick="deleteView(${dto.num})">
 </body>
 </html>

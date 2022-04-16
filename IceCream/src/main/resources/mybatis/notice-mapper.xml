@@ -30,7 +30,10 @@
     
     <!-- update : 게시물 수정 -->
     <update id="modify" parameterType="noticeDTO">
-        update notice set title=#{title}, content=#{content}, logTime=#{sysdate}, fileName=#{fileName} 
+        update notice set title=#{title}, content=#{content}, logTime=sysdate
+        <if test="fileName != null">
+        , fileName=#{fileName} 
+        </if>
         where num=#{num}
     </update>
     
