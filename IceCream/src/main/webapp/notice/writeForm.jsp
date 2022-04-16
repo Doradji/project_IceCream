@@ -80,7 +80,7 @@
 			let markupStr = $('#summernote').summernote('code');
 			let content = $('#content');
 			content.attr('value', markupStr);
-			
+
 			let frm = $('#frm');
 			frm.submit();
 		}
