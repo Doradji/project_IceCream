@@ -23,7 +23,7 @@ public class SmartEditorController {
 	 * @RequestMapping(value = "/uploadSummernoteImageFile", produces =
 	 * "application/json; charset=utf8")
 	 */
-	@RequestMapping(value = "/summernote.do", produces = "application/json; charset=utf8")
+	@RequestMapping(value = "/summernoteImageUpload.do", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile,
 			HttpServletRequest request) {

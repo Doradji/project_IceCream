@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +23,7 @@ import service.NoticeService;
 public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
-	
+
 	// writeForm 이동
 	@RequestMapping("/notice/writeForm.do")
 	public ModelAndView writeForm() {
@@ -35,18 +36,95 @@ public class NoticeController {
 		return modelAndView;
 	}
 
-	// 게시물 저장
-	@RequestMapping("/notice/write.do")
-	public ModelAndView write(HttpServletRequest request, MultipartFile contentFile) {
-		
-		ModelAndView modelAndView = new ModelAndView();
+	// insert : 게시물 등록
+	@RequestMapping("/notice/insert.do")
+	public ModelAndView insert(HttpServletRequest request, MultipartFile contentFile) {
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		System.out.println("****Controller******* = /notice/insert.do 들어옴");
+
+		// 파일 가져오기
+		String filePath = request.getSession().getServletContext().getRealPath("/storage");
+		String fileName = contentFile.getOriginalFilename();
+
+		System.out.println("파일경로(filePath) ===" + filePath);
+		System.out.println("파일명(fileName) === " + fileName);
+
+		// 저장할 폴더
+		File file = new File(filePath, fileName);
+
+		try {
+			FileCopyUtils.copy(contentFile.getInputStream(), new FileOutputStream(file));
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
+		NoticeDTO dto = new NoticeDTO();
+		dto.setTitle(request.getParameter("title"));
+		dto.setContent(request.getParameter("content"));
+		dto.setFileName(fileName);
+
+		int result = noticeService.insert(dto);
+		System.out.println("service 다녀온 결과:" + result);
+
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("result", result);
+		modelAndView.addObject("req", "notice/noticeList.jsp");
 		modelAndView.setViewName("/");
-		modelAndView.addObject("req", "notice/resultTest.jsp");
+		return modelAndView;
+	}
+
+	// selsectList : 리스트 조회
+	@RequestMapping("/notice/selectList.do")
+	public ModelAndView selectList(HttpServletRequest request) {
+
+		System.out.println("****Controller******* = /notice/selsectList.do 들어옴");
+
+		int pg = 1;
+		if (request.getParameter("pg") != null) {
+			pg = Integer.parseInt(request.getParameter("pg"));
+		}
+
+		/* 페이징 처리 */
+		int totalA = noticeService.selectTotal();
+
+		System.out.println("totalA ====" + totalA);
+
+		int totalP = (totalA + 4) / 5;
+		if (pg > totalP) {
+			pg = totalP;
+		}
+
+		/* 목록 보기 */
+		int endNum = pg * 5;
+		int startNum = endNum - 4;
+
+		List<NoticeDTO> list = noticeService.selectList(startNum, endNum);
+
+		System.out.println(list);
+
+		/* 블럭 처리 */
+		int startPage = (pg - 1) / 3 * 3 + 1;
+		int endPage = startPage + 2;
+		if (endPage > totalP) {
+			endPage = totalP;
+		}
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("list", list);
+		modelAndView.addObject("startPage", startPage);
+		modelAndView.addObject("endPage", endPage);
+		modelAndView.addObject("totalP", totalP);
+
+		modelAndView.addObject("req", "notice/noticeList.jsp");
+		modelAndView.setViewName("/");
 
 		return modelAndView;
 	}
@@ -72,63 +150,6 @@ public class NoticeController {
 		System.out.println("/notice/selectTotal.do 들어옴");
 
 		modelAndView.addObject("req", "notice/sample.jsp");
-		modelAndView.setViewName("/");
-
-		return modelAndView;
-	}
-
-	// selsectList : 리스트 조회
-	@RequestMapping("/notice/selectList.do")
-	public ModelAndView selectList() {
-		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("/notice/selsectList.do 들어옴");
-
-		modelAndView.addObject("req", "notice/sample.jsp");
-		modelAndView.setViewName("/");
-
-		return modelAndView;
-	}
-
-	// insert : 게시물 등록
-	@RequestMapping("/notice/insert.do")
-	public ModelAndView insert(HttpServletRequest request, MultipartFile contentFile) {
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		System.out.println("****Controller******* = /notice/insert.do 들어옴");
-		
-		// 파일 가져오기
-		String filePath = request.getSession().getServletContext().getRealPath("/storage");
-		String fileName = contentFile.getOriginalFilename();
-		
-		System.out.println("파일경로(filePath) ===" + filePath);
-		System.out.println("파일명(fileName) === " + fileName);
-		
-		// 저장할 폴더 
-		File file = new File(filePath, fileName);
-		
-		try {
-			FileCopyUtils.copy(contentFile.getInputStream(), new FileOutputStream(file));
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		
-		NoticeDTO dto = new NoticeDTO();
-		dto.setTitle(request.getParameter("title"));
-		dto.setContent(request.getParameter("content"));
-		dto.setFileName(fileName);
-		
-		int result = noticeService.insert(dto);
-		System.out.println("service 다녀온 결과:" + result);
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("result", result);
-		modelAndView.addObject("req", "notice/resultTest.jsp");
 		modelAndView.setViewName("/");
 
 		return modelAndView;
