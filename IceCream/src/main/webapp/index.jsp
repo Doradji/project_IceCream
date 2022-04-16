@@ -69,6 +69,7 @@
 
     <hr>
     <a href="/notice/writeForm.do">공지사항</a><br>
+    <a href="/notice/selectList.do">공지사항-목록</a><br>
     <a href="/event/selectOne.do">selectOne.do</a><br>
     
     <hr>
