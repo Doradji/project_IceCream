@@ -39,11 +39,6 @@ public class NoticeController {
 	// insert : 게시물 등록
 	@RequestMapping("/notice/insert.do")
 	public ModelAndView insert(HttpServletRequest request, MultipartFile contentFile) {
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
 		System.out.println("****Controller******* = /notice/insert.do 들어옴");
 
 		// 파일 가져오기
@@ -60,8 +55,8 @@ public class NoticeController {
 			FileCopyUtils.copy(contentFile.getInputStream(), new FileOutputStream(file));
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 		NoticeDTO dto = new NoticeDTO();
@@ -73,7 +68,6 @@ public class NoticeController {
 		System.out.println("service 다녀온 결과:" + result);
 
 		ModelAndView modelAndView = new ModelAndView();
-		
 		modelAndView.addObject("result", result);
 		modelAndView.addObject("req", "notice/noticeList.jsp");
 		modelAndView.setViewName("/");
@@ -131,12 +125,19 @@ public class NoticeController {
 
 	// select : 개별 조회
 	@RequestMapping("/notice/selectOne.do")
-	public ModelAndView selectOne() {
+	public ModelAndView selectOne(HttpServletRequest request) {
+		System.out.println("****Controller******* = /notice/selectOne.do 들어옴");
+		int num = Integer.parseInt(request.getParameter("num"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		noticeService.updateHit(num);
+		NoticeDTO dto = noticeService.selectOne(num); 
+		
 		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("/notice/selectOne.do 들어옴");
-
-		modelAndView.addObject("req", "notice/sample.jsp");
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("num", num);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("req", "notice/noticeView.jsp");
 		modelAndView.setViewName("/");
 
 		return modelAndView;

@@ -17,7 +17,7 @@
     <select id="selectList" parameterType="java.util.Map" resultType="noticeDTO">
         <![CDATA[
         select *
-        from (select ROWNUM rn, tt.* from (select * from notice order by num asc) tt)
+        from (select ROWNUM rn, tt.* from (select * from notice order by num desc) tt)
         where rn >= #{startNum}
           and rn <= #{endNum}
         ]]>
