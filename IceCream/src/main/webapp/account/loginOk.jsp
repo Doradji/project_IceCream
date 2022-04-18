@@ -13,6 +13,7 @@
 	<br>
 	<input type="button" value="로그아웃" onclick="location.href='logout.do'"><br>
 	<input type="button" value="회원 정보 수정" onclick="location.href='modifyForm.do'"><br>
+	<input type="button" value="회원 탈퇴" onclick="location.href='deleteForm.do'"><br>	
 	<input type="button" value="메인으로" onclick="location.href='../index.do'">
 </body>
 </html>

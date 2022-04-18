@@ -22,7 +22,9 @@ public class AccountController {
 	// index
 		@RequestMapping(value="../index.do")
 		public ModelAndView index() {
+			
 			ModelAndView modelAndView = new ModelAndView();
+			
 			modelAndView.setViewName("/");
 			return modelAndView;
 		}
@@ -282,11 +284,11 @@ public class AccountController {
 	}
 	
 	
-	// 회원 탈퇴 입력폼
+	// 회원 탈퇴 확인폼
 	@RequestMapping(value="/account/deleteForm.do")
 	public ModelAndView deleteForm() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("req", "account/login.jsp");
+		modelAndView.addObject("req", "account/deleteForm.jsp");
 		modelAndView.setViewName("/");
 
 		
@@ -296,13 +298,26 @@ public class AccountController {
 	
 	// 회원 탈퇴
 	@RequestMapping(value="/account/delete.do")
-	public ModelAndView delete() {
-
+	public ModelAndView delete(HttpServletRequest request) {
+		// 데이터 처리
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
+		// DB에서 데이터 삭제
+		int result = service.delete(id);
+		
+		// 세션 삭제
+		if(result > 0) {
+			session.removeAttribute("memName");
+			session.removeAttribute("memId");
+		}
+		
+		// view 처리
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.addObject("req", "account/login.jsp");
+		modelAndView.addObject("req", "account/delete.jsp");
+		modelAndView.addObject("result", result);
 		modelAndView.setViewName("/");
-
 		
 		return modelAndView;
 	}
