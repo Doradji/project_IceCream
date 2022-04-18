@@ -22,7 +22,7 @@
 </script>
 </head>
 <body>
-	<h1>NOTICE - LIST</h1>
+	<h1>EVENT - LIST</h1>
 	디비처리 결과 :${result}
 
 	<div>
@@ -42,7 +42,7 @@
 					<td>${dto.content}</td>
 					<td>${dto.hit}</td>
 					<td>${dto.logTime}</td>
-					<td>${dto.fileName}</td>
+					<td><a href="../storage/${dto.fileName}" download>${dto.fileName}</a></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -71,7 +71,7 @@
 	
 	<script type="text/javascript">
 	function view(num){
-		console.log("들어오냐고오오오오옹");
+		/* console.log("들어오냐고오오오오옹"); */ 
 		location.href="/event/selectOne.do?num="+num+"&pg="+${pg};
 	}
 	</script>

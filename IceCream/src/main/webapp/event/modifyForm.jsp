@@ -31,7 +31,7 @@ MODIFY - FROM
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="file" name="contentFile" value="../storage/${dto.fileName}">
+					<input type="file" name="contentFile" value=${dto.fileName}>
 				</td>
 			</tr>
 			<tr>

@@ -26,10 +26,8 @@ public class EventController {
 	// writeForm 이동
 	@RequestMapping("/event/writeForm.do")
 	public ModelAndView writeForm() {
-		ModelAndView modelAndView = new ModelAndView();
-
 		System.out.println("******** controller - /event/writeForm.do ******************");
-
+		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("req", "event/writeForm.jsp");
 		modelAndView.setViewName("/");
 		return modelAndView;
@@ -56,12 +54,12 @@ public class EventController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		EventDTO dto = new EventDTO();
 		dto.setTitle(request.getParameter("title"));
 		dto.setContent(request.getParameter("content"));
 		dto.setFileName(fileName);
-		
+
 		int result = eventService.insert(dto);
 		System.out.println("service 결과:" + result);
 
@@ -78,10 +76,12 @@ public class EventController {
 		System.out.println("****Controller******* = /event/selectOne.do 들어옴");
 		int num = Integer.parseInt(request.getParameter("num"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		
+
 		eventService.updateHit(num);
 		EventDTO dto = eventService.selectOne(num);
-		
+
+		System.out.println("*****************" + dto.getFileName());
+
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("dto", dto);
 		modelAndView.addObject("num", num);
@@ -96,7 +96,7 @@ public class EventController {
 	@RequestMapping("/event/selectList.do")
 	public ModelAndView selectList(HttpServletRequest request) {
 		System.out.println("****Controller******* = /event/selectList.do 들어옴");
-		
+
 		int pg = 1;
 		if (request.getParameter("pg") != null) {
 			pg = Integer.parseInt(request.getParameter("pg"));
@@ -126,7 +126,7 @@ public class EventController {
 		if (endPage > totalP) {
 			endPage = totalP;
 		}
-		
+
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("list", list);
@@ -139,27 +139,46 @@ public class EventController {
 		return modelAndView;
 	}
 
-	// modify : 게시물 수정
-	@RequestMapping("/event/modify.do")
-	public ModelAndView modify() {
+	@RequestMapping("/event/modifyForm.do")
+	public ModelAndView modifyForm(HttpServletRequest request) {
+		System.out.println("****Controller******* = /event/modifyForm.do 들어옴");
+
+		int num = Integer.parseInt(request.getParameter("num"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+
+		EventDTO dto = eventService.selectOne(num);
+
 		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("/event/modify.do 들어옴");
-
-		modelAndView.addObject("req", "event/sample.jsp");
+		modelAndView.addObject("num", num);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("req", "event/modifyForm.jsp");
 		modelAndView.setViewName("/");
 
 		return modelAndView;
 	}
 
-	// updateHit : 조회수 수정
-	@RequestMapping("/event/updateHit.do")
-	public ModelAndView updateHit() {
+	// modify : 게시물 수정
+	@RequestMapping("/event/modify.do")
+	public ModelAndView modify(HttpServletRequest request) throws IOException {
+		System.out.println("****Controller******* = /event/modify.do 들어옴");
+
+		int num = Integer.parseInt(request.getParameter("num"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+
+		EventDTO dto = new EventDTO();
+		dto.setNum(num);
+		dto.setTitle(request.getParameter("title"));
+		dto.setContent(request.getParameter("content"));
+		dto.setFileName(request.getParameter("fileName"));
+
+		int result = eventService.modify(dto);
+
 		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("/event/updateHit.do 들어옴");
-
-		modelAndView.addObject("req", "event/sample.jsp");
+		modelAndView.addObject("num", num);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("result", result);
+		modelAndView.addObject("req", "event/eventList.jsp");
 		modelAndView.setViewName("/");
 
 		return modelAndView;
@@ -167,12 +186,20 @@ public class EventController {
 
 	// delete : 게시물 삭제
 	@RequestMapping("/event/delete.do")
-	public ModelAndView delete() {
+	public ModelAndView delete(HttpServletRequest request) {
+		System.out.println("****Controller******* = /event/delete.do 들어옴");
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		int result = eventService.delete(num);
+		
+		System.out.println("삭제 결과 :::" + result);
+		
 		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("/event/delete.do 들어옴");
-
-		modelAndView.addObject("req", "event/sample.jsp");
+		modelAndView.addObject("result", result);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("req", "event/eventList.jsp");
 		modelAndView.setViewName("/");
 
 		return modelAndView;

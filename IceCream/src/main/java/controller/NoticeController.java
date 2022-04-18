@@ -27,10 +27,9 @@ public class NoticeController {
 	// writeForm 이동
 	@RequestMapping("/notice/writeForm.do")
 	public ModelAndView writeForm() {
-		ModelAndView modelAndView = new ModelAndView();
-
 		System.out.println("******** controller - /notice/writeForm.do ******************");
 
+		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("req", "notice/writeForm.jsp");
 		modelAndView.setViewName("/");
 		return modelAndView;
@@ -190,18 +189,6 @@ public class NoticeController {
 		return modelAndView;
 	}
 
-	// updateHit : 조회수 수정
-	@RequestMapping("/notice/updateHit.do")
-	public ModelAndView updateHit() {
-		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("/notice/updateHit.do 들어옴");
-
-		modelAndView.addObject("req", "notice/sample.jsp");
-		modelAndView.setViewName("/");
-
-		return modelAndView;
-	}
 
 	// delete : 게시물 삭제
 	@RequestMapping("/notice/delete.do")

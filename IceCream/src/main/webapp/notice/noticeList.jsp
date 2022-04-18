@@ -71,7 +71,7 @@
 	
 	<script type="text/javascript">
 	function view(num){
-		console.log("들어오냐고오오오오옹");
+		/* console.log("들어오냐고오오오오옹"); */
 		location.href="/notice/selectOne.do?num="+num+"&pg="+${pg};
 	}
 	</script>

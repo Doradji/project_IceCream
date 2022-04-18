@@ -19,7 +19,7 @@
 </script>
 </head>
 <body>
-<h1>NOTICE-VIEW</h1>
+<h1>EVENT-VIEW</h1>
 	<table border="1">
 		<tr>
 			<td>번호 : ${dto.num}</td>
@@ -27,7 +27,7 @@
 			<td>내용 : ${dto.content}</td>
 			<td>조회수 : ${dto.hit}</td>
 			<td>작성일 : ${dto.logTime}</td>
-			<td>첨부파일 : ${dto.fileName}</td>
+			<td><a href="../storage/${dto.fileName}" download>${dto.fileName}</a></td>
 		</tr>
 	</table>
 	
