@@ -37,12 +37,23 @@
             window.onload = function () {
     			if(${result != null}) {
     				if(${result > 0 && req == "account/write.jsp"}) {
-    					dialog("회원가입 성공");
+    					dialog("회원 가입 성공");
     				} else if (${result == 0 && req == "account/write.jsp"}) {
-    					dialog("회원가입 실패");
+    					dialog("회원 가입 실패");
     			}
    			}
         }
+            window.onload = function () {
+    			if(${result != null}) {
+    				if(${result > 0 && req == "account/modify.jsp"}) {
+    					dialog("정보 수정 성공");
+    				} else if (${result == 0 && req == "account/modify.jsp"}) {
+    					dialog("정보 수정 실패");
+    			}
+   			}
+        }
+            
+        
     </script>
 </head>
 <body>
@@ -76,6 +87,7 @@
     <hr>
     <a href="/account/loginForm.do">로그인</a><br>
     <a href="/account/writeForm.do">회원가입</a>
+    <a href="/account/loginOk.do">마이페이지</a>
     <a href="/account/deleteForm.do">회원탈퇴</a>
     <hr>
     <label>주소 테스트</label><br>

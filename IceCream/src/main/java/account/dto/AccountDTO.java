@@ -7,7 +7,9 @@ public class AccountDTO {
 	private String accountType;	// 계정타입
 	private String join;		// 가입날짜
 	private String gender;		// 성별
-	private String tel;			// 전화번호
+	private String tel1;		// 전화번호
+	private String tel2;		// 중간전화번호
+	private String tel3;		// 끝전화번호
 	private String addr1;		// 우편번호
 	private String addr2;		// 도로명주소
 	private String addr3;		// 지번주소
@@ -51,14 +53,25 @@ public class AccountDTO {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}	
+	public String getTel1() {
+		return tel1;
 	}
-	public String getTel() {
-		return tel;
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public String getTel2() {
+		return tel2;
 	}
-
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
+	}
+	public String getTel3() {
+		return tel3;
+	}
+	public void setTel3(String tel3) {
+		this.tel3 = tel3;
+	}
 	public String getAddr1() {
 		return addr1;
 	}

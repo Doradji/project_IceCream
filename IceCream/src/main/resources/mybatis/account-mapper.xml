@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="accountDTO">
         insert into account
-        values (#{id}, #{pass}, #{name}, 2, sysdate, #{gender}, #{tel}, #{addr1}, #{addr2}, #{addr3}, #{addr4}, #{email}, #{birth})
+        values (#{id}, #{pass}, #{name}, 2, sysdate, #{gender}, #{tel1}, #{tel2}, #{tel3}, #{addr1}, #{addr2}, #{addr3}, #{addr4}, #{email}, #{birth})
     </insert>
 
     <select id="login" parameterType="java.util.Map" resultType="String">
@@ -39,9 +39,13 @@
     <update id="modify" parameterType="accountDTO">
         update account
         set pass=#{pass},
-            gender=#{gender},
-            tel=#{tel},
-            addr=#{addr},
+            tel1=#{tel1},
+            tel2=#{tel2},
+            tel3=#{tel3},
+            addr1=#{addr1},
+            addr2=#{addr2},
+            addr3=#{addr3},
+            addr4=#{addr4},
             email=#{email},
             birth=#{birth}
         where id = #{id}

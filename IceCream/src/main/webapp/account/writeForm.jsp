@@ -8,7 +8,6 @@
 <script type="text/javascript" src="../script/accountCheck.js?v=1"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -81,7 +80,7 @@
         border: 1px solid black;
         padding: 5px;
     }
-    td.center{
+    th.center{
         text-align: center;
     }
 </style>
@@ -125,6 +124,7 @@
 				<tr>
 					<th class="center">전화 번호</th>
 					<td>
+					<!-- 입력 수 지정 및 숫자만 입력 가능하도록 정규식 사용 -->
                     <input type="text" name="tel1" id="tel1" maxlength="3" style="width: 20%"
                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
                     <input type="text" name="tel2" id="tel2" maxlength="4" style="width: 20%"
@@ -136,6 +136,7 @@
 				<tr>
 					<th class="center">주소</th>
 					<td>
+						<!-- 우편번호 검색을 위한 주소 api 사용 -->
 						<input type="text" name="addr1" id="sample4_postcode" placeholder="우편번호" readonly>
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" name="addr2" id="sample4_roadAddress" placeholder="도로명주소" readonly>
