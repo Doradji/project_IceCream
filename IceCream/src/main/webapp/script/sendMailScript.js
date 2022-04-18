@@ -1,25 +1,23 @@
 function check(){
-	var frm=document.sendMail;
-	
-	if(!frm.senderName.value){
-		alert("보내는사람 이름을 입력하세요");
-		frm.senderName.focus();		
-	}else if(!frm.senderEmail.value){
-		alert("보내는사람 E-Mail를 입력하세요");
-		frm.senderEmail.focus();
-		
-	}else if(!frm.receiverEmail.value){
-		alert("받는사람 E-Mail를 입력하세요");
-		frm.receiverEmail.focus();
-		
-	}else if(!frm.subject.value){
+ 	var frm=document.sendMail
+ 	
+
+	if(!frm.username.value){
+		alert("보내는사람 E-Mail을 입력하세요");
+		frm.username.focus();
+	}else if(!frm.password.value){
+		alert("비밀번호를 입력하세요");
+		frm.password.focus();
+	}else if(!frm.recipient.value){
+		alert("받는사람 E-Mail을 입력하세요");
+		frm.recipient.focus();
+ 	}else if(!frm.subject.value){
 		alert("제목을 입력하세요");
 		frm.subject.focus();
-		
-	}else if(!frm.content.value){
+ 	}else if(!frm.contents.value){
 		alert("내용을 입력하세요");
-		frm.content.focus();
-		
+		frm.contents.focus();
+ 	}else{
+	 	frm.submit();
 	}
-
 }

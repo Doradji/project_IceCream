@@ -5,10 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
@@ -77,6 +81,66 @@ public class SampleController {
 
 		return modelAndView;
 	}
+	@RequestMapping(value = "/sample/sendMailOk.do")
+	public ModelAndView sendMail(HttpServletRequest request)  throws AddressException, MessagingException {
+		// naver smtp server를 사용한다.
+	    String host = "smtp.naver.com";
+	    // naver smtp port
+	    int port=465;
+	    
+	    // 발신자의 메일 주소
+	    final String username = request.getParameter("username");
+	    
+	    // 발신자의 PASSWORD
+	    final String password =  request.getParameter("password"); 
+	   
+	    // 수신자의 메일 주소
+	    String recipient = request.getParameter("recipient"); 
+	    
+	    // 수신자에게 보낼 메일 제목
+	    String subject = request.getParameter("subject");
+	   
+	    // 수신자에게 보낼 메일 내용
+	    String contents = request.getParameter("contents");
+	    
+	    // SMTP 서버 설정 정보 세팅
+	    Properties props = System.getProperties(); 
+	    // smtp 서버
+	    props.put("mail.smtp.host", host);  
+	    // smtp 포트
+	    props.put("mail.smtp.port", port);  
+	    props.put("mail.smtp.auth", "true");  
+	    props.put("mail.smtp.ssl.enable", "true"); 
+	    props.put("mail.smtp.ssl.trust", host);  
+	    
+	    //Session 생성 & 발신자 smtp 서버 로그인 인증 
+	    Session session = Session.getInstance(props,  new javax.mail.Authenticator() { 
+	    	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {  
+	    	return new javax.mail.PasswordAuthentication(username, password);  
+	    	}  
+	    });  
+	    
+	    session.setDebug(true); // 디버그 모드 
+	    
+	    //MimeMessage 생성 & 메일 세팅
+	    Message mimeMessage = new MimeMessage(session); 
+	    mimeMessage.setFrom(new InternetAddress(username)); // 발신자
+	    mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); // 수신자
+	    
+	   
+	    mimeMessage.setSubject(subject); // 제목  
+	    mimeMessage.setText(contents); // 내용  
+	    
+	  
+	    
+	    Transport.send(mimeMessage); // 전송
+		
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.addObject("req","sample/sendMailOk.jsp");
+		modelAndView.setViewName("/");
+		return modelAndView;
+	}
+	
 
 	@RequestMapping(value = "/sample/sendMail.do")
 	public ModelAndView sendMail() {
@@ -87,62 +151,6 @@ public class SampleController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/sample/sendMailOk.do")
-	public ModelAndView sendMailOk(HttpServletRequest request) {
-		// 데이터 처리
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		String cp = request.getContextPath();// 웹애플리케이션에 속한 주소를 컨텍스패스로반환
-		// sendMail페이지에서 보낸 5개의 데이터 받아야 함
-		String senderName = request.getParameter("senderName");// 보낸사람이름
-		String senderEmail = request.getParameter("senderEmail");// 보내는사람 E-Mail
-		String receiverEmail = request.getParameter("receiverEmail");// 받는사람 E-Mai
-		String subject = request.getParameter("subject"); // 제목
-		String content = request.getParameter("content"); // 내용
-
-		String host = "localhost"; // 192.168.16.16
-
-		// 1.javax.mail.Session 클래스의 인스턴스를 구한다.
-		Properties prop = System.getProperties(); // 시스템의 환경설정
-		Session ssn = Session.getInstance(prop, null);// 환경설정 세션 생성 (시스템의 정보를 읽어와서 세션을 생성)
-		try {
-			// 2.javax.mail.Message 클래스를 사용하여 전송하고자 하는 메일 메시지를 작성
-			MimeMessage message = new MimeMessage(ssn);// MimeMessage는 실제 메일내용을 담음
-			// message객체에 메일속성 설정
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(receiverEmail));// 수신인 설정
-
-			message.setFrom(new InternetAddress(senderEmail, senderName, "UTF-8"));// 발신인 설정
-
-			message.setSubject(subject, "UTF-8");// 제목 설정
-			message.setContent(content, "text/plain;charset=UTF-8");// 내용 설정
-			// 메일 전송
-			// 3.javax.mail.Transport 클래스를 사용하여 작성한 메일을 전송
-			Transport tp = ssn.getTransport("smtp");// 보낼때 사용하는 프로토콜
-			tp.connect(host, "", "");// ip, id, pw 가상으로 진행하므로 id, pw 생략
-			tp.sendMessage(message, message.getAllRecipients());
-			tp.close();
-			// out.print("메일 전송 완료!!");
-		} catch (Exception e) {
-
-		}
-		// 뷰처리 및 데이터 공유
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("cp", cp);
-		modelAndView.addObject("senderName", senderName);
-		modelAndView.addObject("senderEmail", senderEmail);
-		modelAndView.addObject("receiverEmail", receiverEmail);
-		modelAndView.addObject("subject", subject);
-		modelAndView.addObject("content", content);
-		modelAndView.addObject("host", host);
-
-		modelAndView.addObject("req", "sample/sendMailOk.jsp");
-		modelAndView.setViewName("/");
-
-		return modelAndView;
-	}
+	
 
 }
