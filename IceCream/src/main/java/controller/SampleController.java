@@ -143,9 +143,9 @@ public class SampleController {
 
 			mimeMessage.setSubject(subject); // 제목
 			// 단순 텍스트 내용
-			mimeMessage.setText(contents);
+			//mimeMessage.setText(contents);
 			// HTML 내용 전달
-			// mimeMessage.setContent(contents, "text/html; charset=UTF-8");
+			mimeMessage.setContent(contents, "text/html; charset=UTF-8");
 
 			System.out.println(mimeMessage.toString());
 
