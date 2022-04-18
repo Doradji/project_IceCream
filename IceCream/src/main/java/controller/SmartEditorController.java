@@ -23,7 +23,7 @@ public class SmartEditorController {
 	 * @RequestMapping(value = "/uploadSummernoteImageFile", produces =
 	 * "application/json; charset=utf8")
 	 */
-	@RequestMapping(value = "/summernote.do", produces = "application/json; charset=utf8")
+	@RequestMapping(value = "/summernoteImageUpload.do", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile,
 			HttpServletRequest request) {
@@ -38,6 +38,7 @@ public class SmartEditorController {
 		String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
 		String fileRoot = contextRoot + "resources/fileupload/";
 
+		
 		System.out.println("contextRoot =========" + contextRoot);
 		System.out.println("fileRoot ===========" + fileRoot);
 

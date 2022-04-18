@@ -18,7 +18,15 @@ import service.AccountService;
 public class AccountController {
 	@Autowired
 	AccountService service;
-
+	
+	// index
+		@RequestMapping(value="../index.do")
+		public ModelAndView index() {
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.setViewName("/");
+			return modelAndView;
+		}
+		
 	// loginForm
 	@RequestMapping(value = "/account/loginForm.do")
 	public ModelAndView loginForm() {
@@ -45,11 +53,12 @@ public class AccountController {
 		// 페이지 이동
 		if(name != null) { // 로그인 성공
 			HttpSession session = request.getSession();
+			// 세션을 이용한 페이지 이동
 			session.setAttribute("memName", name);
 			session.setAttribute("memId", id);
 			
 			modelAndView.setViewName("redirect:loginOk.do");
-		} else {
+		} else {			// 로그인 실패
 			modelAndView.setViewName("redirect:loginFail.do");
 		}		
 		return modelAndView;
@@ -58,8 +67,10 @@ public class AccountController {
 	// loginOk
 	@RequestMapping(value="/account/loginOk.do")
 	public ModelAndView loginOk(HttpServletRequest request, HttpServletResponse response) {
-		// 데이터 처리
+		/* 데이터 처리 */
+		// 세션을 통한 아이디와 이름 얻어오기
 		HttpSession session = request.getSession();
+		
 		String name = (String)session.getAttribute("memName");
 		String id = (String)session.getAttribute("memId");
 		
@@ -68,7 +79,7 @@ public class AccountController {
 		
 		modelAndView.addObject("id", id);
 		modelAndView.addObject("name", name);
-		modelAndView.addObject("req_sec", "account/loginOk.jsp");
+		modelAndView.addObject("req", "account/loginOk.jsp");
 		modelAndView.setViewName("/");
 		
 		return modelAndView;
@@ -78,7 +89,7 @@ public class AccountController {
 	@RequestMapping(value="/account/loginFail.do")
 	public ModelAndView loginFail() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("req_sec", "account/loginFail.jsp");
+		modelAndView.addObject("req", "account/loginFail.jsp");
 		modelAndView.setViewName("/");
 		
 		return modelAndView;
@@ -86,10 +97,16 @@ public class AccountController {
 	
 	// logout
 	@RequestMapping(value="/account/logout.do")
-	public ModelAndView logout() {
-	
+	public ModelAndView logout(HttpServletRequest request) {
+		// 데이터 처리
+		HttpSession session = request.getSession();
+		// 로그아웃 시 세션 삭제
+		session.removeAttribute("memName");
+		session.removeAttribute("memId");
+		
+		// view처리
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("req", "account/login.jsp");
+		modelAndView.addObject("req", "account/logout.jsp");
 		modelAndView.setViewName("/");
 		
 		return modelAndView;
@@ -103,6 +120,7 @@ public class AccountController {
 		// 데이터 처리
 		String id = request.getParameter("id");
 		
+		// DB : id가 있는지 검사
 		boolean exist = service.isExistId(id);
 		
 		ModelAndView modelAndView = new ModelAndView();
@@ -146,14 +164,15 @@ public class AccountController {
 		String addr4 = request.getParameter("addr4");
 		String email = request.getParameter("email");
 		String birth = request.getParameter("birth");
-		String tel = tel1 + "-" + tel2 + "-" + tel3;
 		// DB 처리
 		AccountDTO dto = new AccountDTO();
 		dto.setId(id);
 		dto.setPass(pass);
 		dto.setName(name);
 		dto.setGender(gender);
-		dto.setTel(tel);
+		dto.setTel1(tel1);
+		dto.setTel2(tel2);
+		dto.setTel3(tel3);		
 		dto.setAddr1(addr1);
 		dto.setAddr2(addr2);
 		dto.setAddr3(addr3);
@@ -199,11 +218,18 @@ public class AccountController {
 	
 	// 정보수정 입력폼
 	@RequestMapping(value="/account/modifyForm.do")
-	public ModelAndView modifyForm() {
-
+	public ModelAndView modifyForm(HttpServletRequest request) {
+		// 데이터 처리
+		// 회원 1명에 대한 데이터 읽어오기
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
+		AccountDTO dto = service.selectOne(id);
+		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.addObject("req", "account/login.jsp");
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("req", "account/modifyForm.jsp");
 		modelAndView.setViewName("/");
 
 		
@@ -212,13 +238,45 @@ public class AccountController {
 	
 	// 회원 정보수정
 	@RequestMapping(value="/account/modify.do")
-	public ModelAndView modify() {
-
+	public ModelAndView modify(HttpServletRequest request) throws IOException{
+		// 데이터 처리
+		request.setCharacterEncoding("UTF-8"); 	// 한글 인코딩 설정
+		// 브라우저로부터 전달된 데이터 읽기
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		String pass = request.getParameter("pass");
+		String tel1 = request.getParameter("tel1");
+		String tel2 = request.getParameter("tel2");
+		String tel3 = request.getParameter("tel3");
+		String addr1 = request.getParameter("addr1");
+		String addr2 = request.getParameter("addr2");
+		String addr3 = request.getParameter("addr3");
+		String addr4 = request.getParameter("addr4");
+		String email = request.getParameter("email");
+		String birth = request.getParameter("birth");
+		
+		// DB처리
+		AccountDTO dto = new AccountDTO();
+		dto.setId(id);
+		dto.setPass(pass);
+		dto.setTel1(tel1);
+		dto.setTel2(tel2);
+		dto.setTel3(tel3);
+		dto.setAddr1(addr1);
+		dto.setAddr2(addr2);
+		dto.setAddr3(addr3);
+		dto.setAddr4(addr4);
+		dto.setEmail(email);
+		dto.setBirth(birth);
+		
+		int result = service.modify(dto);
+		
+		// view 처리
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.addObject("req", "account/login.jsp");
+		modelAndView.addObject("req", "modify.jsp");
+		modelAndView.addObject("result", result);
 		modelAndView.setViewName("/");
-
 		
 		return modelAndView;
 	}

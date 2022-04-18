@@ -17,7 +17,7 @@
     <select id="selectList" parameterType="java.util.Map" resultType="noticeDTO">
         <![CDATA[
         select *
-        from (select ROWNUM rn, tt.* from (select * from notice order by num asc) tt)
+        from (select ROWNUM rn, tt.* from (select * from notice order by num desc) tt)
         where rn >= #{startNum}
           and rn <= #{endNum}
         ]]>
@@ -30,7 +30,10 @@
     
     <!-- update : 게시물 수정 -->
     <update id="modify" parameterType="noticeDTO">
-        update notice set title=#{title}, content=#{content}, logTime=#{sysdate}, fileName=#{fileName} 
+        update notice set title=#{title}, content=#{content}, logTime=sysdate
+        <if test="fileName != null">
+        , fileName=#{fileName} 
+        </if>
         where num=#{num}
     </update>
     

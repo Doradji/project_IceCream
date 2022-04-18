@@ -17,7 +17,7 @@
     <select id="selectList" parameterType="java.util.Map" resultType="eventDTO">
         <![CDATA[
         select *
-        from (select ROWNUM rn, tt.* from (select * from event order by num asc) tt)
+        from (select ROWNUM rn, tt.* from (select * from event order by num desc) tt)
         where rn >= #{startNum}
           and rn <= #{endNum}
         ]]>
@@ -30,7 +30,10 @@
     
    <!-- update : 게시물 수정 -->
     <update id="modify" parameterType="eventDTO">
-        update event set title=#{title}, content=#{content}, logTime=#{sysdate}, fileName=#{fileName} 
+        update event set title=#{title}, content=#{content}, logTime=sysdate
+         <if test="fileName != null">
+        , fileName=#{fileName} 
+        </if>
         where num=#{num}
     </update>
     
