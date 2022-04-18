@@ -20,7 +20,7 @@ public class AccountController {
 	AccountService service;
 	
 	// index
-		@RequestMapping(value="../index.do")
+		@RequestMapping(value="/")
 		public ModelAndView index() {
 			
 			ModelAndView modelAndView = new ModelAndView();

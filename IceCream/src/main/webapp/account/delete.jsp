@@ -14,7 +14,7 @@
 			alert("탈퇴 실패");
 		}
 		// 메인 화면으로 이동
-		location.href = "../index.do";
+		location.href = "/";
 	}
 </script>
 </head>

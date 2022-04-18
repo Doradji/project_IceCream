@@ -11,7 +11,7 @@
 		if(confirm("회원 탈퇴하시겠습니까?")) {
 			location.href="delete.do";
 		} else {
-			location.href="../index.do";
+			location.href="/";
 		}
 	}
 </script>
