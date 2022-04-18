@@ -1,18 +1,11 @@
 package controller;
 
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
@@ -84,11 +77,8 @@ public class SampleController {
 	
 
 	@RequestMapping(value = "/sample/sendMailOk.do")
-	public ModelAndView sendMail(HttpServletRequest request)  throws AddressException, MessagingException {
-		// naver smtp server를 사용한다.
-	    String host = "smtp.naver.com";
-	    // naver smtp port
-	    int port=465;
+	public ModelAndView sendMail(HttpServletRequest request) {
+
 	    
 	    // 발신자의 메일 주소
 	    final String username = request.getParameter("username");
@@ -104,39 +94,69 @@ public class SampleController {
 	   
 	    // 수신자에게 보낼 메일 내용
 	    String contents = request.getParameter("contents");
-	    
+
+		// 호스트
+		String host = "smtp.naver.com";
+
+		// naver smtp port
+		int port=465;
+
 	    // SMTP 서버 설정 정보 세팅
-	    Properties props = System.getProperties(); 
+	    Properties props = System.getProperties();
+
+		// 프로토콜 설정
+		props.put("mail.transport.protocol", "smtp");
 	    // smtp 서버
-	    props.put("mail.smtp.host", host);  
+	    props.put("mail.smtp.host", host);
 	    // smtp 포트
-	    props.put("mail.smtp.port", port);  
-	    props.put("mail.smtp.auth", "true");  
-	    props.put("mail.smtp.ssl.enable", "true"); 
-	    props.put("mail.smtp.ssl.trust", host);  
+		props.put("mail.smtp.port", port);
+	    props.put("mail.smtp.auth", "true");
+
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.ssl.enable", "true");
+		props.put("mail.smtp.ssl.trust", host);
+
+
+
+		// 확인용
+		System.out.println("userName : " + username);
+		System.out.println("password : " + password);
+		System.out.println("recipient : " + recipient);
+		System.out.println("subject : " + subject);
+		System.out.println("contents : " + contents);
 	    
 	    //Session 생성 & 발신자 smtp 서버 로그인 인증 
-	    Session session = Session.getInstance(props,  new javax.mail.Authenticator() { 
-	    	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {  
-	    	return new javax.mail.PasswordAuthentication(username, password);  
-	    	}  
-	    });  
+	    Session session = Session.getDefaultInstance(props,  new Authenticator() {
+	    	protected PasswordAuthentication getPasswordAuthentication() {
+	    	return new PasswordAuthentication(username, password);
+	    	}
+	    });
 	    
 	    session.setDebug(true); // 디버그 모드 
 	    
 	    //MimeMessage 생성 & 메일 세팅
-	    Message mimeMessage = new MimeMessage(session); 
-	    mimeMessage.setFrom(new InternetAddress(username)); // 발신자
-	    mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); // 수신자
-	    
-	   
-	    mimeMessage.setSubject(subject); // 제목  
-	    mimeMessage.setText(contents); // 내용  
-	    
-	  
-	    
-	    Transport.send(mimeMessage); // 전송
-		
+	    Message mimeMessage = new MimeMessage(session);
+
+		try {
+			mimeMessage.setFrom(new InternetAddress(username)); // 발신자
+			mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); // 수신자
+
+			mimeMessage.setSubject(subject); // 제목
+			// 단순 텍스트 내용
+			mimeMessage.setText(contents);
+			// HTML 내용 전달
+			// mimeMessage.setContent(contents, "text/html; charset=UTF-8");
+
+			System.out.println(mimeMessage.toString());
+
+			Transport.send(mimeMessage); // 전송
+			System.out.println("message sent successfully...");
+
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+		// 뷰처리 및 이동
+
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.addObject("req","sample/sendMailOk.jsp");
 		modelAndView.setViewName("/");
