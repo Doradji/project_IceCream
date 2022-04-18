@@ -1,6 +1,5 @@
 function check(){
  	var frm=document.sendMail
- 	
 
 	if(!frm.username.value){
 		alert("보내는사람 E-Mail을 입력하세요");

@@ -81,6 +81,8 @@ public class SampleController {
 
 		return modelAndView;
 	}
+	
+
 	@RequestMapping(value = "/sample/sendMailOk.do")
 	public ModelAndView sendMail(HttpServletRequest request)  throws AddressException, MessagingException {
 		// naver smtp server를 사용한다.
