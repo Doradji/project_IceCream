@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div>
-		<form action="insert.do" method="post" enctype="multipart/form-data" id="frm" name="form">
+		<form action="voiceWrite.do" method="post" enctype="multipart/form-data" id="frm" name="form">
 			<h2>게시판글등록</h2>
 				<table>
 					<tr>
@@ -30,8 +30,8 @@
 						<td><input type="text" name="num" size=""></td>
 					</tr>
 					<tr>
-						<th>첨부파일</th>
-						<td><input type="file" name="fileName" size=""></td>
+						
+						<td colspan="2"><input type="file" name="fileName" size=""></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
