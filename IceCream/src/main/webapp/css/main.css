@@ -4,6 +4,8 @@
 	padding: 0;
 	margin: 0;
 } */
+
+/* background - scroll */
 html {
 	overflow: hidden;
 }
@@ -21,7 +23,7 @@ html, body {
 	position: relative;
 }
 
-.content > h1 {
+.content>h1 {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -35,51 +37,47 @@ html, body {
 	background-color: #ffffff;
 }
 
+/* 메뉴 */
+.topMenu ul{
+	padding:0px;
+	margin:0px;
+}
+
+.topMenu li{
+	padding:0px;
+	margin:0px;
+}
+
 .topMenu {
 	width: 100%;
 	height: 180px; /*높이 수정 */
 	/* background-color: #ffffff; */
-	background-color:red;
+	background-color: red;
 }
 
-ul {
+.topMenu .dept01 {
 	list-style: none;
-}
-
-.topMenu > ul {
-	float: left;
 	width: 100%;
-	height: 30%;
-}
-
-.topMenu .dept01 > li {
 	float: left;
-	width: 19%;
+	background-color: green;
 	text-align: center;
 }
 
-.dept02 {
-	border:1px solid red;
-	clear:both
-}
-/* .topMenu  li {
+.dept01 li {
 	float: left;
-	width: 19%;
-	text-align: center;
-} */
+	width: 20%;
+}
 
-.topMenu li ul li {
-	clear: both;
+.dept02 ul {
+	list-style: none;
+	background-color: yellow;
+	text-align: center;
+	width: 20%;
+	float:left;
+	
+}
+
+.dept02 ul li{
 	text-align:center;
-}
-
-.dept02 {
-	display: none;
 	background-color:blue;
-	width:19%;
-}
-
-.dept02 li{
-	border:1px solid green;
-	/* padding-left:30px; */
 }

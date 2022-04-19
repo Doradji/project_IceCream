@@ -23,50 +23,51 @@
 	<div class="content">
 		<div class="topMenu">
 			<ul class="dept01">
-				<!-- 기본 메뉴 -->
-				<li><span>소개</span>
-					<ul class="dept02">
-						<!-- 세부 메뉴 -->
-						<li>1-1</li>
-						<li>2-1</li>
-						<li><a href="/shop/shopList.do">매장 검색</a></li>
-						<li>4-1</li>
-						<li>5-1</li>
-					</ul></li>
-				<li><span>메뉴</span>
-					<ul class="dept02">
-						<li>1-2</li>
-						<li>2-2</li>
-						<li>3-2</li>
-						<li>4-2</li>
-						<li>5-2</li>
-					</ul></li>
-				<li><span>매장안내</span>
-					<ul class="dept02">
-						<li>1-3</li>
-						<li>2-3</li>
-						<li>3-3</li>
-						<li>4-3</li>
-						<li>5-3</li>
-					</ul></li>
-				<li><span>공지사항</span>
-					<ul class="dept02">
-						<li>1-4</li>
-						<li>2-4</li>
-						<li>3-4</li>
-						<li>4-4</li>
-						<li>5-4</li>
-					</ul></li>
-				<li><span>고객의소리</span>
-					<ul class="dept02">
-						<li>1-5</li>
-						<li>2-5</li>
-						<li>3-5</li>
-						<li>4-5</li>
-						<li>5-5</li>
-					</ul></li>
+				<li>소개</li>
+				<li>메뉴</li>
+				<li>매장안내</li>
+				<li>공지사항</li>
+				<li>고객의소리</li>
+			</ul>
+			<div class="dept02">
+			<ul>
+				<li>1-1</li>
+				<li>2-1</li>
+				<li>3-1</li>
+				<li>4-1</li>
+				<li>5-1</li>
+			</ul>
+			<ul>
+				<li>1-2</li>
+				<li>2-2</li>
+				<li>3-2</li>
+				<li>4-2</li>
+				<li>5-2</li>
+			</ul>
+			<ul>
+				<li>1-3</li>
+				<li>2-3</li>
+				<li>3-3</li>
+				<li>4-3</li>
+				<li>5-3</li>
+			</ul>
+			<ul>
+				<li>1-4</li>
+				<li>2-4</li>
+				<li>3-4</li>
+				<li>4-4</li>
+				<li>5-4</li>
+			</ul>
+			<ul>
+				<li>1-5</li>
+				<li>2-5</li>
+				<li>3-5</li>
+				<li>4-5</li>
+				<li>5-5</li>
 			</ul>
 		</div>
+		</div>
+		
 	</div>
 	<div class="content">
 		<ul class="bxslider">

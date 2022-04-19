@@ -38,7 +38,7 @@
     }); */
     
     /* 메뉴 */
-	$(document).on('mouseover', '.topMenu span', function(){
+	$(document).on('mouseover', '.topMenu', function(){
     $('.dept02').slideDown(200);
     $(this).parent().hover(function() {
         // 서브가 슬라이드 상태를 유지하도록 함
