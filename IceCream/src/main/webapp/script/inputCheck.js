@@ -1,7 +1,8 @@
 function shopInputCheck() {
     let form = document.getElementById("form");
     let name = document.getElementById("name");
-    let addr = document.getElementById("addr");
+    let addr1 = document.getElementById("sample4_postcode");
+    let addr4 = document.getElementById("sample4_detailAddress");
     let tel1 = document.getElementById("tel1");
     let tel2 = document.getElementById("tel2");
     let tel3 = document.getElementById("tel3");
@@ -9,9 +10,12 @@ function shopInputCheck() {
     if(!name.value) {
         alert("매장 이름을 입력해주세요!");
         name.focus();
-    } else if (!addr.value) {
-        alert("매장 주소를 입력해주세요!");
-        addr.focus();
+    } else if (!addr1.value) {
+      alert("주소를 조회하여 기입해주세요!");
+      addr1.focus();
+    } else if (!addr4.value) {
+        alert("상세 주소를 입력해주세요!");
+        addr4.focus();
     } else if (tel1.value.length < 2) {
         alert("전화번호 앞자리를 확인하세요.");
         tel1.focus();

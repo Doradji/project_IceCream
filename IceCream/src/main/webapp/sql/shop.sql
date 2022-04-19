@@ -1,8 +1,11 @@
 -- 테이블 생성
 create table shop
 (
-    name varchar2(25) not null, -- 매장 이름
-    addr varchar2(2000) not null,  -- 매장 주소
+    name varchar2(100) not null, -- 매장 이름
+    addr1 varchar2(2000),  -- 우편 번호
+    addr2 varchar2(2000),  -- 도로명 주소
+    addr3 varchar2(2000),  -- 지번 주소
+    addr4 varchar2(2000) not null,  -- 상세 주소
     tel  varchar2(100),            -- 매장 전화번호
     num number primary key          -- 매장 번호
 );
@@ -27,7 +30,7 @@ from shop;
 
 -- 추가
 insert into shop
-values (SHOP_SEQ.nextval ,?, ?, ?);
+values (SHOP_SEQ.nextval ,?, ?, ?, ?, ?, ?);
 
 -- 삭제
 delete
@@ -40,7 +43,10 @@ drop table shop purge;
 -- 내용 수정
 update shop
 set name = ?,
-    addr = ?,
+    addr1 = ?,
+    addr2 = ?,
+    addr3 = ?,
+    addr4 = ?,
     tel  = ?
 where num = ?;
 

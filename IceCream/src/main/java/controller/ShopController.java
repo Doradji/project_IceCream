@@ -39,12 +39,28 @@ public class ShopController {
         String tel2 = request.getParameter("tel2");
         String tel3 = request.getParameter("tel3");
         String name = request.getParameter("name");
-        String addr = request.getParameter("addr");
+
+        String addr1 = request.getParameter("addr1");
+        String addr2 = request.getParameter("addr2");
+        String addr3 = request.getParameter("addr3");
+        String addr4 = request.getParameter("addr4");
+
+        System.out.println("-------------------------");
+        System.out.println("addr1 : " + addr1);
+        System.out.println("addr2 : " + addr2);
+        System.out.println("addr3 : " + addr3);
+        System.out.println("addr4 : " + addr4);
+
+
         String tel = tel1 + "-" + tel2 + "-" + tel3;
         ShopDTO dto = new ShopDTO();
         dto.setName(name);
         dto.setTel(tel);
-        dto.setAddr(addr);
+        dto.setAddr1(addr1);
+        dto.setAddr2(addr2);
+        dto.setAddr3(addr3);
+        dto.setAddr4(addr4);
+
 
         int result = service.insert(dto);
 
@@ -98,8 +114,6 @@ public class ShopController {
         modelAndView.addObject("pg", pg);
         modelAndView.addObject("startPage", startPage);
         modelAndView.addObject("endPage", endPage);
-        modelAndView.addObject("startNum", startNum);
-        modelAndView.addObject("endNum", endNum);
         modelAndView.addObject("VIEW_PAGE_COUNT", VIEW_PAGE_COUNT);
         modelAndView.addObject("TOTAL_PAGE", TOTAL_PAGE);
         modelAndView.addObject("list", list);
@@ -211,6 +225,29 @@ public class ShopController {
             modelAndView.addObject("req", "shop/list.jsp");
         }
 
+        modelAndView.setViewName("../main.jsp");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/shop/view.do")
+    public ModelAndView shopView(HttpServletRequest request) {
+        // 파라미터 파싱
+        int pg = Integer.parseInt(request.getParameter("pg"));
+        String search = null;
+        if(request.getParameter("search") != null)
+            search = request.getParameter("search");
+        int num = Integer.parseInt(request.getParameter("num"));
+
+        // 데이터 처리
+        ShopDTO dto = service.selectOne(num);
+
+        // 뷰처리 및 파라미터 공유
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("pg", pg);
+        modelAndView.addObject("search", search);
+        modelAndView.addObject("dto", dto);
+        modelAndView.addObject("req", "shop/view.jsp");
         modelAndView.setViewName("../main.jsp");
 
         return modelAndView;

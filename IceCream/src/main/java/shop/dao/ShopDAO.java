@@ -110,7 +110,6 @@ public class ShopDAO {
     // 특정 내용 검색 후 리스트 출력
     public List<ShopDTO> selectListSearch(int startNum, int endNum, String search) {
         List<ShopDTO> list = new ArrayList<>();
-        Map<String, Integer> map = new HashMap<>();
         SearchDTO searchDTO = new SearchDTO();
         searchDTO.setStartNum(startNum);
         searchDTO.setEndNum(endNum);

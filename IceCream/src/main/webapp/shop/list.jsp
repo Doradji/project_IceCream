@@ -38,7 +38,12 @@
                 <tr>
                     <td>${dto.name}</td>
                     <td>${dto.tel}</td>
-                    <td><a href="/shop/view.do?pg=${pg}&num=${dto.num}">상세보기</a></td>
+                    <c:if test="${search != null}">
+                        <td><a href="/shop/view.do?pg=${pg}&num=${dto.num}&search=${search}">상세보기</a></td>
+                    </c:if>
+                    <c:if test="${search == null}">
+                        <td><a href="/shop/view.do?pg=${pg}&num=${dto.num}">상세보기</a></td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </table>

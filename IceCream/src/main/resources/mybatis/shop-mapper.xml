@@ -6,7 +6,7 @@
     <!-- 가계 신규 등록 -->
     <insert id="insert" parameterType="shopDTO">
         insert into shop
-        values (#{name}, #{addr}, #{tel}, SHOP_SEQ.nextval)
+        values (#{name}, #{addr1}, #{addr2}, #{addr3}, #{addr4}, #{tel}, SHOP_SEQ.nextval)
     </insert>
 
     <!-- 개별 조회 -->
@@ -43,7 +43,10 @@
     <update id="modify" parameterType="shopDTO">
         update shop
         set name = #{name},
-            addr = #{addr},
+            addr1 = #{addr1},
+            addr2 = #{addr2},
+            addr3 = #{addr3},
+            addr4 = #{addr4},
             tel  = #{tel}
         where num = #{num}
     </update>

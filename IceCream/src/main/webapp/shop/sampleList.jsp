@@ -21,7 +21,7 @@
                 <th style="width: 30%">전화번호</th>
                 <th></th>
             </tr>
-            <c:forEach items="${list}" var="dto" begin="${startNum}" end="${endNum}">
+            <c:forEach items="${list}" var="dto">
                 <tr>
                     <td>${dto.name}</td>
                     <td>${dto.tel}</td>
