@@ -70,6 +70,6 @@ public class VoiceController {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.addObject("req","voice/voiceList");
 		modelAndView.setViewName("/");
-		return modelAndView;
+		return modelAndView; 
 	}
 }

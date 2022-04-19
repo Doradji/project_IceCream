@@ -21,7 +21,7 @@
 						<th>내용</th>
 						<td><input type="text" name="content" size=""></td>
 					</tr>
-					<tr>
+					<tr> 
 						<th>제목</th>
 						<td><input type="text" name="title" size=""></td>
 					</tr>
