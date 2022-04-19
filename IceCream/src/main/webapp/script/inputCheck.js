@@ -1,8 +1,8 @@
 function shopInputCheck() {
     let form = document.getElementById("form");
     let name = document.getElementById("name");
-    let addr1 = document.getElementById("sample4_postcode");
-    let addr4 = document.getElementById("sample4_detailAddress");
+    let addr1 = document.getElementById("postcode");
+    let addr4 = document.getElementById("detailAddress");
     let tel1 = document.getElementById("tel1");
     let tel2 = document.getElementById("tel2");
     let tel3 = document.getElementById("tel3");
