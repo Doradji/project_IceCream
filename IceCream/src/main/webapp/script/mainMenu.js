@@ -39,19 +39,19 @@
     
     /* 메뉴 */
 	$(function (){
-    let mainMenu = $(".topMenu");
-    let subMenu = $(".dept02");
+	    let mainMenu = $(".topMenu");
+	    let subMenu = $(".dept02");
+	
+	    subMenu.hide();
 
-    subMenu.hide();
-
-    mainMenu.hover(function(){
-        $(this).parent().find(".dept02").slideDown(200); // 200ms = 1
-        $(this).parent().hover(function (){
-            // 서브 슬라이드 상태 유지
-        }, function() {
-            $(this).parent().find(".dept02").slideUp(200);
-        })
-    });
-})
+	    mainMenu.hover(function(){
+	        $(this).parent().find(".dept02").slideDown(200); // 200ms = 1
+	        $(this).parent().hover(function (){
+	            // 서브 슬라이드 상태 유지
+	        }, function() {
+	            $(this).parent().find(".dept02").slideUp(200);
+	        })
+	    });
+	})
 
 
