@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -208,11 +209,37 @@ public class AccountController {
 	
 	// selsectList : 회원 리스트 조회
 	@RequestMapping(value="/account/selectList.do")
-	public ModelAndView memberList() {
-
+	public ModelAndView memberList(HttpServletRequest request) {
+		// 데이터 처리
+		int pg = 1;
+		if(request.getParameter("pg") != null)
+			pg = Integer.parseInt(request.getParameter("pg"));
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("memId");
+		
+		// 목록 보기 : 1페이지당 5명씩 보이기
+		int endNum = pg * 5;
+		int startNum = endNum - 4;
+		
+		List<AccountDTO> list = service.selectList(startNum, endNum);
+		
+		// 페이징 처리 : 3블럭
+		int totalA = service.selectTotal();	// 총 회원 수
+		int totalP = (totalA + 4) / 5;		// 총 페이지 수
+		
+		int startPage = (pg-1) / 3*3 + 1;
+		int endPage = startPage + 2;
+		if(endPage > totalP) endPage = totalP;
+		
+		// view 처리
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.addObject("req", "account/login.jsp");
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("list", list);
+		modelAndView.addObject("startPage", startPage);
+		modelAndView.addObject("endPage", endPage);
+		modelAndView.addObject("totalP", totalP);
+		modelAndView.addObject("req", "account/selectList.jsp");
 		modelAndView.setViewName("/");
 
 		return modelAndView;

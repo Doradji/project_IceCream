@@ -80,7 +80,8 @@
     <a href="/account/loginForm.do">로그인</a><br>
     <a href="/account/writeForm.do">회원가입</a><br>
     <a href="/account/loginOk.do">마이페이지</a><br>
-    <a href="/account/deleteForm.do">회원탈퇴</a>
+    <a href="/account/deleteForm.do">회원탈퇴</a><br>
+    <a href="/account/selectList.do">리스트</a>
     <hr>
     <label>주소 테스트</label><br>
     <a href="/sample/sampleAddress.do">주소 입력</a>
