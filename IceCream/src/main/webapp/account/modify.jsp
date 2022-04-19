@@ -15,7 +15,7 @@
 		} else {
 			alert("회원 정보를 수정하지 못했습니다.");
 		}
-		location.href = "../member/loginOk.do";
+		location.href = "../account/loginOk.do";
 	}
 </script>
 </head>

@@ -303,7 +303,7 @@ public class AccountController {
 		// view 처리
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.addObject("req", "modify.jsp");
+		modelAndView.addObject("req", "account/modify.jsp");
 		modelAndView.addObject("result", result);
 		modelAndView.setViewName("/");
 		
