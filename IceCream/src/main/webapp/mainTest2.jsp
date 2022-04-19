@@ -21,6 +21,7 @@
 </head>
 <body>
 	<div class="content">
+	<div class="topMenu2">
 		<div class="topMenu">
 			<ul class="dept01">
 				<li>소개</li>
@@ -29,7 +30,8 @@
 				<li>공지사항</li>
 				<li>고객의소리</li>
 			</ul>
-			<div class="dept02">
+		</div>
+		<div class="dept02">
 			<ul>
 				<li>1-1</li>
 				<li>2-1</li>
@@ -66,8 +68,7 @@
 				<li>5-5</li>
 			</ul>
 		</div>
-		</div>
-		
+	</div>
 	</div>
 	<div class="content">
 		<ul class="bxslider">

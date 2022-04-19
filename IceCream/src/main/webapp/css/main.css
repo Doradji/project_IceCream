@@ -38,6 +38,7 @@ html, body {
 }
 
 /* 메뉴 */
+
 .topMenu ul{
 	padding:0px;
 	margin:0px;
@@ -74,7 +75,6 @@ html, body {
 	text-align: center;
 	width: 20%;
 	float:left;
-	
 }
 
 .dept02 ul li{
