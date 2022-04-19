@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/* 상단 메뉴  */
+#background {
+	width: auto;
+	height: auto;
+	background: lightcyan;
+}
+
+header {
+	width: 100%;
+}
+
+ul {
+	list-style: none;
+}
+
+#mainMenu {
+	background: lightpink;
+}
+
+#mainMenu>ul {
+	width: 100%;
+}
+
+#mainMenu>ul>li {
+	float: left;
+	width: 20%;
+	text-align: center;
+}
+
+#subMenu {
+	background: lightseagreen;
+}
+
+#subMenu>ul {
+	width: 100%;
+}
+
+#subMenu>ul>li {
+	float: left;
+	width: 20%;
+	text-align: center;
+}
+
+section {
+	clear: both;
+	background: limegreen;
+	width: 100%;
+	min-height: 800px;
+	height: auto;
+}
+
+footer {
+	width: auto;
+	height: 300px;
+	background: black;
+	color: lightgrey;
+}
+
+
+/* 메인 배너 */
+ul { width: 700px; }
+li { list-style: none; }

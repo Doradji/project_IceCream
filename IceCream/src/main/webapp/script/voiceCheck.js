@@ -4,10 +4,12 @@ function voiceCheck(){
 	let title = document.getElementById("title");
 	let num = document.getElementById("num");
 	let fileName = document.getElementById("fileName");
+
 	
-	if(!id.value){
+	if(!id){
 		alert("id를 입력하세요");
-		id.focus();				
+		id.focus();			
+		return false;
 	} else if(!content.value){
 		alert("내용을 입력하세요.");
 		content.focus();	
