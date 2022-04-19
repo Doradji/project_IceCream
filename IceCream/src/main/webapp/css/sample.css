@@ -49,6 +49,15 @@ td > input{
 .content{
     text-align: center;
 }
+.paging {
+	color: blue;
+	text-decoration: none;
+}
+
+.currentPaging {
+	color: red;
+	text-decoration: underline;
+}
 #form1 {
 	width: 400px;
 	height: 100px;
