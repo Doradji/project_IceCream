@@ -56,6 +56,7 @@ public class ShopController {
         return modelAndView;
     }
 
+    // 기술 테스트용 list.do
     @RequestMapping(value = "/shop/list.do")
     public ModelAndView list(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
@@ -103,9 +104,116 @@ public class ShopController {
         modelAndView.addObject("TOTAL_PAGE", TOTAL_PAGE);
         modelAndView.addObject("list", list);
 
-        modelAndView.addObject("req", "shop/list.jsp");
+        modelAndView.addObject("req", "shop/sampleList.jsp");
         modelAndView.setViewName("/");
 
         return modelAndView;
     }
+
+    // 메인페이지용
+    @RequestMapping(value = "/shop/shopList.do")
+    public ModelAndView shopList(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+        // 데이터 처리
+        int pg = 1;
+        if(request.getParameter("pg") != null){
+            pg = Integer.parseInt(request.getParameter("pg"));
+        }
+        String search = null;
+        if(request.getParameter("search") != null) {
+            search = request.getParameter("search");
+        }
+
+        int startPage = 0;
+        int endPage = 0;
+        // 한 페이지당 표현할 게시글 수
+        int INDEX_COUNT = 5;
+        // 페이지 표시할 갯수
+        int VIEW_PAGE_COUNT = 3;
+
+        // 검색어가 있다면
+        if(search != null) {
+            // 전체 계정 갯수
+            int LIST_COUNT = service.selectTotalSearch(search);
+            // 총 페이지 갯수
+            int TOTAL_PAGE = (LIST_COUNT + (INDEX_COUNT - 1)) / INDEX_COUNT;
+            // 스타트 페이지
+            startPage = (pg - 1) / VIEW_PAGE_COUNT * VIEW_PAGE_COUNT + 1;
+            // 마지막 페이지
+            endPage = startPage + (VIEW_PAGE_COUNT - 1);
+            if (endPage > TOTAL_PAGE) endPage = TOTAL_PAGE;
+
+            // 한페이지당 게시물
+            int startNum = INDEX_COUNT * (pg - 1) + 1;
+            int endNum = INDEX_COUNT * pg;
+
+            if (startNum == LIST_COUNT) {
+                endNum = startNum;
+            } else if (endNum >= LIST_COUNT) {
+                endNum = LIST_COUNT;
+            }
+
+            List<ShopDTO> list = service.selectListSearch(startNum, endNum, search);
+
+            // 파라미터 공유
+            modelAndView.addObject("pg", pg);
+            modelAndView.addObject("startPage", startPage);
+            modelAndView.addObject("endPage", endPage);
+            modelAndView.addObject("VIEW_PAGE_COUNT", VIEW_PAGE_COUNT);
+            modelAndView.addObject("TOTAL_PAGE", TOTAL_PAGE);
+            modelAndView.addObject("list", list);
+            modelAndView.addObject("search", search);
+
+
+            System.out.println("--------------------------------------------------");
+            System.out.println("search : " + search);
+            System.out.println("pg : " + pg);
+            System.out.println("startPage : " + startPage);
+            System.out.println("endPage : " + endPage);
+            System.out.println("startNum : " + startNum);
+            System.out.println("endNum : " + endNum);
+            System.out.println("VIEW_PAGE_COUNT : " + VIEW_PAGE_COUNT);
+            System.out.println("TOTAL_PAGE : " + TOTAL_PAGE);
+            System.out.println("list : " + list);
+
+            modelAndView.addObject("req", "shop/list.jsp");
+        } else { // 검색어가 없다면 기존대로
+            // 전체 계정 갯수
+            int LIST_COUNT = service.selectTotal();
+            // 총 페이지 갯수
+            int TOTAL_PAGE = (LIST_COUNT + (INDEX_COUNT - 1)) / INDEX_COUNT;
+            // 스타트 페이지
+            startPage = (pg - 1) / VIEW_PAGE_COUNT * VIEW_PAGE_COUNT + 1;
+            // 마지막 페이지
+            endPage = startPage + (VIEW_PAGE_COUNT - 1);
+            if (endPage > TOTAL_PAGE) endPage = TOTAL_PAGE;
+
+            // 한페이지당 게시물
+            int startNum = INDEX_COUNT * (pg - 1) + 1;
+            int endNum = INDEX_COUNT * pg;
+
+            if (startNum == LIST_COUNT) {
+                endNum = startNum;
+            } else if (endNum >= LIST_COUNT) {
+                endNum = LIST_COUNT;
+            }
+
+            List<ShopDTO> list = service.selectList(startNum, endNum);
+
+            // 파라미터 공유
+            modelAndView.addObject("pg", pg);
+            modelAndView.addObject("startPage", startPage);
+            modelAndView.addObject("endPage", endPage);
+            modelAndView.addObject("VIEW_PAGE_COUNT", VIEW_PAGE_COUNT);
+            modelAndView.addObject("TOTAL_PAGE", TOTAL_PAGE);
+            modelAndView.addObject("list", list);
+
+            modelAndView.addObject("req", "shop/list.jsp");
+        }
+
+        modelAndView.setViewName("../main.jsp");
+
+        return modelAndView;
+    }
+
 }

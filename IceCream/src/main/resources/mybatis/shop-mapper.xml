@@ -47,4 +47,21 @@
             tel  = #{tel}
         where num = #{num}
     </update>
+
+    <!-- 검색후 갯수 -->
+    <select id="selectTotalSearch" parameterType="String" resultType="int">
+        select count(*) as cnt
+        from shop
+        where name like '%'||#{search}||'%'
+    </select>
+
+    <!-- 검색후 리스트 검색 -->
+    <select id="selectListSearch" parameterType="shop.dto.SearchDTO" resultType="shopDTO">
+        <![CDATA[
+        select *
+        from (select ROWNUM rn, tt.* from (select * from shop where name like '%'||#{search}||'%' order by name asc) tt)
+        where rn >= #{startNum}
+          and rn <= #{endNum}
+        ]]>
+    </select>
 </mapper>

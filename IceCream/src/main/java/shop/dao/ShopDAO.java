@@ -3,6 +3,7 @@ package shop.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import shop.dto.SearchDTO;
 import shop.dto.ShopDTO;
 
 import java.util.ArrayList;
@@ -91,5 +92,35 @@ public class ShopDAO {
             System.out.println(t);
         }
         return result;
+    }
+
+    // 특정 내용 검색 후 갯수
+    public int selectTotalSearch(String search) {
+        int result = 0;
+        search = search;
+        try {
+            result = sqlSessionTemplate.selectOne("mybatis.shop.selectTotalSearch", search);
+        } catch (Throwable throwable) {
+            System.out.println("shopDAO selectTotalSearch 실패");
+            System.out.println(throwable);
+        }
+        return result;
+    }
+
+    // 특정 내용 검색 후 리스트 출력
+    public List<ShopDTO> selectListSearch(int startNum, int endNum, String search) {
+        List<ShopDTO> list = new ArrayList<>();
+        Map<String, Integer> map = new HashMap<>();
+        SearchDTO searchDTO = new SearchDTO();
+        searchDTO.setStartNum(startNum);
+        searchDTO.setEndNum(endNum);
+        searchDTO.setSearch(search);
+        try {
+            list = sqlSessionTemplate.selectList("mybatis.shop.selectListSearch", searchDTO);
+        } catch (Throwable throwable) {
+            System.out.println("ShopDAO searchListSearch 실패");
+            System.out.println(throwable);
+        }
+        return list;
     }
 }

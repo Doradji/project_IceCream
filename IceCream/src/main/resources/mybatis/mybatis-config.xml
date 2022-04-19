@@ -14,7 +14,6 @@
     </typeAliases>
     <!-- SQL mapper 등록 -->
     <mappers>
-        <mapper resource="mybatis/mapperSample.xml"/>
         <mapper resource="mybatis/shop-mapper.xml"/>
         <mapper resource="mybatis/voice-mapper.xml"/>
         <mapper resource="mybatis/notice-mapper.xml"/>

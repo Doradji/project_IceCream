@@ -44,3 +44,15 @@ set name = ?,
     tel  = ?
 where num = ?;
 
+-- 전체 검색
+select * from shop;
+
+-- 특정 이름으로 검색 -- %검색어% 해야됨
+select *
+from (select ROWNUM rn, tt.* from (select * from shop where name like '%'||?||'%' order by name asc) tt)
+where rn >= ?
+  and rn <= ?;
+-- 특정 이름 검색 후 갯수 확인
+select count(*) as cnt from shop where name like '%'||?||'%';
+
+

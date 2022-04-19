@@ -41,4 +41,13 @@ public class ShopService {
     public int modify(ShopDTO dto) {
         return shopDAO.modify(dto);
     }
+
+    // 검색 후 갯수
+    public int selectTotalSearch(String search) {
+        return shopDAO.selectTotalSearch(search);
+    }
+    // 검색 후 리스트
+    public List<ShopDTO> selectListSearch(int startNum, int endNum, String search) {
+        return shopDAO.selectListSearch(startNum, endNum, search);
+    }
 }
