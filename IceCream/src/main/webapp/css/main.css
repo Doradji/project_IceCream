@@ -1,64 +1,85 @@
 @charset "UTF-8";
 
-/* 상단 메뉴  */
-#background {
-	width: auto;
-	height: auto;
-	background: lightcyan;
+/* * {
+	padding: 0;
+	margin: 0;
+} */
+html {
+	overflow: hidden;
 }
 
-header {
+html, body {
+	display: block;
 	width: 100%;
+	height: 100%;
+}
+
+.content {
+	width: 100%;
+	height: 100%; /* 100% */
+	background-color: blueviolet;
+	position: relative;
+}
+
+.content > h1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 20em;
+	font-weight: bold;
+	text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
+}
+
+.content:nth-child(even) {
+	background-color: #ffffff;
+}
+
+.topMenu {
+	width: 100%;
+	height: 180px; /*높이 수정 */
+	/* background-color: #ffffff; */
+	background-color:red;
 }
 
 ul {
 	list-style: none;
 }
 
-#mainMenu {
-	background: lightpink;
-}
-
-#mainMenu>ul {
-	width: 100%;
-}
-
-#mainMenu>ul>li {
+.topMenu > ul {
 	float: left;
-	width: 20%;
+	width: 100%;
+	height: 30%;
+}
+
+.topMenu .dept01 > li {
+	float: left;
+	width: 19%;
 	text-align: center;
 }
 
-#subMenu {
-	background: lightseagreen;
+.dept02 {
+	border:1px solid red;
+	clear:both
 }
-
-#subMenu>ul {
-	width: 100%;
-}
-
-#subMenu>ul>li {
+/* .topMenu  li {
 	float: left;
-	width: 20%;
+	width: 19%;
 	text-align: center;
-}
+} */
 
-section {
+.topMenu li ul li {
 	clear: both;
-	background: limegreen;
-	width: 100%;
-	min-height: 800px;
-	height: auto;
+	text-align:center;
 }
 
-footer {
-	width: auto;
-	height: 300px;
-	background: black;
-	color: lightgrey;
+.dept02 {
+	display: none;
+	background-color:blue;
+	width:19%;
 }
 
-
-/* 메인 배너 */
-ul { width: 700px; }
-li { list-style: none; }
+.dept02 li{
+	border:1px solid green;
+	/* padding-left:30px; */
+}
