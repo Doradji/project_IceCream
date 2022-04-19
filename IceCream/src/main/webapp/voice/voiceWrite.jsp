@@ -14,5 +14,6 @@
 	<c:if test="${result == 0}">
 		<p>글 등록 실패</p>
 	</c:if> 
+	
 </body>
 </html>
