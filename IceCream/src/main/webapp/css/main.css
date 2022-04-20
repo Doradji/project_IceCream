@@ -77,3 +77,10 @@ ul, ul li{
 	text-align:center;
 }
 
+
+#slider{
+	clear:both;
+	width:100%;
+	height:auto;
+	margin:0 auto;
+}

@@ -7,15 +7,7 @@
 <title>Main</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 
-<!-- bxSlider -->
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<link rel="stylesheet"
-	href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<!-- bxSlider -->
-
 <script type="text/javascript" src="script/jquery-3.6.0.min.js"></script>
-
 <script type="text/javascript" src="script/mainMenu.js?v=1"></script>
 
 </head>
@@ -69,12 +61,10 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-	<div class="content">
-		<ul class="bxslider">
-			<!-- <li><a href="#"><img src="./resources/11.jpg"></a></li>
-			<li><a href="#"><img src="./resources/12.jpg"></a></li> -->
-		</ul>
+		
+		<div id="slider">
+			<img id="slide">
+		</div>
 	</div>
 
 	<div class="content">
