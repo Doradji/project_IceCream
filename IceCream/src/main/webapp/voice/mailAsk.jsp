@@ -84,36 +84,36 @@ body {
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="style" href="../css/sample.css">
+<script type="text/javascript" src="../script/voiceMailCheck.js?v=2"></script>
 </head>
 <body>
 	<div class="registration-form">
-		<form>
+		<form action="mailAskResult.do" name="form" method="post">
 			<div class="form-icon">
 				<span><i class="icon icon-user"></i></span>
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control item" id="id"
-					placeholder="아이디">
+				<input type="text" class="form-control item" id="username" name="username"
+					placeholder="메일주소">
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control item" id="password"
+				<input type="password" class="form-control item" id="password" name="password"
 					placeholder="비밀번호">
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control item" id="email"
-					placeholder="이메일">
+				<input type="text" class="form-control item" id="recipient" name="recipient"
+					placeholder="받는사람 메일주소">
 			</div>
 			<div class="form-group">
-				 <input type="text" class="form-control item" id="phone-number"
-					placeholder="전화번호">
+				 <input type="text" class="form-control item" id="subject" name="subject"
+					placeholder="제목">
 			</div>
 			<div class="form-group">
-				<textarea class="form-control item" id="contents" placeholder="문의내용"></textarea>
+				<textarea class="form-control item" id="contents" name="contents" placeholder="문의내용"></textarea>
 
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-block create-account">문의하기</button>
+				<button type="button" class="btn btn-block create-account" onclick="voiceMailCheck()">문의하기</button>
 			</div>
 		</form>
 
