@@ -19,7 +19,6 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../css/styles.css" rel="stylesheet" />
 
-
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	window.onload = function(){
@@ -61,27 +60,33 @@
 
 	<nav aria-label="Page navigation example">
 		<ul class="pagination">
-			<li class="page-item"><c:if test="${startPage > 3}">
-					<a class="page-link" href="#" aria-label="Previous"> <span
-						aria-hidden="true">&laquo;</span></a>
-				</c:if></li>
+			<li class="page-item">
+				<c:if test="${startPage > 3}">
+					<a class="page-link" href="#" aria-label="Previous"> 
+					<span aria-hidden="true">&laquo;</span>
+					</a>
+				</c:if>
+			</li>
 
 			<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
 				<c:if test="${pg == i}">
-					<li class="page-item"><a class="page-link"
-						href="selectList.do?pg=${i}">${i}</a></li>
+					<li class="page-item">
+						<a class="page-link" href="selectList.do?pg=${i}">${i}</a>
+					</li>
 				</c:if>
-
 				<c:if test="${pg != i}">
-					<li class="page-item"><a class="page-link"
-						href="selectList.do?pg=${i}">${i}</a></li>
+					<li class="page-item">
+						<a class="page-link" href="selectList.do?pg=${i}">${i}</a>
+					</li>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="${endPage < totalP}">
-				<li class="page-item"><a class="page-link"
-					href="selectList.do?pg=${endPage+1}" aria-label="Next"> <span
-						aria-hidden="true">&raquo;</span></a></li>
+				<li class="page-item">
+					<a class="page-link" href="selectList.do?pg=${endPage+1}" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
 			</c:if>
 		</ul>
 	</nav>

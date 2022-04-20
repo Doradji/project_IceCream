@@ -8,22 +8,14 @@
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <!-- Simple line icons-->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
-	rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
 <!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400"
-	rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400"rel="stylesheet">
 <!-- bootstrap css -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../css/styles.css?v=2" rel="stylesheet" />
 
@@ -51,6 +43,7 @@
 		<p>${dto.content}</p>
 		<hr class="my-4">
 		<a href="../storage/${dto.fileName}" download>${dto.fileName}</a><br><br>
+		
 		<a class="btn btn-primary btn-lg" role="button" onclick="modifyView(${dto.num})">수정</a>
 		<a class="btn btn-primary btn-lg" role="button" onclick="deleteView(${dto.num})">삭제</a>
 	</div>
