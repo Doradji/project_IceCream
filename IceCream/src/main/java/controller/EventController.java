@@ -87,7 +87,7 @@ public class EventController {
 		modelAndView.addObject("num", num);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("req", "event/eventView.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("../main.jsp");
 
 		return modelAndView;
 	}
@@ -134,7 +134,7 @@ public class EventController {
 		modelAndView.addObject("endPage", endPage);
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("req", "event/eventList.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("../main.jsp");
 
 		return modelAndView;
 	}

@@ -117,7 +117,7 @@ public class NoticeController {
 		modelAndView.addObject("totalP", totalP);
 
 		modelAndView.addObject("req", "notice/noticeList.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("../main.jsp");
 
 		return modelAndView;
 	}
@@ -137,7 +137,7 @@ public class NoticeController {
 		modelAndView.addObject("num", num);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("req", "notice/noticeView.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("../main.jsp");
 
 		return modelAndView;
 	}
