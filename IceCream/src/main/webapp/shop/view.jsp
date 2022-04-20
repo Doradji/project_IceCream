@@ -25,17 +25,24 @@
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8aaec602e7c53738460015520aa7ea63&libraries=services"></script>
 <body>
+<header class="smallHeader">
+    <h1>Shop Information</h1>
+</header>
 <div class="contentContainer" style="width: 100%; min-width: 500px">
     <div class="buttonContainer" style="width: 100%; text-align: right">
         <button type="button" class="ui-button" onclick="history.back()">목록으로</button>
     </div>
-    <div class="content">
-        <label>${dto.name}</label>
-        <hr>
-        <label>도로명 : ${dto.addr2}</label><br>
-        <label>지번 : ${dto.addr3}</label><br>
-        <label>상세주소 : ${dto.addr4}</label><br>
-        <label>Tel : ${dto.tel}</label>
+    <div class="content" style="text-align: center">
+        <div style="width: 500px; text-align: left; margin: auto">
+            <div style="text-align: center">
+                <label>${dto.name}</label>
+            </div>
+            <hr>
+            <label>도로명 : ${dto.addr2}</label><br>
+            <label>지번 : ${dto.addr3}</label><br>
+            <label>상세주소 : ${dto.addr4}</label><br>
+            <label>Tel : ${dto.tel}</label>
+        </div>
     </div>
     <div id="map" style="width: 500px; height: 400px; margin: auto"></div>
 
