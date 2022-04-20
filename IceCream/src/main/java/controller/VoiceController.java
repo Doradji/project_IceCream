@@ -101,5 +101,16 @@ public class VoiceController {
 		modelAndView.setViewName("/");
 		return modelAndView; 
 	}
+	@RequestMapping(value = "/voice/mailAsk.do")
+	public ModelAndView mailAsk() {
+		ModelAndView modelAndView =new ModelAndView();
+		modelAndView.addObject("req","voice/mailAsk.jsp");
+		modelAndView.setViewName("../main.jsp");
+		
+		return modelAndView;
+		
+	}
+	
+	
 }
 

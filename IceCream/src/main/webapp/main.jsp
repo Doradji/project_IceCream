@@ -39,6 +39,7 @@
         <li class="sidebar-nav-item"><a href="/event/selectList.do">Event</a></li>
         <li class="sidebar-nav-item"><a href="/notice/selectList.do">Notice</a></li>
         <li class="sidebar-nav-item"><a href="/voice/voiceList.do">Contact</a></li>
+        <li class="sidebar-nav-item"><a href="/voice/mailAsk.do">메일문의</a>
     </ul>
 </nav>
 <!-- Header-->
