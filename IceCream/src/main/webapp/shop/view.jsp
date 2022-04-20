@@ -29,22 +29,27 @@
     <h1>Shop Information</h1>
 </header>
 <div class="contentContainer" style="width: 100%; min-width: 500px">
-    <div class="buttonContainer" style="width: 100%; text-align: right">
-        <button type="button" class="ui-button" onclick="history.back()">목록으로</button>
-    </div>
     <div class="content" style="text-align: center">
         <div style="width: 500px; text-align: left; margin: auto">
             <div style="text-align: center">
+                <br>
                 <label>${dto.name}</label>
+                &emsp;
+                <button type="button" class="ui-button" onclick="history.back()"
+                        style="border: 1px lightgrey dotted; background: none; border-radius: 10px">Back</button>
             </div>
+
             <hr>
             <label>도로명 : ${dto.addr2}</label><br>
             <label>지번 : ${dto.addr3}</label><br>
             <label>상세주소 : ${dto.addr4}</label><br>
             <label>Tel : ${dto.tel}</label>
         </div>
+        <br>
+
     </div>
-    <div id="map" style="width: 500px; height: 400px; margin: auto"></div>
+    <div id="map" style="width: 800px; height: 400px; margin: auto"></div>
+
 
     <script type="text/javascript">
         let mapContainer = document.getElementById('map'), // 지도를 표시할 div
