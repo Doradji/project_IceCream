@@ -86,7 +86,9 @@
     <label>주소 테스트</label><br>
     <a href="/sample/sampleAddress.do">주소 입력</a>
     <hr>
-    <a href="/voice/voiceWriteForm.do">게시판등록</a>
+    <label>voice</label><br>
+    <a href="/voice/voiceWriteForm.do">게시판등록</a><br>
+    <a href="/voice/voiceList.do">게시판목록</a>
 </aside>
 <section>
     <c:if test="${req == null}">

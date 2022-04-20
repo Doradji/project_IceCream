@@ -6,7 +6,7 @@ function voiceCheck(){
 	let fileName = document.getElementById("fileName");
 
 	
-	if(!id){
+	if(!id.value){
 		alert("id를 입력하세요");
 		id.focus();			
 		return false;

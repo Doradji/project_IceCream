@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,7 +34,7 @@ public class VoiceController {
 	@RequestMapping(value="/voice/voiceWrite.do")
 	public ModelAndView voiceWrite(HttpServletRequest request,MultipartFile contentFile) {
 		System.out.println("tt");
-		String filePath= request.getSession().getServletContext().getRealPath("/storage");
+		String filePath= request.getSession().getServletContext().getRealPath("/upload");
 		String fileName= contentFile.getOriginalFilename();
 		
 		System.out.println("filePath");
@@ -65,10 +66,38 @@ public class VoiceController {
 		modelAndView.setViewName("/");
 		return modelAndView;
 	}
-	@RequestMapping("/voice/voiceList.do")
-	public ModelAndView voiceList() {
+	@RequestMapping(value="/voice/voiceList.do")
+	public ModelAndView voiceList(HttpServletRequest request ) {
+		
+		int pg=1;
+		if(request.getParameter("pg") !=null) {
+			pg= Integer.parseInt(request.getParameter("pg"));
+		}
+		
+		int totalA= service.selectTotal();	//총 회원수 
+		int totalP = (totalA + 4) / 5;		//총 페이지수
+		
+		if (pg > totalP) {
+			pg = totalP;
+		}
+		//목록 보기:1페이지당 5명씩 보이기
+		int endNum = pg * 5;
+		int startNum = endNum - 4;
+		
+		int startPage = (pg - 1) / 3 * 3 + 1;
+		int endPage = startPage + 2;
+		if (endPage > totalP) {
+			endPage = totalP;
+		}
+		
+		List<VoiceDTO> list=service.selectList(startNum, endNum);
+		
 		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.addObject("req","voice/voiceList");
+		modelAndView.addObject("pg",pg);
+		modelAndView.addObject("list", list);
+		modelAndView.addObject("startPage",startPage);
+		modelAndView.addObject("totalP", totalP);	
+		modelAndView.addObject("req","voice/voiceList.jsp");
 		modelAndView.setViewName("/");
 		return modelAndView; 
 	}

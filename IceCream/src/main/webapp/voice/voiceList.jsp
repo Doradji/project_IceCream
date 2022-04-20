@@ -6,10 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../css/sample.css">
 </head>
 <body>
 	<div>
-		<h2>글몰록</h2>
+		<h2>글목록</h2>
 		<div>
 			<table>
 				<tr>
@@ -31,8 +32,8 @@
 								▶
 							</c:if>
 							<a href="#">
-								${dto.content}</a></td>
-						<td>${dto.title}</td>
+							${dto.title}</a></td>
+						<td>${dto.content}</td>
 						<td>${dto.num}</td>
 						<td>${dto.logTime}</td>
 					</tr>
@@ -41,23 +42,23 @@
 			</table>
 		</div>
 		<div>
-			<c:if test="${start_Page > 3 }">
-            [<a class="paging" href="voiceList.do?pg=${start_Page-1 }">이전</a>]
-         </c:if>
-         
-         <c:forEach var="i" begin="${start_Page }" end="${end_Page }" step="1">
-            <c:if test="${pg == i }">
-               [<a class="currentPaging" href="voiceList.do?pg=${i }">${i }</a>]
-            </c:if>
-            
-            <c:if test="${pg != i }">
-               [<a class="paging" href="voiceList.do?pg=${i }">${i }</a>]
-            </c:if>
-         </c:forEach>
-         
-         <c:if test="${end_Page < totalP}">
-            [<a class="paging" href="voiceList.do?pg=${end_Page+1 }">다음</a>]
-         </c:if>
+			<c:if test="${startPage > 3}">
+				[<a class="paging" href="voiceList.do?pg=${startPage-1}">이전</a>]
+			</c:if>
+		
+			<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
+				<c:if test="${pg == i}">
+					[<a class="currentPaging" href="voiceList.do?pg=${i}">${i}</a>]
+				</c:if>
+					
+				<c:if test="${pg != i}">
+					[<a class="paging" href="voiceList.do?pg=${i}">${i}</a>]
+				</c:if>
+			</c:forEach>			
+			
+			<c:if test="${endPage < totalP}">
+				[<a class="paging" href="voiceList.do?pg=${endPage+1}">다음</a>]
+			</c:if>
 		</div>
 	</div>
 
