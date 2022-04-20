@@ -65,6 +65,7 @@
         <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
         <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
         <li class="sidebar-nav-item"><a href="/voice/writeForm.do">고객의 소리 작성 테스트</a></li>
+        <li class="sidebar-nav-item"><a href="/voice/mailAsk.do">메일문의</a>
     </ul>
 </nav>
 <!-- Header-->
