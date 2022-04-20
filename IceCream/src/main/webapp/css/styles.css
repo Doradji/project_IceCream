@@ -11422,7 +11422,7 @@ html {
 .callout {
   padding: 15rem 0;
 /*background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/bg-callout.jpg");*/
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../resources/13.jpg");
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../resources/12.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11478,7 +11478,7 @@ footer.footer .social-link:hover {
   padding-top: 8rem;
   padding-bottom: 8rem;
   /* background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/bg-masthead.jpg"); */
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../resources/12.jpg");
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../resources/ice-cream-cones.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
