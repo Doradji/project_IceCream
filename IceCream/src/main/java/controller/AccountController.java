@@ -19,23 +19,13 @@ import service.AccountService;
 public class AccountController {
 	@Autowired
 	AccountService service;
-	
-	// index
-		@RequestMapping(value="/")
-		public ModelAndView index() {
-			
-			ModelAndView modelAndView = new ModelAndView();
-			
-			modelAndView.setViewName("/");
-			return modelAndView;
-		}
 		
 	// loginForm
 	@RequestMapping(value = "/account/loginForm.do")
 	public ModelAndView loginForm() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("req", "account/loginForm.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 		
 		return modelAndView;
 	}
@@ -60,9 +50,13 @@ public class AccountController {
 			session.setAttribute("memName", name);
 			session.setAttribute("memId", id);
 			
-			modelAndView.setViewName("redirect:loginOk.do");
+			
+			modelAndView.setViewName("redirect:../main.do");
 		} else {			// 로그인 실패
-			modelAndView.setViewName("redirect:loginFail.do");
+			HttpSession session = request.getSession();
+			String memId = (String)session.getAttribute("memId");
+			modelAndView.addObject("memId", memId);
+			modelAndView.setViewName("redirect:loginForm.do");
 		}		
 		return modelAndView;
 	}
@@ -83,7 +77,7 @@ public class AccountController {
 		modelAndView.addObject("id", id);
 		modelAndView.addObject("name", name);
 		modelAndView.addObject("req", "account/loginOk.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 		
 		return modelAndView;
 	}
@@ -93,7 +87,7 @@ public class AccountController {
 	public ModelAndView loginFail() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("req", "account/loginFail.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 		
 		return modelAndView;
 	}
@@ -109,8 +103,7 @@ public class AccountController {
 		
 		// view처리
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("req", "account/logout.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("redirect:../main.do");
 		
 		return modelAndView;
 	}
@@ -142,7 +135,7 @@ public class AccountController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("req", "account/writeForm.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 		
 		return modelAndView;
 	}
@@ -190,7 +183,7 @@ public class AccountController {
 		
 		modelAndView.addObject("req", "account/write.jsp");
 		modelAndView.addObject("result", result);
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 		
 		return modelAndView;
 	}
@@ -240,7 +233,7 @@ public class AccountController {
 		modelAndView.addObject("endPage", endPage);
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("req", "account/selectList.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 
 		return modelAndView;
 	}
@@ -259,7 +252,7 @@ public class AccountController {
 		
 		modelAndView.addObject("dto", dto);
 		modelAndView.addObject("req", "account/modifyForm.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 
 		
 		return modelAndView;
@@ -305,7 +298,7 @@ public class AccountController {
 		
 		modelAndView.addObject("req", "account/modify.jsp");
 		modelAndView.addObject("result", result);
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 		
 		return modelAndView;
 	}
@@ -316,7 +309,7 @@ public class AccountController {
 	public ModelAndView deleteForm() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("req", "account/deleteForm.jsp");
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 
 		
 		return modelAndView;
@@ -344,7 +337,7 @@ public class AccountController {
 		
 		modelAndView.addObject("req", "account/delete.jsp");
 		modelAndView.addObject("result", result);
-		modelAndView.setViewName("/");
+		modelAndView.setViewName("/main.do");
 		
 		return modelAndView;
 	}

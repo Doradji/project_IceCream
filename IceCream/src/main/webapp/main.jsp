@@ -21,6 +21,30 @@
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet"/>
+<script type="text/javascript">
+	function dialog(message){
+	    let dialog = document.getElementById("dialog");
+	    let p = document.getElementById("p");
+	
+	    p.innerHTML = message;
+	    dialog.showModal();
+	}
+	
+	function closeDialog(){
+	    let dialog = document.getElementById("dialog");
+	    dialog.close();
+	}
+	window.onload = function (){
+        if(${result != null}) {
+            if(${result > 0 && req == "account/delete.jsp"}) {
+                dialog("탈퇴 성공");
+                
+            } else if (${result == 0 && req == "account/delete.jsp"}) {
+                dialog("탈퇴 실패");
+            }
+        }
+    } 
+</script>
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -31,8 +55,9 @@
             <li class="sidebar-brand"><a href="/account/loginForm.do">Login</a></li>
         </c:if>
         <c:if test="${memId != null}">
-            <label>${memId} 님</label><br>
-            <li class="sidebar-brand"><a href="#page-top">logout</a></li>
+            	<li>${memName} 님</li><br>
+            	<li class="sidebar-brand"><a href="/account/loginOk.do">My Page</a></li>
+            	<li class="sidebar-brand"><a href="/account/logout.do">logout</a></li>
         </c:if>
         <li class="sidebar-nav-item"><a href="/main.do">Home</a></li>
         <li class="sidebar-nav-item"><a href="/shop/shopList.do">Shop List</a></li>
@@ -248,6 +273,10 @@
         <p class="text-muted small mb-0">Copyright &copy; 춘스킨라빈스 2022</p>
     </div>
 </footer>
+<dialog id="dialog">
+    <p id="p"></p>
+    <button type="button" onclick="closeDialog()">확인</button>
+</dialog>
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top"><i
         class="fas fa-angle-up"></i></a>
