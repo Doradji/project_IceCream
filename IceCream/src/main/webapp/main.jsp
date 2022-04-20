@@ -28,17 +28,17 @@
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <c:if test="${memId == null}">
-            <li class="sidebar-brand"><a href="#page-top">Login</a></li>
+            <li class="sidebar-brand"><a href="/account/loginForm.do">Login</a></li>
         </c:if>
         <c:if test="${memId != null}">
             <label>${memId} 님</label><br>
             <li class="sidebar-brand"><a href="#page-top">logout</a></li>
         </c:if>
         <li class="sidebar-nav-item"><a href="/main.do">Home</a></li>
-        <li class="sidebar-nav-item"><a href="#about">About</a></li>
         <li class="sidebar-nav-item"><a href="/shop/shopList.do">Shop List</a></li>
-        <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-        <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+        <li class="sidebar-nav-item"><a href="/event/selectList.do">Event</a></li>
+        <li class="sidebar-nav-item"><a href="/notice/selectList.do">Notice</a></li>
+        <li class="sidebar-nav-item"><a href="/voice/voiceList.do">Contact</a></li>
     </ul>
 </nav>
 <!-- Header-->
