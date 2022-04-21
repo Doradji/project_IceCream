@@ -44,7 +44,16 @@
 	</div> 
 </c:if>
 <c:if test="${result == 0}">
-	<img src="../resources/hamster2.png" width="800px">
+	<header class="smallHeader">
+    	<h1>Sign Up</h1>
+	</header>
+	<br>
+	<h2 align="center">회원가입이 정상적으로 진행되지 않습니다.</h2>
+	<h2 align="center">다시 회원가입 부탁드립니다.</h2>
+	<br>
+	<div align="center">
+	<input type="button" value="회원가입" onclick="location.href='writeForm.do'">
+	</div> 
 </c:if>
 
 <!-- Bootstrap core JS-->
