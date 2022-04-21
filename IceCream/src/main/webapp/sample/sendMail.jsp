@@ -14,10 +14,7 @@
       onsubmit="submitContent();check(); return false;">
     <table border="1" align="center" style="font-size: 10pt;"
            cellpadding="0" cellspacing="0">
-        <tr>
-            <td>보내는사람 E-Mail</td>
-            <td><input type="text" name="username" size="50"/></td>
-        </tr>
+        
         <tr>
             <td>비밀번호</td>
             <td><input type="password" name="password" size="50"/></td>

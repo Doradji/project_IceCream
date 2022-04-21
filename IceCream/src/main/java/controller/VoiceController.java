@@ -183,10 +183,10 @@ public class VoiceController {
 	@RequestMapping(value = "/voice/mailAskResult.do")
 	public ModelAndView mailAskResult(HttpServletRequest request) {
 		 // 발신자의 메일 주소
-	    final String username = request.getParameter("username");
+	    final String username ="dudcjsv1746@naver.com";
 	    
 	    // 발신자의 PASSWORD
-	    final String password =  request.getParameter("password"); 
+	    final String password = "rla1746"; 
 	   
 	    // 수신자의 메일 주소
 	    String recipient = request.getParameter("recipient"); 
@@ -195,7 +195,7 @@ public class VoiceController {
 	    String subject = request.getParameter("subject");
 	   
 	    // 수신자에게 보낼 메일 내용
-	    String contents = request.getParameter("contents");
+	    String content = request.getParameter("content");
 
 		// 호스트
 		String host = "smtp.naver.com";
@@ -225,7 +225,7 @@ public class VoiceController {
 		System.out.println("password : " + password);
 		System.out.println("recipient : " + recipient);
 		System.out.println("subject : " + subject);
-		System.out.println("contents : " + contents);
+		System.out.println("contents : " + content);
 	    
 	    //Session 생성 & 발신자 smtp 서버 로그인 인증 
 	    Session session = Session.getDefaultInstance(props,  new Authenticator() {
@@ -247,7 +247,7 @@ public class VoiceController {
 			// 단순 텍스트 내용
 			//mimeMessage.setText(contents);
 			// HTML 내용 전달
-			mimeMessage.setContent(contents, "text/html; charset=UTF-8");
+			mimeMessage.setContent(content, "text/html; charset=UTF-8");
 
 			System.out.println(mimeMessage.toString());
 

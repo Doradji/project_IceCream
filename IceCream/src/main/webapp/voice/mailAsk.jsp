@@ -18,7 +18,7 @@ body {
 
 .registration-form form {
 	background-color: #fff;
-	max-width: 600px;
+	max-width: 800px;
 	margin: auto;
 	padding: 50px 70px;
 	border-top-left-radius: 30px;
@@ -57,12 +57,7 @@ body {
 }
 }
 </style>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#birth-date').mask('00/00/0000');
-		$('#phone-number').mask('0000-0000');
-	})
-</script>
+
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
@@ -83,23 +78,51 @@ body {
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<script type="text/javascript" src="../script/voiceMailCheck.js?v=2"></script>
+<link rel="stylesheet" href="../css/style.css">
+
+<script src="../se2/js/service/HuskyEZCreator.js" charset="UTF-8"></script>
+<!-- 입력검사 -->
+<script type="text/javascript">
+    // iframe 안의 스마트에디터 작성한 값 가져와서 다른 창에 값 반영
+    function iframeContent(){
+        let iframe = document.getElementById("iframe");
+        iframe.contentWindow.insertContent();
+        let value = iframe.contentWindow.document.getElementById("content").value;
+        let content = document.getElementById("content");
+        content.value = value;
+    }
+    function voiceMailCheck(){
+        let frm = document.getElementById("frm");
+        iframeContent();
+
+        if(!frm.recipient.value) {
+            alert("받는사람 메일주소를 입력해주세요!");
+            frm.recipient.focus();
+        }else if(!frm.subject.value){
+        	alert("제목을 입력해주세요");
+        	frm.subject.focus();       	        	
+        }else if(frm.content.value == '<p><br></p>') {
+            alert("내용을 입력해주세요!");
+            frm.summernote.focus();
+        } else {
+            frm.submit();
+        }
+    }
+
+    function back(){
+        if(confirm("정말 취소하겠습니까?")){
+            history.back();
+        }
+    }
+</script>
 </head>
 <body>
 	<div class="registration-form">
-		<form action="mailAskResult.do" name="form" method="post">
+		<form action="mailAskResult.do" name="frm" method="post" id="frm">
 			<div class="form-icon">
 				<span><i class="icon icon-user"></i></span>
 			</div>
-			<div class="form-group">
-				<input type="text" class="form-control item" id="username" name="username"
-					placeholder="메일주소">
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-control item" id="password" name="password"
-					placeholder="비밀번호">
-			</div>
+			
 			<div class="form-group">
 				<input type="text" class="form-control item" id="recipient" name="recipient"
 					placeholder="받는사람 메일주소">
@@ -109,11 +132,15 @@ body {
 					placeholder="제목">
 			</div>
 			<div class="form-group">
-				<textarea class="form-control item" id="contents" name="contents" placeholder="문의내용"></textarea>
-
+				   <iframe style="width: 100%;height: 600px; border: none" id="iframe" name="iframe" src="../resources/summernote.html"></iframe>
+                    <input type="hidden" class="form-control item" name="content" id="content">
 			</div>
-			<div class="form-group">
+			<div class="form-group" >
 				<button type="button" class="btn btn-block create-account" onclick="voiceMailCheck()">문의하기</button>
+			</div>
+			
+			<div class="form-group" >
+				<button type="button" class="btn btn-block create-account" onclick="back()">취소</button>
 			</div>
 		</form>
 
