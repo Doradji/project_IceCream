@@ -39,7 +39,9 @@ public class AccountController {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		
-		String name = service.login(id, pass);
+		AccountDTO dto = new AccountDTO();
+		dto = service.login(id, pass);
+		String name = dto.getName();
 		
 		// 뷰처리
 		ModelAndView modelAndView = new ModelAndView();
@@ -49,7 +51,7 @@ public class AccountController {
 			// 세션을 이용한 페이지 이동
 			session.setAttribute("memName", name);
 			session.setAttribute("memId", id);
-			
+			session.setAttribute("type", dto.getAccountType());
 			
 			modelAndView.setViewName("redirect:../main.do");
 		} else {			// 로그인 실패
