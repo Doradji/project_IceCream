@@ -57,12 +57,13 @@
 <style type="text/css">
     table{
     	margin: auto;
-        width: 500px;
+        width: 450px;
         border-collapse: collapse;
         border: 1px solid black;
         font-family: Gothic;
     }
     th {
+    	width: 20%;
     	border: 1px solid black;
         padding: 5px;
     }
@@ -132,8 +133,8 @@
 						<!-- 우편번호 검색을 위한 주소 api 사용 -->
 						<input type="text" name="addr1" id="postcode" placeholder="우편번호" readonly>
 						<input type="button" onclick="DaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" name="addr2" id="roadAddress" placeholder="도로명주소" readonly>
-						<input type="text" name="addr3" id="jibunAddress" placeholder="지번주소" readonly>
+						<input type="text" style="width: 100%" name="addr2" id="roadAddress" placeholder="도로명주소" readonly><br>
+						<input type="text" style="width: 100%" name="addr3" id="jibunAddress" placeholder="지번주소" readonly><br>
 						<span id="guide" style="color:#999;display:none"></span>
 						<input style="width: 80%" name="addr4" type="text" id="detailAddress" placeholder="상세주소">
 					</td>
@@ -141,13 +142,13 @@
 				<tr>
 					<th class="center">이메일</th>
 					<td>
-						<input type="email" name="email">
+						<input type="email" style="width: 100%" name="email">
 					</td>
 				</tr>
 				<tr>
 					<th class="center">생일</th>
 					<td>
-						<input style="width: 80px" type="date" name="birth">
+						<input style="width: 100%" type="date" name="birth">
 					</td>
 				</tr>
 				<tr align="center">
