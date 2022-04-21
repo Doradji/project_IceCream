@@ -255,6 +255,137 @@ public class VoiceController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/voice/view.do")
+    public ModelAndView view(HttpServletRequest request){
+        // 파라미터 파싱
+        int pg = Integer.parseInt(request.getParameter("pg"));
+        int num = Integer.parseInt(request.getParameter("num"));
+        String search = request.getParameter("search");
+
+        // 데이터 처리
+        VoiceDTO dto = service.selectOne(num);
+
+        // 공유 및 데이터 처리
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("pg", pg);
+        modelAndView.addObject("num", num);
+
+        if(search != null)
+            modelAndView.addObject("search", search);
+
+        modelAndView.addObject("dto", dto);
+
+        System.out.println("----- Voice view.do ------");
+        System.out.println("pg : " + pg);
+        System.out.println("num : " + num);
+        System.out.println("search : " + search);
+        System.out.println("dto : " + dto.toString());
+
+        modelAndView.addObject("req", "voice/view.jsp");
+        modelAndView.setViewName("../main.jsp");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/voice/modifyForm.do")
+    public ModelAndView modifyForm(HttpServletRequest request){
+        // 파라미터 파싱
+        int pg = Integer.parseInt(request.getParameter("pg"));
+        int num = Integer.parseInt(request.getParameter("num"));
+        String search = null;
+        if(request.getParameter("search") != null)
+            search = request.getParameter("search");
+
+        // 데이터 처리
+        VoiceDTO dto = service.selectOne(num);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("pg", pg);
+        modelAndView.addObject("num", num);
+
+        if(search != null)
+            modelAndView.addObject("search", search);
+
+        modelAndView.addObject("dto", dto);
+
+        System.out.println("----- Voice modifyForm.do ------");
+        System.out.println("pg : " + pg);
+        System.out.println("num : " + num);
+        System.out.println("search : " + search);
+        System.out.println("dto : " + dto.toString());
+
+        modelAndView.addObject("req", "voice/modify.jsp");
+        modelAndView.setViewName("../main.jsp");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/voice/modify.do")
+    public ModelAndView modify(HttpServletRequest request, MultipartFile contentFile) {
+        // 파라미터 파싱
+        int pg = Integer.parseInt(request.getParameter("pg"));
+        int num = Integer.parseInt(request.getParameter("num"));
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+
+        String search = null;
+        if(request.getParameter("search") != null)
+            search = request.getParameter("search");
+
+        // 데이터 처리
+        VoiceDTO before = service.selectOne(num);
+        VoiceDTO after = new VoiceDTO();
+        System.out.println("테스트 contentFile : " + contentFile.toString());
+        if(contentFile.getOriginalFilename().equals("")) {
+            after.setFileName(before.getFileName());
+        } else {
+            // 저장 폴더 지정
+            String filePath = request.getSession().getServletContext().getRealPath("/upload");
+            // 저장할 파일 이름
+            String fileName = contentFile.getOriginalFilename();
+
+            System.out.println("--------- 파일 업로드 테스트 ---------");
+            System.out.println("filePath : " + filePath);
+            System.out.println("fileName : " + fileName);
+
+            File file = new File(filePath, fileName);
+            try {
+                FileCopyUtils.copy(contentFile.getInputStream(), new FileOutputStream(file));
+                System.out.println("파일 저장 성공");
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            after.setFileName(fileName);
+        }
+        after.setTitle(title);
+        after.setNum(num);
+        after.setContent(content);
+
+        int result = service.modify(after);
+
+        after = service.selectOne(num);
+
+        System.out.println("---- Voice modify.do ------");
+        System.out.println("pg : " + pg);
+        System.out.println("num : " + num);
+        System.out.println("result : " + result);
+        System.out.println("after : " + after.toString());
+
+        // 뷰처리 및 공유
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("pg", pg);
+        modelAndView.addObject("num", num);
+        modelAndView.addObject("search", search);
+        modelAndView.addObject("result", result);
+        modelAndView.addObject("dto", after);
+        modelAndView.addObject("req", "voice/view.jsp");
+
+        modelAndView.setViewName("../main.jsp");
+        return modelAndView;
+    }
+
+    // 메일
+
 	@RequestMapping(value = "/voice/mailAsk.do")
 	public ModelAndView mailAsk() {
 		ModelAndView modelAndView =new ModelAndView();
@@ -335,7 +466,7 @@ public class VoiceController {
 
 			System.out.println(mimeMessage.toString());
 
-			Transport.send(mimeMessage); // 전송
+            Transport.send(mimeMessage); // 전송
 			System.out.println("message sent successfully...");
 
 		} catch (MessagingException e) {

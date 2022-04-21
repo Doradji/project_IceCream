@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -33,6 +34,12 @@
         let content = document.getElementById("content");
         content.value = value;
     }
+
+    function insertSummernote(content) {
+        let iframe = document.getElementById("iframe");
+        iframe.contentWindow.insertSummernote('${dto.content}');
+    }
+
     function voiceWriteInputCheck(){
 
         if(${memId == null}){
@@ -56,7 +63,7 @@
 
     function back(){
         if(confirm("정말 취소하겠습니까?")){
-          history.back();
+            history.back();
         }
     }
 </script>
@@ -66,12 +73,12 @@
 </header>
 <div class="content">
     <br>
-    <form name="frm" id="frm" action="write.do" method="post" enctype="multipart/form-data">
+    <form name="frm" id="frm" action="modify.do" method="post" enctype="multipart/form-data">
         <table style="margin: auto; width: 1000px">
             <tr>
                 <th style="width: 20%; text-align: center">제목</th>
                 <td style="width: 80%; border-left: lightgrey 1px dotted">
-                    <input type="text" name="title" style="width: 100%; height: 100%; border: none">
+                    <input type="text" name="title" style="width: 100%; height: 100%; border: none" value="${dto.title}">
                 </td>
             </tr>
             <tr>
@@ -79,10 +86,19 @@
             </tr>
             <tr>
                 <td colspan="2" height="500px">
-                    <iframe style="width: 100%;height: 600px; border: none" id="iframe" name="iframe" src="../resources/summernote.html"></iframe>
+                    <iframe style="width: 100%;height: 600px; border: none" id="iframe" name="iframe" src="../resources/summernote.html" onload="insertSummernote()"></iframe>
                     <input type="hidden" name="content" id="content">
                 </td>
             </tr>
+            <c:if test="${dto.fileName != null}">
+                <tr>
+                    <td colspan="2">
+                        파일 미첨부시 기존 첨부파일을 유지합니다.<br>
+                        첨부 파일 : ${dto.fileName}
+                        <hr>
+                    </td>
+                </tr>
+            </c:if>
             <tr>
                 <th style="text-align: center">파일 첨부</th>
                 <td>
@@ -92,13 +108,16 @@
             <tr>
                 <td colspan="2" style="text-align: center">
                     <hr>
-                    <button type="button" class="ui-button" style="width: 20%" onclick="voiceWriteInputCheck()">등록</button>
+                    <button type="button" class="ui-button" style="width: 20%" onclick="voiceWriteInputCheck()">수정</button>
                     <button type="button" class="ui-button" style="width: 20%" onclick="back()">취소</button>
                 </td>
             </tr>
-            <input type="hidden" name="id" value="${memId}">
+            <input type="hidden" name="pg" value="${pg}">
+            <c:if test="${search != null}">
+                <input type="hidden" name="search" value="${search}">
+            </c:if>
+            <input type="hidden" name="num" value="${num}">
         </table>
-
     </form>
 </div>
 <hr>

@@ -52,6 +52,12 @@
         let content = $('#content');
         content.attr('value', markupStr);
     }
+
+    // 섬머노트안에 내용물 넣기
+    function insertSummernote(content) {
+        let summernote = $('#summernote');
+        summernote.summernote('code', content);
+    }
 </script>
 </div>
 </body>

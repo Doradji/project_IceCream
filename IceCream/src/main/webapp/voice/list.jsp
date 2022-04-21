@@ -67,11 +67,11 @@
                     </c:forEach>
                     <!-- 검색어가 없다면 -->
                     <c:if test="${search == null}">
-                        <a href="/voice/view.do?pg=${pg}&id=${dto.id}">${dto.title}</a>
+                        <a href="/voice/view.do?pg=${pg}&num=${dto.num}">${dto.title}</a>
                     </c:if>
                     <!-- 검색어가 있다면 -->
                     <c:if test="${search != null}">
-                        <a href="/voice/view.do?pg=${pg}&id=${dto.id}&search=${search}">${dto.title}</a>
+                        <a href="/voice/view.do?pg=${pg}&num=${dto.num}&search=${search}">${dto.title}</a>
                     </c:if>
                 </td>
                 <td>${dto.id}</td>
@@ -126,7 +126,7 @@
             <button type="button" onclick="searchCheck()">검색</button>
         </c:if>
         <c:if test="${memId != null}">
-            <a href="/voice/writeForm.do">새글쓰기</a>
+            &nbsp;<a href="/voice/writeForm.do">새글쓰기</a>
         </c:if>
         <input type="hidden" name="pg" value="${pg}">
     </form>
