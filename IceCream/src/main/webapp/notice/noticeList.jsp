@@ -37,7 +37,7 @@
 	<header class="smallHeader">
 		<h1>Notice List</h1>
 	</header>
-	<table class="table">
+	<table class="table" style="margin:auto; margin-bottom:20px; width: 1000px;">
 		<thead>
 			<tr>
 				<th scope="col">번호</th>
@@ -59,7 +59,7 @@
 	</table>
 
 	<nav aria-label="Page navigation example">
-		<ul class="pagination">
+		<ul class="pagination justify-content-center">
 			<li class="page-item">
 				<c:if test="${startPage > 3}">
 					<a class="page-link" href="#" aria-label="Previous"> 
