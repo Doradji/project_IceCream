@@ -63,7 +63,7 @@
                 <div class="col-lg-10">
                     <h2>ICECREAM</h2>
                     <p class="lead mb-5">
-                        아이스크림의 새로운 기준, 춘스킨라빈스 <a href="http://www.baskinrobbins.co.kr/">baskin31</a>!
+                        아이스크림의 새로운 기준, 춘스킨라빈스 <a href="http://www.baskinrobbins.co.kr/" target="_blank">baskin31</a>!
                     </p>
                     <a class="btn btn-dark btn-xl" href="/account/loginForm.do">Login</a>
                 </div>
@@ -80,24 +80,27 @@
             </div>
             <div class="row gx-4 gx-lg-5">
                 <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-					<span class="service-icon rounded-circle mx-auto mb-3"><i
-                            class="icon-screen-smartphone"></i></span>
+					<span class="service-icon rounded-circle mx-auto mb-3">
+						<i class="icon-screen-smartphone"></i>
+					</span>
                     <h4>
                         <strong>IceCream</strong>
                     </h4>
                     <p class="text-faded mb-0">새로운 기준, 춘스킨라빈스!</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-					<span class="service-icon rounded-circle mx-auto mb-3"><i
-                            class="icon-pencil"></i></span>
+					<span class="service-icon rounded-circle mx-auto mb-3">
+						<i class="icon-pencil"></i>
+					</span>
                     <h4>
                         <strong>Beverage</strong>
                     </h4>
                     <p class="text-faded mb-0">즐거운 춘스킨라빈스 음료</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-					<span class="service-icon rounded-circle mx-auto mb-3"><i
-                            class="icon-like"></i></span>
+					<span class="service-icon rounded-circle mx-auto mb-3">
+						<i class="icon-like"></i>
+					</span>
                     <h4>
                         <strong>Coffee</strong>
                     </h4>
@@ -238,15 +241,20 @@
 <footer class="footer text-center">
     <div class="container px-4 px-lg-5">
         <ul class="list-inline mb-5">
-            <li class="list-inline-item"><a
-                    class="social-link rounded-circle text-white mr-3" href="#!"><i
-                    class="icon-social-facebook"></i></a></li>
-            <li class="list-inline-item"><a
-                    class="social-link rounded-circle text-white mr-3" href="#!"><i
-                    class="icon-social-twitter"></i></a></li>
-            <li class="list-inline-item"><a
-                    class="social-link rounded-circle text-white" href="#!"><i
-                    class="icon-social-github"></i></a></li>
+            <li class="list-inline-item">
+	            <a  class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/baskinrobbinskr/" target="_blank">
+	            	<i class="icon-social-facebook"></i>
+	            </a>
+	        </li>
+            <li class="list-inline-item">
+            	<a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/BaskinrobbinsKR" target="_blank">
+            		<i class="icon-social-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+            	<a class="social-link rounded-circle text-white" href="https://github.com/Doradji/project_IceCream.git" target="_blank">
+            		<i class="icon-social-github"></i>
+            	</a>
+            </li>
         </ul>
         <p class="text-muted small mb-0">Copyright &copy; 춘스킨라빈스 2022</p>
     </div>
