@@ -38,10 +38,10 @@
             	<li class="sidebar-brand"><a href="/account/logout.do">Logout</a></li>
         </c:if>
         <li class="sidebar-nav-item"><a href="/main.do">Home</a></li>
-        <li class="sidebar-nav-item"><a href="/shop/shopList.do">Shop List</a></li>
+        <li class="sidebar-nav-item"><a href="/shop/shopList.do">점포안내</a></li>
         <li class="sidebar-nav-item"><a href="/event/selectList.do">Event</a></li>
         <li class="sidebar-nav-item"><a href="/notice/selectList.do">Notice</a></li>
-        <li class="sidebar-nav-item"><a href="/voice/voiceList.do">Contact</a></li>
+        <li class="sidebar-nav-item"><a href="/voice/list.do">고객게시판</a></li>
         <li class="sidebar-nav-item"><a href="/voice/mailAsk.do">메일문의</a>
     </ul>
 </nav>
