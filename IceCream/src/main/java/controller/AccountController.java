@@ -146,7 +146,7 @@ public class AccountController {
 	public ModelAndView write(HttpServletRequest request) throws IOException{
 		// 데이터 처리
 		request.setCharacterEncoding("utf-8"); // 한글 인코딩 설정
-		
+				
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		String name = request.getParameter("name");
@@ -177,6 +177,10 @@ public class AccountController {
 		dto.setBirth(birth);
 		
 		int result = service.insert(dto);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("memId", id);
+		session.setAttribute("memName", name);
 		
 		// 뷰 처리
 		ModelAndView modelAndView = new ModelAndView();
