@@ -264,7 +264,7 @@ public class VoiceController {
 		return modelAndView;
 		
 	}
-	@RequestMapping(value = "/voice/mailAskResult.do")
+	@RequestMapping(value = "/voice/mailAskResult.do") 
 	public ModelAndView mailAskResult(HttpServletRequest request) {
 		 // 발신자의 메일 주소
 	    final String username ="dudcjsv1746@naver.com";

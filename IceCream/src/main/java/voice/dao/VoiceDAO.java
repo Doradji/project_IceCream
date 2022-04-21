@@ -123,7 +123,7 @@ public class VoiceDAO {
 
     // 검색후 리스트
     public List<VoiceDTO> selectListSearch(int startNum, int endNum, String search) {
-        List<VoiceDTO> list = new ArrayList<>();
+        List<VoiceDTO> list = new ArrayList<VoiceDTO>();
         VoiceSearchDTO dto = new VoiceSearchDTO();
         dto.setSearch(search);
         dto.setStartNum(startNum);
