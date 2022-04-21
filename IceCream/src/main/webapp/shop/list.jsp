@@ -79,7 +79,7 @@
                     <c:if test="${pg == i}">
                         <a href="/shop/shopList.do?pg=${i}" id="currentPage">${i}</a>&nbsp;
                     </c:if>
-                    <c:if test="${pg > i && pg < i}">
+                    <c:if test="${pg > i || pg < i}">
                         <a href="/shop/shopList.do?pg=${i}">${i}</a>&nbsp;
                     </c:if>
                 </c:forEach>
@@ -96,8 +96,8 @@
                     <c:if test="${pg == i}">
                         <a href="/shop/shopList.do?pg=${i}&search=${search}" id="currentPage">${i}</a>&nbsp;
                     </c:if>
-                    <c:if test="${pg > i && pg < i}">
-                        <a href="/shop/shopList.do?pg=${i}" &search=${search}>${i}</a>&nbsp;
+                    <c:if test="${pg > i || pg < i}">
+                        <a href="/shop/shopList.do?pg=${i}&search=${search}">${i}</a>&nbsp;
                     </c:if>
                 </c:forEach>
                 <c:if test="${endPage < TOTAL_PAGE}">
@@ -107,9 +107,9 @@
             <br>
             <hr>
             <form name="searchForm" id="searchForm" method="post" action="shopList.do">
-                <input type="text" name="search" id="search" style="width: 30%">
+                <input type="text" name="search" id="search" style="width: 30%" value="${search}">
                 <c:if test="${search!=null}">
-                    <button type="button" value="${search}" onclick="searchCheck()">검색</button>
+                    <button type="button" onclick="searchCheck()">검색</button>
                 </c:if>
                 <c:if test="${search == null}">
                     <button type="button" onclick="searchCheck()">검색</button>

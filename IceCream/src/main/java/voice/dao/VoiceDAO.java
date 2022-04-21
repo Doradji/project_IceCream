@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import voice.dto.VoiceDTO;
+import voice.dto.VoiceSearchDTO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,6 +105,35 @@ public class VoiceDAO {
         } catch (Throwable t) {
             System.out.println("VoiceDAO selectList 실패");
             System.out.println(t);
+        }
+        return list;
+    }
+
+    // 검색후 갯수
+    public int selectTotalSearch(String search) {
+        int result = 0;
+        try {
+            result = sqlSessionTemplate.selectOne("mybatis.voice.selectTotalSearch", search);
+        } catch (Throwable throwable) {
+            System.out.println("VoiceDAO selectTotalSearch 실패");
+            System.out.println(throwable);
+        }
+        return result;
+    }
+
+    // 검색후 리스트
+    public List<VoiceDTO> selectListSearch(int startNum, int endNum, String search) {
+        List<VoiceDTO> list = new ArrayList<>();
+        VoiceSearchDTO dto = new VoiceSearchDTO();
+        dto.setSearch(search);
+        dto.setStartNum(startNum);
+        dto.setEndNum(endNum);
+
+        try {
+            list = sqlSessionTemplate.selectList("mybatis.voice.selectListSearch", dto);
+        } catch (Throwable throwable) {
+            System.out.println("VoiceDAO selectListSearch 실패");
+            System.out.println(throwable);
         }
         return list;
     }

@@ -9,7 +9,7 @@ public class VoiceDTO {
     private int voice_re_ref; // 관련 글번호
     private int voice_re_lev; // 답글 레벨
     private int voice_re_seq; // 관련글 중 출력 순서
-    private int logTime; // 작성일
+    private String logTime; // 작성일
 
     public String getId() {
         return id;
@@ -75,11 +75,11 @@ public class VoiceDTO {
         this.voice_re_seq = voice_re_seq;
     }
 
-    public int getLogTime() {
+    public String getLogTime() {
         return logTime;
     }
 
-    public void setLogTime(int logTime) {
+    public void setLogTime(String logTime) {
         this.logTime = logTime;
     }
 

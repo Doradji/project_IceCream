@@ -11579,3 +11579,24 @@ footer.footer .social-link:hover {
   text-align: center;
   padding-top: 20px;
 }
+
+table a{
+  text-decoration: none;
+}
+#currentPage {
+  text-decoration: lightcoral solid underline;
+  color: lightcoral;
+  font-weight: bold;
+}
+.pageTab a{
+  text-decoration: none;
+}
+.pageTab a:hover{
+  color: lightblue;
+  font-weight: bold;
+}
+table a:hover {
+  color: lightblue;
+  font-weight: bold;
+  font-size: larger;
+}

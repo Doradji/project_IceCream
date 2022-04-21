@@ -46,4 +46,14 @@ public class VoiceService {
     public List<VoiceDTO> selectList(int startNum, int endNum) {
         return voiceDAO.selectList(startNum, endNum);
     }
+
+    // 검색후 갯수 조회
+    public int selectTotalSearch(String search) {
+        return voiceDAO.selectTotalSearch(search);
+    }
+
+    // 검색후 리스트 조회
+    public List<VoiceDTO> selectListSearch(int startNum, int endNum, String search) {
+        return voiceDAO.selectListSearch(startNum, endNum, search);
+    }
 }

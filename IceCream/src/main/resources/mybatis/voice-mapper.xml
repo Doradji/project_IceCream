@@ -61,4 +61,21 @@
         ]]>
     </select>
 
+    <!-- 검색후 갯수 조회 -->
+    <select id="selectTotalSearch" parameterType="String" resultType="int">
+        select count(*) as cnt
+        from voice
+        where title like '%'||#{search}||'%'
+    </select>
+
+    <!-- 검색후 리스트 조회 -->
+    <select id="selectListSearch" parameterType="voice.dto.VoiceSearchDTO" resultType="voiceDTO">
+        <![CDATA[
+        select *
+        from (select ROWNUM rn, tt.* from (select * from voice where title like '%'||#{search}||'%' order by voice_re_ref desc, voice_re_seq asc) tt)
+        where rn >= #{startNum}
+          and rn <= #{endNum}
+        ]]>
+    </select>
+
 </mapper>
