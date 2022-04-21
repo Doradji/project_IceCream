@@ -21,30 +21,40 @@
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet"/>
-    <script type="text/javascript">
-        function dialog(message){
-            let dialog = document.getElementById("dialog");
-            let p = document.getElementById("p");
-
-            p.innerHTML = message;
-            dialog.showModal();
-        }
-
-        function closeDialog(){
-            let dialog = document.getElementById("dialog");
-            dialog.close();
-        }
-        window.onload = function (){
-            if(${result != null}) {
-                if(${result > 0 && req == "account/delete.jsp"}) {
-                    dialog("탈퇴 성공");
-
-                } else if (${result == 0 && req == "account/delete.jsp"}) {
-                    dialog("탈퇴 실패");
-                }
+<script type="text/javascript">
+	function dialog(message){
+	    let dialog = document.getElementById("dialog");
+	    let p = document.getElementById("p");
+	
+	    p.innerHTML = message;
+	    dialog.showModal();
+	}
+	
+	function closeDialog(){
+	    let dialog = document.getElementById("dialog");
+	    dialog.close();
+	}
+	window.onload = function (){
+        if(${result != null}) {
+            if(${result > 0 && req == "account/delete.jsp"}) {
+                dialog("탈퇴 성공");
+                
+            } else if (${result == 0 && req == "account/delete.jsp"}) {
+                dialog("탈퇴 실패");
             }
         }
-    </script>
+    } 
+	window.onload = function (){
+        if(${result != null}) {
+            if(${result > 0 && req == "account/write.jsp"}) {
+                dialog("회원가입 성공");
+                
+            } else if (${result == 0 && req == "account/write.jsp"}) {
+                dialog("회원가입 실패");
+            }
+        }
+    } 
+</script>
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -52,19 +62,19 @@
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <c:if test="${memId == null}">
-            <li class="sidebar-brand"><a href="#page-top">Login</a></li>
+            <li class="sidebar-brand"><a href="/account/loginForm.do">Login</a></li>
         </c:if>
         <c:if test="${memId != null}">
-            <li>${memName} 님</li><br>
-            <li class="sidebar-brand"><a href="/account/loginOk.do">My Page</a></li>
-            <li class="sidebar-brand"><a href="/account/logout.do">logout</a></li>
+            	<li>${memName} 님</li><br>
+            	<li class="sidebar-brand"><a href="/account/modifyForm.do">Modify</a></li>
+            	<li class="sidebar-brand"><a href="/account/delete.do">Withdrawal</a></li>
+            	<li class="sidebar-brand"><a href="/account/logout.do">Logout</a></li>
         </c:if>
         <li class="sidebar-nav-item"><a href="/main.do">Home</a></li>
-        <li class="sidebar-nav-item"><a href="#about">About</a></li>
         <li class="sidebar-nav-item"><a href="/shop/shopList.do">Shop List</a></li>
-        <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-        <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
-        <li class="sidebar-nav-item"><a href="/voice/writeForm.do">고객의 소리 작성 테스트</a></li>
+        <li class="sidebar-nav-item"><a href="/event/selectList.do">Event</a></li>
+        <li class="sidebar-nav-item"><a href="/notice/selectList.do">Notice</a></li>
+        <li class="sidebar-nav-item"><a href="/voice/voiceList.do">Contact</a></li>
         <li class="sidebar-nav-item"><a href="/voice/mailAsk.do">메일문의</a>
     </ul>
 </nav>
@@ -274,6 +284,10 @@
         <p class="text-muted small mb-0">Copyright &copy; 춘스킨라빈스 2022</p>
     </div>
 </footer>
+<dialog id="dialog">
+    <p id="p"></p>
+    <button type="button" onclick="closeDialog()">확인</button>
+</dialog>
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top"><i
         class="fas fa-angle-up"></i></a>
