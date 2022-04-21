@@ -63,7 +63,7 @@
                 <div class="col-lg-10">
                     <h2>ICECREAM</h2>
                     <p class="lead mb-5">
-                        아이스크림의 새로운 기준, 춘스킨라빈스 <a href="http://www.baskinrobbins.co.kr/" target="_blank">baskin31</a>!
+                        아이스크림의 새로운 기준, 춘스킨라빈스!
                     </p>
                     <a class="btn btn-dark btn-xl" href="/account/loginForm.do">Login</a>
                 </div>
@@ -124,7 +124,7 @@
             <h2 class="mx-auto mb-5">
                 Welcome to <em>your</em> new 춘스킨라빈스!
             </h2>
-            <a class="btn btn-primary btn-xl" href="">Download Now!</a>
+            <a class="btn btn-primary btn-xl" href="/shop/shopList.do">매장보기</a>
         </div>
     </section>
     <!-- Portfolio-->
