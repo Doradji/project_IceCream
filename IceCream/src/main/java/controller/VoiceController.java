@@ -472,9 +472,16 @@ public class VoiceController {
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
+		VoiceDTO dto=new VoiceDTO();
+		dto.setId(request.getParameter("id"));
+		dto.setContent(request.getParameter("title"));
+		dto.setTitle(request.getParameter("content"));
+		
+		int result= service.insert(dto);
 		// 뷰처리 및 이동
 
 		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.addObject("result", result);
 		modelAndView.addObject("req","voice/mailAskResult.jsp");
 		modelAndView.setViewName("../main.jsp");
 		return modelAndView;

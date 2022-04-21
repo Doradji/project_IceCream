@@ -78,45 +78,16 @@ body {
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/mailAsk.css">
 
 <script src="../se2/js/service/HuskyEZCreator.js" charset="UTF-8"></script>
-<!-- 입력검사 -->
-<script type="text/javascript">
-    // iframe 안의 스마트에디터 작성한 값 가져와서 다른 창에 값 반영
-    function iframeContent(){
-        let iframe = document.getElementById("iframe");
-        iframe.contentWindow.insertContent();
-        let value = iframe.contentWindow.document.getElementById("content").value;
-        let content = document.getElementById("content");
-        content.value = value;
-    }
-    function voiceMailCheck(){
-        let frm = document.getElementById("frm");
-        iframeContent();
+<script type="text/javascript" src="../script/mailAskCheck.js?v=3"></script>
 
-        if(!frm.recipient.value) {
-            alert("받는사람 메일주소를 입력해주세요!");
-            frm.recipient.focus();
-        }else if(!frm.subject.value){
-        	alert("제목을 입력해주세요");
-        	frm.subject.focus();       	        	
-        }else if(frm.content.value == '<p><br></p>') {
-            alert("내용을 입력해주세요!");
-            frm.summernote.focus();
-        } else {
-            frm.submit();
-        }
-    }
-
-    function back(){
-        if(confirm("정말 취소하겠습니까?")){
-            history.back();
-        }
-    }
-</script>
 </head>
 <body>
+<header class="smallHeader">
+    <h1>고객 문의</h1>
+</header>
 	<div class="registration-form">
 		<form action="mailAskResult.do" name="frm" method="post" id="frm">
 			<div class="form-icon">
@@ -128,15 +99,29 @@ body {
 					placeholder="받는사람 메일주소">
 			</div>
 			<div class="form-group">
-				 <input type="text" class="form-control item" id="subject" name="subject"
+				 <input type="text" class="form-control item" id="title" name="title"
 					placeholder="제목">
 			</div>
 			<div class="form-group">
-				   <iframe style="width: 100%;height: 600px; border: none" id="iframe" name="iframe" src="../resources/summernote.html"></iframe>
-                    <input type="hidden" class="form-control item" name="content" id="content">
+					<textarea name="content" id="content" style="width: auto; height: 200px" placeholder="내용을 입력해 주세요"></textarea>
+                <script type="text/javascript">
+                    let oEditors = [];
+                    nhn.husky.EZCreator.createInIFrame({
+                        oAppRef: oEditors,
+                        elPlaceHolder: "content",
+                        sSkinURI: "../se2/SmartEditor2Skin.html",
+                        fCreator: "createSEditor2"
+                    });
+
+                    function submitContent() {
+                        oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+                    }
+                </script>
+				  
+                    
 			</div>
 			<div class="form-group" >
-				<button type="button" class="btn btn-block create-account" onclick="voiceMailCheck()">문의하기</button>
+				<button type="button" class="btn btn-block create-account" onclick="submitContent(); voiceMailCheck()">문의하기</button>
 			</div>
 			
 			<div class="form-group" >
@@ -149,7 +134,8 @@ body {
 		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-	<script src="assets/js/script.js"></script>
+	<!-- <script src="assets/js/script.js"></script> -->
+	
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
