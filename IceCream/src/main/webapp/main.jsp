@@ -34,7 +34,7 @@
         <c:if test="${memId != null}">
             	<li>${memName} 님</li><br>
             	<li class="sidebar-brand"><a href="/account/modifyForm.do">Modify</a></li>
-            	<li class="sidebar-brand"><a href="/account/delete.do">Withdrawal</a></li>
+            	<li class="sidebar-brand"><a href="/account/delete.do">Sign Out</a></li>
             	<li class="sidebar-brand"><a href="/account/logout.do">Logout</a></li>
         </c:if>
         <li class="sidebar-nav-item"><a href="/main.do">Home</a></li>
