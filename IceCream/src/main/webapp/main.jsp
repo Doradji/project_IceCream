@@ -49,9 +49,9 @@
 <c:if test="${req == null}">
     <header class="masthead d-flex align-items-center">
         <div class="container px-4 px-lg-5 text-center">
-            <h1 class="mb-1">춘스킨라빈스</h1>
+            <h1 class="mb-1" style="padding-bottom: 75px; color: #fff; padding-left: 60px;">Chunskin Robbins</h1>
             <h3 class="mb-5">
-                <em>made by 춘식이팀</em>
+                <em style="color: #fff;">made by 춘식이팀</em>
             </h3>
             <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
         </div>
@@ -182,7 +182,7 @@
     <!-- Call to Action-->
     <section class="content-section bg-primary text-white">
         <div class="container px-4 px-lg-5 text-center">
-            <h2 class="mb-4">뭐 넣지....</h2>
+            <!-- <h2 class="mb-4">뭐 넣지....</h2> -->
             <!-- <a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
             <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a> -->
         </div>
