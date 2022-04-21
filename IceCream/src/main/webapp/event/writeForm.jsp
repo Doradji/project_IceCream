@@ -1,18 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/sample.css">
+<script type="text/javascript">
+	// iframe 안의 스마트에디터 작성한 값 가져와서 다른 창에 값 반영
+	function iframeContent() {
+		let iframe = document.getElementById("iframe");
+		iframe.contentWindow.insertContent();
+		let value = iframe.contentWindow.document.getElementById("content").value;
+		let content = document.getElementById("content");
+		content.value = value;
+	}
 
-<!-- summernote 에디터 적용 -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	function inputCheck() {
+		let frm = document.getElementById("frm");
+		iframeContent();
+
+		if (!frm.title.value) {
+			alert("제목을 입력해주세요!");
+			frm.title.focus();
+		} else if (frm.content.value == '<p><br></p>') {
+			alert("내용을 입력해주세요!");
+			frm.summernote.focus();
+		} else {
+			frm.submit();
+		}
+	}
+
+	function back() {
+		if (confirm("정말 취소하겠습니까?")) {
+			history.back();
+		}
+	}
+</script>
 </head>
 <body>
 	<h1>Event - WRITE FORM</h1>
@@ -25,8 +49,10 @@
 			<tr>
 				<th>내용</th>
 				<td>
-					<div id="summernote"></div> 
-					<input type="text" hidden id="content" name="content">
+					<iframe style="width: 100%; height: 600px; border: none" 
+						id="iframe" name="iframe" src="../resources/summernote.html">
+					</iframe>
+					<input type="hidden" name="content" id="content"></td>
 				</td>
 			</tr>
 			<tr>
@@ -36,60 +62,12 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button class="btn btn-primary" onclick="CheckContent()" type="button">작성내용확인</button>
-					<button class="btn btn-primary" onclick="testSubmit()" type="button">저장 테스트</button> 
+					<!-- <button class="btn btn-primary" onclick="CheckContent()" type="button">작성내용확인</button> -->
+					<button class="btn btn-primary" onclick="inputCheck()" type="button">저장</button>
+					<button class="btn btn-primary" onclick="back()" type="button">취소</button>
 				</td>
 			</tr>
 		</table>
 	</form>
-	
-	<!-- summernote 에디터 처리 -->
-	<script>
-		$(document).ready(function() {
-			$('#summernote').summernote({
-				callbacks : {
-					onImageUpload : function(files) {
-						for (var i = files.length; i >= 0; i--) {
-							uploadSummernoteImageFile(files[i], this);
-						}
-					}
-				}
-			});
-		});
-		
-		// 이미지 업로드
-		function uploadSummernoteImageFile(file, el) {
-			data = new FormData();
-			data.append("file", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "/summernoteImageUpload.do",
-				contentType : false,
-				enctype : 'multipart/form-data',
-				processData : false,
-				success : function(data) {
-					$(el).summernote('editor.insertImage', data.url);
-				}
-			});
-		}
-
-		
-		// 게시물 내용 저장
-		function testSubmit() {
-			let markupStr = $('#summernote').summernote('code');
-			let content = $('#content');
-			content.attr('value', markupStr);
-
-			let frm = $('#frm');
-			frm.submit();
-		}
-
-		// 게시물 내용 가져오기
-		function CheckContent() {
-			let markupStr = $('#summernote').summernote('code');
-			alert(markupStr);
-		}
-	</script>
 </body>
 </html>
