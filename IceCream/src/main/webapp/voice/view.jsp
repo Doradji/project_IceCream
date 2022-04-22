@@ -41,8 +41,20 @@
         }
         dialog.show();
     }
+
+    function doDelete() {
+        if (confirm("정말로 삭제하겠습니까?")) {
+            <c:if test="${search != null}">
+            location.href = 'delete.do?pg=${pg}$num=${num}&search=${search}';
+            </c:if>
+            <c:if test="${search == null}">
+            location.href = 'delete.do?pg=${pg}&num=${num}';
+            </c:if>
+        }
+    }
+
     <c:if test="${result != null}">
-    window.onload=function () {
+    window.onload = function () {
         showDialog();
     }
     </c:if>
@@ -54,9 +66,9 @@
 <div class="content">
 
     <br>
-    <table style="margin: auto; width: 1000px">
+    <table style="margin: auto; width: 1000px;">
         <tr>
-            <th style="width: 20%; text-align: center">제목</th>
+            <th style="width: 20%; text-align: center; height: 20px">제목</th>
             <td style="width: 80%; border-left: lightgrey 1px dotted">
                 &emsp;${dto.title}
             </td>
@@ -67,7 +79,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" style="min-height: 500px">
+            <td colspan="2">
                 ${dto.content}
             </td>
         </tr>
@@ -90,6 +102,9 @@
                     <c:if test="${memId == dto.id}">
                         <button type="button" class="ui-button" style="width: 20%"
                                 onclick="location.href = 'modifyForm.do?pg=${pg}&num=${num}&search=${search}'">수정
+                        </button>
+                        <button type="button" class="ui-button" style="width: 20%"
+                                onclick="doDelete()">삭제
                         </button>
                     </c:if>
                 </c:if>

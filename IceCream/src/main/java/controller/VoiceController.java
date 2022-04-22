@@ -413,6 +413,29 @@ public class VoiceController {
         modelAndView.setViewName("../main.jsp");
         return modelAndView;
     }
+    // 삭제
+    @RequestMapping(value = "/voice/delete.do")
+    public ModelAndView delete(HttpServletRequest request) {
+        // 파라미터 파싱
+        int pg = Integer.parseInt(request.getParameter("pg"));
+        int num = Integer.parseInt(request.getParameter("num"));
+        String search = null;
+        if(request.getParameter("search") != null)
+            search = request.getParameter("search");
+
+        // 데이터 처리
+        int result = service.delete(num);
+
+        // 뷰처리 및 파라미터 공유
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("result", result);
+        modelAndView.addObject("pg", pg);
+        modelAndView.addObject("search", search);
+        modelAndView.addObject("req", "voice/list.do");
+        modelAndView.setViewName("../main.jsp");
+
+        return modelAndView;
+    }
 
     // 메일
 
