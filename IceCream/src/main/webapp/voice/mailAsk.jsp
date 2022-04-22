@@ -1,5 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="UTF-8">
+    <title>ICECREAM</title>
+    <!-- 다음 Maps API -->
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8aaec602e7c53738460015520aa7ea63&libraries=services"></script>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+          rel="stylesheet"/>
+    <!-- Google fonts-->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet"/>
+
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        
+            <li class="sidebar-brand"><a href="/account/loginForm.do">Login</a></li>
+        
+        
+        <li class="sidebar-nav-item"><a href="/main.do">Home</a></li>
+        <li class="sidebar-nav-item"><a href="/shop/shopList.do">점포안내</a></li>
+        <li class="sidebar-nav-item"><a href="/event/selectList.do">Event</a></li>
+        <li class="sidebar-nav-item"><a href="/notice/selectList.do">Notice</a></li>
+        <li class="sidebar-nav-item"><a href="/voice/list.do">고객게시판</a></li>
+        <li class="sidebar-nav-item"><a href="/voice/mailAsk.do">메일문의</a>
+    </ul>
+</nav>
+<!-- Header-->
 <!DOCTYPE html>
 <html>
 <head>
