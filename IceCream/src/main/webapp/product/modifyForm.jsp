@@ -8,15 +8,10 @@
 <link rel="stylesheet" href="../css/sample.css">
 
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
-<script language=JavaScript>
-	let type = ${dto.productType};
-	let type2 = <c:out value="${dto.productType}"/>;
-</script>
 <script type="text/javascript">
 	window.onload=function(){
 		insertSummernote();
-		console.log(type);
-		console.log(type2);
+		$('#productType').val('${dto.productType}').prop("selected", true);
 	}
 
 	//iframe 안의 스마트에디터 작성한 값 가져와서 다른 창에 값 반영
