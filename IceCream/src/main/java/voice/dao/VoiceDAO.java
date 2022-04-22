@@ -29,13 +29,15 @@ public class VoiceDAO {
         return result;
     }
 
+    // 덧글 추가 사전 작업
+    public void increase(int num) {
+        VoiceDTO dto = selectOne(num);
+        sqlSessionTemplate.update("mybatis.voice.increase", dto);
+    }
     // 덧글 추가
     public int insertComment(VoiceDTO dto) {
         int result = 0;
         try {
-            sqlSessionTemplate.update("mybatis.voice.increase", dto);
-            dto.setVoice_re_lev(dto.getVoice_re_lev() + 1);
-            dto.setVoice_re_seq(dto.getVoice_re_seq() + 1);
             result = sqlSessionTemplate.insert("mybatis.voice.insertComment", dto);
         } catch (Throwable t) {
             System.out.println("VoiceDAO insertComment 실패");

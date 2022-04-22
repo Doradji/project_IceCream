@@ -34,6 +34,12 @@
         content.value = value;
     }
     function voiceWriteInputCheck(){
+
+        if(${memId == null}){
+            alert("로그인 상태가 아닙니다.");
+            return false;
+        }
+
         let frm = document.getElementById("frm");
         iframeContent();
 
@@ -91,6 +97,9 @@
                 </td>
             </tr>
             <input type="hidden" name="id" value="${memId}">
+            <input type="hidden" name="pg" value="${pg}">
+            <input type="hidden" name="num" value="${num}">
+            <input type="hidden" name="search" value="${search}">
         </table>
 
     </form>

@@ -35,7 +35,7 @@
         content.value = value;
     }
 
-    function insertSummernote(content) {
+    function insertSummernote() {
         let iframe = document.getElementById("iframe");
         iframe.contentWindow.insertSummernote('${dto.content}');
     }

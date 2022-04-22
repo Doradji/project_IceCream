@@ -17,6 +17,11 @@ public class VoiceService {
         return voiceDAO.insert(dto);
     }
 
+    // 덧글 전에 작업
+    public void increase(int num) {
+        voiceDAO.increase(num);
+    }
+
     // 덧글 추가
     public int insertComment(VoiceDTO dto) {
         return voiceDAO.insertComment(dto);

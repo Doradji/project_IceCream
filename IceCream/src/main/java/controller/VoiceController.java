@@ -47,9 +47,20 @@ public class VoiceController {
     }
 
     // 답글 등록 폼
-    @RequestMapping(value = "/voice/writeFormReply.do")
-    public ModelAndView voiceReplyWriteForm() {
+    @RequestMapping(value = "/voice/replyWriteForm.do")
+    public ModelAndView voiceReplyWriteForm(HttpServletRequest request) {
+        // 파라미터 파싱
+        int pg = Integer.parseInt(request.getParameter("pg"));
+        int num = Integer.parseInt(request.getParameter("num"));
+        String search = null;
+        if(request.getParameter("search") != null)
+            search = request.getParameter("search");
+
+        // 뷰처리 및 파라미터 공유
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("pg", pg);
+        modelAndView.addObject("num", num);
+        modelAndView.addObject("search", search);
         modelAndView.addObject("req", "voice/replyWriteForm.jsp");
         modelAndView.setViewName("../main.jsp");
         return modelAndView;
@@ -61,7 +72,7 @@ public class VoiceController {
     public ModelAndView voiceWrite(HttpServletRequest request, MultipartFile contentFile) {
         VoiceDTO dto = new VoiceDTO();
 
-        if(contentFile != null) {
+        if(!contentFile.getOriginalFilename().equals("")) {
             // 저장 폴더 지정
             String filePath = request.getSession().getServletContext().getRealPath("/upload");
             // 저장할 파일 이름
@@ -100,10 +111,32 @@ public class VoiceController {
     // 답글 등록
     @RequestMapping(value = "/voice/replyWrite.do")
     // MultipartFile의 파라미터 명은 전달될 파라미터명과 동일
-    public ModelAndView voiceWriteReply(HttpServletRequest request, MultipartFile contentFile) {
-        VoiceDTO dto = new VoiceDTO();
+    public ModelAndView replyVoiceWrite(HttpServletRequest request, MultipartFile contentFile) {
+        // 파라미터 파싱
+        int pg = Integer.parseInt(request.getParameter("pg"));
+        int num = Integer.parseInt(request.getParameter("num"));
+        String id = request.getParameter("id");
+        String content = request.getParameter("content");
+        String title = request.getParameter("title");
+        String search = null;
+        if(request.getParameter("search") != null)
+            search = request.getParameter("search");
 
-        if(contentFile != null) {
+        // 데이터 처리
+        VoiceDTO dto = new VoiceDTO();
+        VoiceDTO origin = service.selectOne(num); // 댓글을 달 글의 정보
+
+        service.increase(num); // 댓글 달기전에 댓글 기준으로 나머지 글들 데이터 처리
+
+        dto.setId(id);
+        dto.setTitle(title);
+        dto.setContent(content);
+        dto.setVoice_re_ref(origin.getVoice_re_ref()); // 관련 글번호
+        dto.setVoice_re_lev(origin.getVoice_re_lev() + 1); // 답글 레벨
+        dto.setVoice_re_seq(origin.getVoice_re_seq() + 1); // 답글 출력 순서
+
+        // 첨부파일 처리
+        if(!contentFile.getOriginalFilename().equals("")) {
             // 저장 폴더 지정
             String filePath = request.getSession().getServletContext().getRealPath("/upload");
             // 저장할 파일 이름
@@ -125,15 +158,12 @@ public class VoiceController {
             dto.setFileName(fileName);
         }
 
-
-        dto.setId(request.getParameter("id"));
-        dto.setContent(request.getParameter("content"));
-        dto.setTitle(request.getParameter("title"));
-
         int result = service.insertComment(dto);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("result", result);
+        modelAndView.addObject("pg", pg);
+        modelAndView.addObject("search", search);
         modelAndView.addObject("req", "voice/write.jsp");
         modelAndView.setViewName("../main.jsp");
         return modelAndView;

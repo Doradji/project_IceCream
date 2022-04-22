@@ -38,6 +38,22 @@
         글 등록이 완료되었습니다.
         <hr>
         <img src="../resources/ChunsikPost.jpg" width="600px">
+        <hr>
+    </c:if>
+    <!-- 새글쓰기 -->
+    <c:if test="${pg == null}">
+        <a href="list.do" style="text-decoration: none; font-weight: bold">목록으로</a>
+    </c:if>
+    <!-- 답글 쓰기 -->
+    <c:if test="${pg != null}">
+        <c:if test="${search != null}">
+            <a href="list.do?pg=${pg}" style="text-decoration: none; font-weight: bold">답글 확인하기</a><br>
+            <a href="list.do" style="text-decoration: none; font-weight: bold">목록으로</a>
+        </c:if>
+        <c:if test="${search == null}">
+            <a href="list.do?pg=${pg}&search=${search}" style="text-decoration: none; font-weight: bold">답글 확인하기</a><br>
+            <a href="list.do" style="text-decoration: none; font-weight: bold">목록으로</a>
+        </c:if>
     </c:if>
 </div>
 </body>

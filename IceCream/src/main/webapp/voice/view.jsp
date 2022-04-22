@@ -85,7 +85,7 @@
                 <hr>
                 <c:if test="${memId != null}">
                     <button type="button" class="ui-button" style="width: 20%"
-                            onclick="location.href = 'replyWrite.do?pg=${pg}&num=${num}&search=${search}'">답글등록
+                            onclick="location.href = 'replyWriteForm.do?pg=${pg}&num=${num}&search=${search}'">답글등록
                     </button>
                     <c:if test="${memId == dto.id}">
                         <button type="button" class="ui-button" style="width: 20%"
