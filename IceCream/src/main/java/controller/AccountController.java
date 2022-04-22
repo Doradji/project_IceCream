@@ -46,7 +46,7 @@ public class AccountController {
 
 		// 페이지 이동
 		if (dto != null) { // 로그인 성공
-			System.out.println("이름:" + dto.getName());
+			//System.out.println("이름:" + dto.getName());
 			
 			HttpSession session = request.getSession();
 			// 세션을 이용한 페이지 이동
@@ -55,10 +55,10 @@ public class AccountController {
 			session.setAttribute("type", dto.getAccountType());
 			modelAndView.setViewName("redirect:../main.do");
 		} else { // 로그인 실패
-			HttpSession session = request.getSession();
-			String memId = (String) session.getAttribute("memId");
-			modelAndView.addObject("memId", memId);
-			modelAndView.setViewName("redirect:loginForm.do");
+			
+			modelAndView.addObject("result", 0);
+			modelAndView.addObject("id", id);			
+			modelAndView.setViewName("loginForm.do");
 		}
 
 		return modelAndView;

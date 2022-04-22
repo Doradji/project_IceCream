@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>Title</title>    
+    <title>Login</title>    
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
@@ -21,6 +21,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script type="text/javascript" src="../script/accountCheck.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		if(${result < 1}) {	
+			alert("아이디/비밀번호가 틀렸습니다.");
+		}			
+	}	
+</script>
 <style type="text/css">
 body{
     background-color: #dee9ff;
@@ -132,7 +139,7 @@ body{
 			</div>
 			
 			<div class="form-group">
-					<input class="form-control item" type="text" name="id" placeholder="아이디">
+					<input class="form-control item" type="text" name="id" value="${id}" placeholder="아이디">
 			</div>
 			<div class="form-group">
 					<input class="form-control item" type="password" name="pass" placeholder="비밀번호">

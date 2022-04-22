@@ -26,15 +26,21 @@
 <!-- Navigation-->
 <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
 <nav id="sidebar-wrapper">
-    <ul class="sidebar-nav">
+    <ul class="sidebar-nav">   	
         <c:if test="${memId == null}">
-            <li class="sidebar-brand"><a href="/account/loginForm.do">로그인</a></li>
+        <div style="width: 100%; padding-left: 5px; background: #006699;" >
+            <li class="sidebar-nav-item"><a href="/account/loginForm.do">로그인</a></li>
+        </div>
         </c:if>
         <c:if test="${memId != null}">
-            	<li>${memName} 님</li><br>
-            	<li class="sidebar-brand"><a href="/account/modifyForm.do">회원정보수정</a></li>
-            	<li class="sidebar-brand"><a href="/account/delete.do">탈퇴</a></li>
-            	<li class="sidebar-brand"><a href="/account/logout.do">로그아웃</a></li>
+        <div style="width: 100%; padding-left: 5px; background: #006699;" >
+        		<hr> 
+            	<li style="font-weight: bold; font-family: Gothic;">&emsp;${memName} 님</li><br>
+            	<li class="sidebar-nav-item"><a href="/account/modifyForm.do">회원정보수정</a></li>
+            	<li class="sidebar-nav-item"><a href="/account/delete.do">탈퇴</a></li>
+            	<li class="sidebar-nav-item"><a href="/account/logout.do">로그아웃</a></li>
+            	<hr>
+        </div>    	
         </c:if>
         <li class="sidebar-nav-item"><a href="/main.do">Home</a></li>
         <li class="sidebar-nav-item"><a href="/shop/shopList.do">점포안내</a></li>
