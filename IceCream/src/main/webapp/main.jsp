@@ -21,7 +21,6 @@
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet"/>
-
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -29,18 +28,18 @@
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <c:if test="${memId == null}">
-            <li class="sidebar-brand"><a href="/account/loginForm.do">Login</a></li>
+            <li class="sidebar-brand"><a href="/account/loginForm.do">로그인</a></li>
         </c:if>
         <c:if test="${memId != null}">
             	<li>${memName} 님</li><br>
-            	<li class="sidebar-brand"><a href="/account/modifyForm.do">Modify</a></li>
-            	<li class="sidebar-brand"><a href="/account/delete.do">Sign Out</a></li>
-            	<li class="sidebar-brand"><a href="/account/logout.do">Logout</a></li>
+            	<li class="sidebar-brand"><a href="/account/modifyForm.do">회원정보수정</a></li>
+            	<li class="sidebar-brand"><a href="/account/delete.do">탈퇴</a></li>
+            	<li class="sidebar-brand"><a href="/account/logout.do">로그아웃</a></li>
         </c:if>
         <li class="sidebar-nav-item"><a href="/main.do">Home</a></li>
         <li class="sidebar-nav-item"><a href="/shop/shopList.do">점포안내</a></li>
-        <li class="sidebar-nav-item"><a href="/event/selectList.do">Event</a></li>
-        <li class="sidebar-nav-item"><a href="/notice/selectList.do">Notice</a></li>
+        <li class="sidebar-nav-item"><a href="/event/selectList.do">이벤트</a></li>
+        <li class="sidebar-nav-item"><a href="/notice/selectList.do">공지사항</a></li>
         <li class="sidebar-nav-item"><a href="/voice/list.do">고객게시판</a></li>
         <li class="sidebar-nav-item"><a href="/voice/mailAsk.do">메일문의</a>
     </ul>
@@ -268,5 +267,6 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="script/scripts.js"></script>
+
 </body>
 </html>
