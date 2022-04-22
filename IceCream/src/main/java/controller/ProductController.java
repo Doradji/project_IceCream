@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,7 +72,8 @@ public class ProductController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/product/productList.do")
+	// 리스트
+	@RequestMapping("/product/productList.do")
 	public ModelAndView productList(HttpServletRequest request) {
 		System.out.println("********** controller - /product/productList.do");
 
@@ -81,6 +83,77 @@ public class ProductController {
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("req", "product/productList.jsp");
 		modelAndView.setViewName("../main.jsp");
+		return modelAndView;
+	}
+	
+	// 상세 페이지
+	@RequestMapping("/product/selectOne.do")
+	public ModelAndView selectOne(HttpServletRequest request) throws Exception{
+		System.out.println("********** controller - /product/selectOne.do");
+		
+		int productNum = Integer.parseInt(request.getParameter("num"));
+		System.out.println(productNum);
+		
+		ProductDTO dto = productService.selectOne(productNum);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("num", productNum);
+		modelAndView.addObject("req", "product/productView.jsp");
+		modelAndView.setViewName("../main.jsp");
+		return modelAndView;
+	}
+	
+	// 수정 Form 이동
+	@RequestMapping("/product/modifyForm.do")
+	public ModelAndView modifyForm(HttpServletRequest request) {
+		System.out.println("********** controller - /product/modifyForm.do");
+		
+		int productNum = Integer.parseInt(request.getParameter("num"));
+		
+		ProductDTO dto = productService.selectOne(productNum);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("req", "product/modifyForm.jsp");
+		modelAndView.setViewName("/");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/product/modify.do")
+	public ModelAndView modify(HttpServletRequest request) throws IOException {
+		System.out.println("********** controller - /product/modify.do");
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		ProductDTO dto = new ProductDTO();
+		dto.setNum(num);
+		dto.setName(request.getParameter("name"));
+		dto.setExplain(request.getParameter("explain"));
+		dto.setFileName(request.getParameter("fileName"));
+		dto.setProductType(request.getParameter("productType"));
+		
+		int result = productService.update(dto);
+		System.out.println("수정 결과 :" + result);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/product/productList.do");
+		return modelAndView;
+	}
+	
+	// 삭제
+	@RequestMapping("/product/delete.do")
+	public ModelAndView delete(HttpServletRequest request) {
+		System.out.println("********** controller - /product/delete.do");
+		
+		int productNum = Integer.parseInt(request.getParameter("num"));
+		System.out.println(productNum);
+		
+		int result = productService.delete(productNum);
+		System.out.println("삭제 결과==" + result);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/product/productList.do");
 		return modelAndView;
 	}
 

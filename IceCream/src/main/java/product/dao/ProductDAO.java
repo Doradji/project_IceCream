@@ -74,10 +74,10 @@ public class ProductDAO {
 	}
 
 	// 삭제
-	public int delete(String num) {
+	public int delete(int num) {
 		int result = 0;
 		try {
-			result = sqlSessionTemplate.delete("mybatis.product.delete");
+			result = sqlSessionTemplate.delete("mybatis.product.delete", num);
 		} catch (Throwable t) {
 			System.out.println("ProductDAO delete 실패");
 			System.out.println(t);
@@ -89,7 +89,7 @@ public class ProductDAO {
 	public int update(ProductDTO dto) {
 		int result = 0;
 		try {
-			result = sqlSessionTemplate.update("mybatis.product.update");
+			result = sqlSessionTemplate.update("mybatis.product.update", dto);
 		} catch (Throwable t) {
 			System.out.println("ProductDAO update 실패");
 			System.out.println(t);
