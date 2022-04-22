@@ -31,7 +31,7 @@
       if(${result}>0){
     	  location.href = "../main.jsp";
       }else{
-    	  location.href = "mailAsk.jsp";
+    	  location.href = "../main.jsp";
       }
       
    }
