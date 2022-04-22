@@ -89,6 +89,10 @@
     <label>voice</label><br>
     <a href="/voice/voiceWriteForm.do">게시판등록</a><br>
     <a href="/voice/voiceList.do">게시판목록</a>
+    <hr>
+    <label>Product</label><br>
+    <a href="/product/writeForm.do">등록</a><br>
+    <a href="/product/productList.do">목록</a>
 </aside>
 <section>
     <c:if test="${req == null}">
