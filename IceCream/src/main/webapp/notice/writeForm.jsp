@@ -54,7 +54,8 @@
 					<iframe style="width: 100%; height: 600px; border: none" 
 						id="iframe" name="iframe" src="../resources/summernote.html">
 					</iframe>
-					<input type="hidden" name="content" id="content"></td>
+					<input type="hidden" name="content" id="content">
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="file" name="contentFile"></td>

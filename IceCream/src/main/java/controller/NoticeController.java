@@ -52,8 +52,8 @@ public class NoticeController {
 
 		try {
 			FileCopyUtils.copy(contentFile.getInputStream(), new FileOutputStream(file));
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
