@@ -125,7 +125,7 @@
 </head>
 <body>
 	<header>
-		<h1 class="smallHeader">Sign Up</h1>
+		<h1 class="smallHeader">회원 가입</h1>
 	</header>
 	<div class="form">
 	<form action="write.do" name="form" id="form" method="post" onsubmit="inputCheck(); return false;">

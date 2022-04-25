@@ -130,7 +130,7 @@ body{
 </head>
 <body>
 	<header>
-		<h1 class="smallHeader">Login</h1>
+		<h1 class="smallHeader">로그인</h1>
 	</header>
 	<div class="registration-form">
 	<form action="../account/login.do" name="form" method="post" id="frm">
