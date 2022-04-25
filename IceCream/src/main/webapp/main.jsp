@@ -37,7 +37,6 @@
         		<hr> 
             	<li style="font-weight: bold; font-family: Gothic;">&emsp;${memName} 님</li><br>
             	<li class="sidebar-nav-item"><a href="/account/modifyForm.do">회원정보수정</a></li>
-            	<li class="sidebar-nav-item"><a href="/account/deleteForm.do">탈퇴</a></li>
             	<li class="sidebar-nav-item"><a href="/account/logout.do">로그아웃</a></li>
             	<hr>
         </div>    	
