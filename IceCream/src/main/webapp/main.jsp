@@ -38,6 +38,9 @@
             	<li style="font-weight: bold; font-family: Gothic;">&emsp;${memName} 님</li><br>
             	<li class="sidebar-nav-item"><a href="/account/modifyForm.do">회원정보수정</a></li>
             	<li class="sidebar-nav-item"><a href="/account/logout.do">로그아웃</a></li>
+                <c:if test="${memType == 1}">
+                    <li class="sidebar-nav-item"><a href="/">관리자 페이지로 이동</a></li>
+                </c:if>
             	<hr>
         </div>    	
         </c:if>

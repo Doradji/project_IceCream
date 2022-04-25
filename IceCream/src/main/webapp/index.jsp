@@ -9,10 +9,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>기능 테스트 샘플페이지</title>
+    <!-- 관리자 타입이 아닌경우 -->
+    <c:if test="${memType == null}">
+        <meta http-equiv="refresh" content="0;url=/main.do">
+    </c:if>
+    <c:if test="${memType != null}">
+        <c:if test="${memType < 1 || memType > 1}">
+            <meta http-equiv="refresh" content="0;url=/main.do">
+        </c:if>
+    </c:if>
+    <title>개발자 관리 및 기능 테스트 페이지</title>
     <link rel="stylesheet" href="css/sample.css?v=2">
     <script type="text/javascript">
-        function dialog(message){
+        function dialog(message) {
             let dialog = document.getElementById("dialog");
             let p = document.getElementById("p");
 
@@ -20,40 +29,39 @@
             dialog.showModal();
         }
 
-        function closeDialog(){
+        function closeDialog() {
             let dialog = document.getElementById("dialog");
             dialog.close();
         }
 
-        window.onload = function (){
-            if(${result != null}) {
-                if(${result > 0 && req == "shop/write.jsp"}) {
+        window.onload = function () {
+            if (${result != null}) {
+                if (${result > 0 && req == "shop/write.jsp"}) {
                     dialog("가계 추가 성공");
                 } else if (${result == 0 && req == "shop/write.jsp"}) {
                     dialog("가계 추가 실패");
                 }
             }
-        } 
-            window.onload = function () {
-    			if(${result != null}) {
-    				if(${result > 0 && req == "account/write.jsp"}) {
-    					dialog("회원가입 성공");
-    				} else if (${result == 0 && req == "account/write.jsp"}) {
-    					dialog("회원가입 실패");
-    			}
-   			}
+        }
+        window.onload = function () {
+            if (${result != null}) {
+                if (${result > 0 && req == "account/write.jsp"}) {
+                    dialog("회원가입 성공");
+                } else if (${result == 0 && req == "account/write.jsp"}) {
+                    dialog("회원가입 실패");
+                }
+            }
         }
     </script>
 </head>
 <body>
 <header>
-    <h1>헤더 영역</h1>
+    <h1>개발자 페이지</h1>
 </header>
 <aside>
-    <a href="/main.do">제작페이지</a>
+    <a href="/main.do">소비자 페이지</a>
     <hr>
     <a href="/">처음으로</a><br>
-    <a href="/sample/sample.do">샘플페이지</a><br>
     <a href="/shop/writeForm.do">가계 등록</a><br>
     <a href="/shop/list.do">가계 리스트</a>
     <hr>
@@ -75,7 +83,7 @@
     <label>Event</label><br>
     <a href="/event/writeForm.do">작성</a><br>
     <a href="/event/selectList.do">리스트</a><br>
-    
+
     <hr>
     <a href="/account/loginForm.do">로그인</a><br>
     <a href="/account/writeForm.do">회원가입</a><br>
