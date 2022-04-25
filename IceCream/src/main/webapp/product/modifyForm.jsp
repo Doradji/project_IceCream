@@ -91,15 +91,7 @@
 			</tr>
 			<tr>
 				<th>제품 분류</th>
-				<td>${dto.productType } <%-- <select name="productType" id="productType">
-						<option value="" disabled>제품타입</option>
-						<option <c:if test="${dto.productType eq 'icecream'}">selected</c:if> value="icecream" >
-						아이스크림</option>
-						<option value="cake" <c:if test="${dto.productType eq 'cake'}">selected</c:if>>케이크</option>
-						<option value="coffee" <c:if test="${dto.productType eq 'coffee'}">selected</c:if>>커피</option>
-						<option value="beverage" <c:if test="${dto.productType eq 'beverage'}">selected</c:if>>음료</option>
-						<option value="dessert" <c:if test="${dto.productType eq 'dessert'}">selected</c:if>>디저트</option>
-					</select> --%> 
+				<td><%-- ${dto.productType } --%>
 					<select name="productType" id="productType">
 						<option value="" disabled>제품타입</option>
 						<option value="icecream">아이스크림</option>
@@ -111,8 +103,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="file" name="productImg"
-					id="productImg" accept="image/*" value="../storage/${dto.fileName}">
+				<td colspan="2">
+					<input type="file" name="productImg" id="productImg" accept="image/*" value="../storage/${dto.fileName}">
 				</td>
 				<input type="hidden" id="num" name="num" value="${dto.num}">
 			</tr>

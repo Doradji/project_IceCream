@@ -48,10 +48,10 @@
 		<hr class="my-4">
 		<p>${dto.explain}</p>
 		
-		<%-- <c:if test="${type == 1}"> --%>
+		<c:if test="${type == 1}"> 
 			<a class="btn btn-primary btn-lg" role="button" onclick="modifyView(${dto.num})">수정</a>
 			<a class="btn btn-primary btn-lg" role="button" onclick="deleteView(${dto.num})">삭제</a>
-		<%-- </c:if> --%>
+		</c:if>
 	</div>
 
 	<!-- Bootstrap core JS-->

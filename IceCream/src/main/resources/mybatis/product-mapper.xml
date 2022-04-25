@@ -32,7 +32,9 @@
 		     update product 
 		     set name=#{name}, 
 		     	 explain=#{explain}, 
-		     	 fileName=#{fileName}, 
+		     	 <if test="fileName != null">
+		     	 	fileName=#{fileName}, 
+		     	 </if>
 		     	 productType=#{productType} 
 		     where num=#{num}
 		</update>

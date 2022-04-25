@@ -121,16 +121,39 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/modify.do")
-	public ModelAndView modify(HttpServletRequest request) throws IOException {
+	public ModelAndView modify(HttpServletRequest request,  MultipartFile productImg) {
 		System.out.println("********** controller - /product/modify.do");
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		ProductDTO dto = new ProductDTO();
+		
+		if(request.getParameter("fileName") != "") {
+			// 파일
+			String filePath = request.getSession().getServletContext().getRealPath("/storage");
+			String fileName = productImg.getOriginalFilename();
+
+			System.out.println("filePath ====" + filePath);
+			System.out.println("fileName ====" + fileName);
+			
+			File file = new File(filePath, fileName);
+			
+			try {
+				FileCopyUtils.copy(productImg.getInputStream(), new FileOutputStream(file));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			dto.setFileName(fileName);
+		}else {
+			dto.setFileName(request.getParameter("fileName"));
+		}
+		
 		dto.setNum(num);
 		dto.setName(request.getParameter("name"));
 		dto.setExplain(request.getParameter("explain"));
-		dto.setFileName(request.getParameter("fileName"));
 		dto.setProductType(request.getParameter("productType"));
 		
 		int result = productService.update(dto);

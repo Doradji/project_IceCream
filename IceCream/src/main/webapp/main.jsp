@@ -44,6 +44,7 @@
         </c:if>
         <li class="sidebar-nav-item"><a href="/main.do">Home</a></li>
         <li class="sidebar-nav-item"><a href="/shop/shopList.do">점포안내</a></li>
+        <li class="sidebar-nav-item"><a href="/product/productList.do">메뉴안내</a></li>
         <li class="sidebar-nav-item"><a href="/event/selectList.do">이벤트</a></li>
         <li class="sidebar-nav-item"><a href="/notice/selectList.do">공지사항</a></li>
         <li class="sidebar-nav-item"><a href="/voice/list.do">고객게시판</a></li>
