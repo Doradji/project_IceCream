@@ -147,13 +147,13 @@
 			<tr>
 				<th class="center">비밀번호</th>
 				<td>
-					<input class="box" style="width: 100%" type="text" name="pass" id="pass" placeholder="* 비밀번호 입력">
+					<input class="box" style="width: 100%" type="password" name="pass" id="pass" placeholder="* 비밀번호 입력">
 				</td>
 			</tr>
 			<tr>
 				<th class="center">비밀번호 재확인</th>
 				<td>
-					<input class="box" style="width: 100%" type="text" name="repass" id="repass" placeholder="* 비밀번호 재확인">
+					<input class="box" style="width: 100%" type="password" name="repass" id="repass" placeholder="* 비밀번호 재확인">
 				</td>
 			</tr>
 			<tr>

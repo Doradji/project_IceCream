@@ -211,7 +211,13 @@
 				<td colspan="2" class="center">
 					<input class="button" type="submit" value="수정하기">&nbsp;
 					<button class="button" type="reset">다시 작성</button>
-			
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="center">
+					<input class="button" type="button" value="회원 탈퇴" onclick="location.href='deleteForm.do'">
+				</td>
+			</tr>
 		</table>
 	</div>
 	</form>

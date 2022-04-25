@@ -37,7 +37,6 @@
         		<hr> 
             	<li style="font-weight: bold; font-family: Gothic;">&emsp;${memName} 님</li><br>
             	<li class="sidebar-nav-item"><a href="/account/modifyForm.do">회원정보수정</a></li>
-            	<li class="sidebar-nav-item"><a href="/account/delete.do">탈퇴</a></li>
             	<li class="sidebar-nav-item"><a href="/account/logout.do">로그아웃</a></li>
             	<hr>
         </div>    	
@@ -73,7 +72,9 @@
                     <p class="lead mb-5">
                         아이스크림의 새로운 기준, 춘스킨라빈스!
                     </p>
-                    <a class="btn btn-dark btn-xl" href="/account/loginForm.do">Login</a>
+                    <c:if test="${memId == null}">
+                    	<a class="btn btn-dark btn-xl" href="/account/loginForm.do">Login</a>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -144,7 +145,7 @@
             </div>
             <div class="row gx-0">
                 <div class="col-lg-6">
-                    <a class="portfolio-item" href="#!">
+                    <a class="portfolio-item" href="/notice/selectList.do">
                         <div class="caption">
                             <div class="caption-content">
                                 <div class="h2">Notice</div>
@@ -155,7 +156,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6">
-                    <a class="portfolio-item" href="#!">
+                    <a class="portfolio-item" href="/event/selectList.do">
                         <div class="caption">
                             <div class="caption-content">
                                 <div class="h2">Event</div>
@@ -166,7 +167,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6">
-                    <a class="portfolio-item" href="#!">
+                    <a class="portfolio-item" href="/product/productList.do">
                         <div class="caption">
                             <div class="caption-content">
                                 <div class="h2">Product</div>
@@ -177,7 +178,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6">
-                    <a class="portfolio-item" href="#!">
+                    <a class="portfolio-item" href="/voice/list.do">
                         <div class="caption">
                             <div class="caption-content">
                                 <div class="h2">Voice</div>

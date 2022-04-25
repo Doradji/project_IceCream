@@ -87,8 +87,8 @@
     <a href="/sample/sampleAddress.do">주소 입력</a>
     <hr>
     <label>voice</label><br>
-    <a href="/voice/voiceWriteForm.do">게시판등록</a><br>
-    <a href="/voice/voiceList.do">게시판목록</a>
+    <a href="/voice/writeForm.do">등록</a><br>
+    <a href="/voice/list.do">목록</a>
     <hr>
     <label>Product</label><br>
     <a href="/product/writeForm.do">등록</a><br>

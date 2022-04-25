@@ -106,7 +106,9 @@ public class AccountController {
 
 		// view처리
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:../main.do");
+		modelAndView.addObject("req", "account/logout.jsp");
+		modelAndView.addObject("result", 0);
+		modelAndView.setViewName("/main.do");
 
 		return modelAndView;
 	}

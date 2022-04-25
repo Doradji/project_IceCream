@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>Title</title>
+<title>Title</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
@@ -18,22 +17,20 @@
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css?v=2" rel="stylesheet"/>
+<script type="text/javascript">
+	window.onload = function() {
+		if(confirm("회원 탈퇴하시겠습니까?")) {
+			location.href="delete.do";
+		} else {
+			location.href="../main.do";
+		}			
+	}	
+</script>
 </head>
 <body>
-<c:if test="${result > 0 }">
-	<header class="smallHeader">
+<header class="smallHeader">
 	    <h1>Sign Out</h1>
 	</header>
-	<br>
-	<p align="center" style="font-size: 15px;">정상적으로 탈퇴가 완료되었습니다.</p>
-	<div align="center">
-		<input type="button" value="홈으로" onclick="location.href='../main.do'">
-	</div>
-</c:if>
-<c:if test="${result == 0 }">
-	
-</c:if>
-
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top"><i
         class="fas fa-angle-up"></i></a>
@@ -42,6 +39,5 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="script/scripts.js"></script>
-
 </body>
 </html>
