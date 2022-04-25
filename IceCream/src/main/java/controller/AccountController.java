@@ -52,7 +52,7 @@ public class AccountController {
 			// 세션을 이용한 페이지 이동
 			session.setAttribute("memName", dto.getName());
 			session.setAttribute("memId", id);
-			session.setAttribute("type", dto.getAccountType());
+			session.setAttribute("memType", dto.getAccountType());
 			modelAndView.setViewName("redirect:../main.do");
 		} else { // 로그인 실패
 			
@@ -106,9 +106,7 @@ public class AccountController {
 
 		// view처리
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("req", "account/logout.jsp");
-		modelAndView.addObject("result", 0);
-		modelAndView.setViewName("/main.do");
+		modelAndView.setViewName("redirect:../main.do");
 
 		return modelAndView;
 	}

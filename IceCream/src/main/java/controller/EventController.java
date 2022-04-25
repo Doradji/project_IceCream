@@ -38,7 +38,7 @@ public class EventController {
 	public ModelAndView insert(HttpServletRequest request, MultipartFile contentFile) {
 		System.out.println("******** controller - /event/insert.do ******************");
 		// 파일 가져오기
-		String filePath = request.getSession().getServletContext().getRealPath("/storage");
+		String filePath = request.getSession().getServletContext().getRealPath("/upload");
 		String fileName = contentFile.getOriginalFilename();
 
 		System.out.println("파일경로(filePath) ===" + filePath);

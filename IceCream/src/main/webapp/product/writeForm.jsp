@@ -63,7 +63,7 @@ function imgCheck(){
 </script>
 </head>
 <body>
-	<h1>Notice - WRITE FORM</h1>
+	<h1>Product - WRITE FORM</h1>
 	<form action="insert.do" method="post" enctype="multipart/form-data" id="frm" name="frm">
 		<table>
 			<tr>

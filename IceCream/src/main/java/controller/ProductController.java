@@ -41,7 +41,7 @@ public class ProductController {
 		System.out.println("********** controller - /product/insert.do");
 
 		// 파일
-		String filePath = request.getSession().getServletContext().getRealPath("/storage");
+		String filePath = request.getSession().getServletContext().getRealPath("/upload");
 		String fileName = productImg.getOriginalFilename();
 
 		System.out.println("filePath ====" + filePath);
@@ -130,7 +130,7 @@ public class ProductController {
 		
 		if(request.getParameter("fileName") != "") {
 			// 파일
-			String filePath = request.getSession().getServletContext().getRealPath("/storage");
+			String filePath = request.getSession().getServletContext().getRealPath("/upload");
 			String fileName = productImg.getOriginalFilename();
 
 			System.out.println("filePath ====" + filePath);
