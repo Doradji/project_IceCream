@@ -61,4 +61,8 @@ where rn >= ?
 -- 특정 이름 검색 후 갯수 확인
 select count(*) as cnt from shop where name like '%'||?||'%';
 
+update shop set name = '배스킨 라빈스 안양동편마을', tel = '031-425-0101' where num = 10;
+
+commit;
+
 

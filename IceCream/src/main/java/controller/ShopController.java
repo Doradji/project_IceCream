@@ -26,6 +26,30 @@ public class ShopController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/shop/modifyForm.do")
+    public ModelAndView modifyForm(HttpServletRequest request){
+        // 파라미터 파싱
+        int num = Integer.parseInt(request.getParameter("num"));
+
+        // 데이터 처리
+        ShopDTO dto = service.selectOne(num);
+        String tel1, tel2, tel3;
+        String tel[] = dto.getTel().split("-");
+        tel1 = tel[0];
+        tel2 = tel[1];
+        tel3 = tel[2];
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("dto", dto);
+        modelAndView.addObject("tel1", tel1);
+        modelAndView.addObject("tel2", tel2);
+        modelAndView.addObject("tel3", tel3);
+        modelAndView.addObject("req", "shop/modify.jsp");
+        modelAndView.setViewName("/");
+
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/shop/write.do")
     public ModelAndView write(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
@@ -63,6 +87,54 @@ public class ShopController {
 
 
         int result = service.insert(dto);
+
+        // 뷰처리
+        modelAndView.addObject("req", "shop/write.jsp");
+        modelAndView.addObject("result", result);
+        modelAndView.setViewName("/");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/shop/modify.do")
+    public ModelAndView modify(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+        // 데이터 처리
+        try {
+            request.setCharacterEncoding("utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String tel1 = request.getParameter("tel1");
+        String tel2 = request.getParameter("tel2");
+        String tel3 = request.getParameter("tel3");
+        String name = request.getParameter("name");
+
+        String addr1 = request.getParameter("addr1");
+        String addr2 = request.getParameter("addr2");
+        String addr3 = request.getParameter("addr3");
+        String addr4 = request.getParameter("addr4");
+        int num = Integer.parseInt(request.getParameter("num"));
+
+        System.out.println("-------------------------");
+        System.out.println("addr1 : " + addr1);
+        System.out.println("addr2 : " + addr2);
+        System.out.println("addr3 : " + addr3);
+        System.out.println("addr4 : " + addr4);
+
+
+        String tel = tel1 + "-" + tel2 + "-" + tel3;
+        ShopDTO dto = new ShopDTO();
+        dto.setName(name);
+        dto.setTel(tel);
+        dto.setAddr1(addr1);
+        dto.setAddr2(addr2);
+        dto.setAddr3(addr3);
+        dto.setAddr4(addr4);
+        dto.setNum(num);
+
+
+        int result = service.modify(dto);
 
         // 뷰처리
         modelAndView.addObject("req", "shop/write.jsp");

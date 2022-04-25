@@ -50,4 +50,7 @@ update account set pass='2345', name='홍길순', gender='여', tel='010-2222-33
 -- delete
 delete account where id='aa';
 
-commit
+-- 수정
+update account set accountType = 1 where id = 'hgt2768';
+
+commit;

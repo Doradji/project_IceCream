@@ -17,8 +17,9 @@
     <div class="tableTab" style="width: 100%; min-height: 400px">
         <table>
             <tr>
-                <th style="width: 50%">매장 이름</th>
+                <th style="width: 40%">매장 이름</th>
                 <th style="width: 30%">전화번호</th>
+                <th></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -27,6 +28,7 @@
                     <td>${dto.name}</td>
                     <td>${dto.tel}</td>
                     <td><a href="/shop/view.do?pg=${pg}&num=${dto.num}">상세보기</a></td>
+                    <td><a href="/shop/modifyForm.do?num=${dto.num}">수정</a></td>
                     <td><a href="/shop/delete.do?pg=${pg}&num=${dto.num}">삭제</a></td>
                 </tr>
             </c:forEach>
