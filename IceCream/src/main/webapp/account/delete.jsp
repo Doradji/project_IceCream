@@ -18,7 +18,6 @@
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css?v=2" rel="stylesheet"/>
-
 </head>
 <body>
 <c:if test="${result > 0 }">

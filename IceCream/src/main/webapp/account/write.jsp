@@ -40,7 +40,7 @@
 	<h3 align="center">춘스킨라빈스의 다양한 메뉴를 구경하러 가보실까요?</h3>	
 	<br>
 	<div align="center">
-	<input type="button" value="보러가기" onclick="location.href='../main.do'">
+	<input type="button" value="보러가기" onclick="location.href='/product/productList.do'">
 	</div> 
 </c:if>
 <c:if test="${result == 0}">
