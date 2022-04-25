@@ -13,11 +13,6 @@
     <c:if test="${memType == null}">
         <meta http-equiv="refresh" content="0;url=/main.do">
     </c:if>
-    <c:if test="${memType != null}">
-        <c:if test="${memType < 1 || memType > 1}">
-            <meta http-equiv="refresh" content="0;url=/main.do">
-        </c:if>
-    </c:if>
     <title>개발자 관리 및 기능 테스트 페이지</title>
     <link rel="stylesheet" href="css/sample.css?v=2">
     <script type="text/javascript">
@@ -53,69 +48,76 @@
             }
         }
     </script>
+    <c:if test="${memType != null}">
+        <c:if test="${memType < 1 || memType > 1}">
+            <meta http-equiv="refresh" content="0;url=/main.do">
+        </c:if>
+    </c:if>
 </head>
-<body>
-<header>
-    <h1>개발자 페이지</h1>
-</header>
-<aside>
-    <a href="/main.do">소비자 페이지</a>
-    <hr>
-    <a href="/">처음으로</a><br>
-    <a href="/shop/writeForm.do">가계 등록</a><br>
-    <a href="/shop/list.do">가계 리스트</a>
-    <hr>
-    <label>지도 테스트</label><br>
-    <a href="/sample/sampleMapDefault.do">기본 지도</a><br>
-    <a href="/sample/sampleMapMarker.do">마커 및 다이얼로그 표시 지도</a>
+<c:if test="${memType == 1}">
+    <body>
+    <header>
+        <h1>개발자 페이지</h1>
+    </header>
+    <aside>
+        <a href="/main.do">소비자 페이지</a>
+        <hr>
+        <a href="/">처음으로</a><br>
+        <a href="/shop/writeForm.do">가계 등록</a><br>
+        <a href="/shop/list.do">가계 리스트</a>
+        <hr>
+        <label>지도 테스트</label><br>
+        <a href="/sample/sampleMapDefault.do">기본 지도</a><br>
+        <a href="/sample/sampleMapMarker.do">마커 및 다이얼로그 표시 지도</a>
 
-    <hr>
-    <a href="/sample/sampleSmartEditor.do">텍스트에디터(only text)</a>
-    <hr>
-    <label>메일 테스트</label><br>
-    <a href="/sample/sendMail.do">단순 메일 보내기</a>
+        <hr>
+        <a href="/sample/sampleSmartEditor.do">텍스트에디터(only text)</a>
+        <hr>
+        <label>메일 테스트</label><br>
+        <a href="/sample/sendMail.do">단순 메일 보내기</a>
 
-    <hr>
-    <label>Notice</label><br>
-    <a href="/notice/writeForm.do">작성</a><br>
-    <a href="/notice/selectList.do">리스트</a><br>
-    <hr>
-    <label>Event</label><br>
-    <a href="/event/writeForm.do">작성</a><br>
-    <a href="/event/selectList.do">리스트</a><br>
+        <hr>
+        <label>Notice</label><br>
+        <a href="/notice/writeForm.do">작성</a><br>
+        <a href="/notice/selectList.do">리스트</a><br>
+        <hr>
+        <label>Event</label><br>
+        <a href="/event/writeForm.do">작성</a><br>
+        <a href="/event/selectList.do">리스트</a><br>
 
-    <hr>
-    <a href="/account/loginForm.do">로그인</a><br>
-    <a href="/account/writeForm.do">회원가입</a><br>
-    <a href="/account/loginOk.do">마이페이지</a><br>
-    <a href="/account/deleteForm.do">회원탈퇴</a><br>
-    <a href="/account/selectList.do">리스트</a>
-    <hr>
-    <label>주소 테스트</label><br>
-    <a href="/sample/sampleAddress.do">주소 입력</a>
-    <hr>
-    <label>voice</label><br>
-    <a href="/voice/writeForm.do">등록</a><br>
-    <a href="/voice/list.do">목록</a>
-    <hr>
-    <label>Product</label><br>
-    <a href="/product/writeForm.do">등록</a><br>
-    <a href="/product/productList.do">목록</a>
-</aside>
-<section>
-    <c:if test="${req == null}">
-        <jsp:include page="resources/body.html"/>
-    </c:if>
-    <c:if test="${req != null}">
-        <jsp:include page="${req}"/>
-    </c:if>
-</section>
-<footer>
-    <h1>footer 영역</h1>
-</footer>
-<dialog id="dialog">
-    <p id="p"></p>
-    <button type="button" onclick="closeDialog()">확인</button>
-</dialog>
-</body>
+        <hr>
+        <a href="/account/loginForm.do">로그인</a><br>
+        <a href="/account/writeForm.do">회원가입</a><br>
+        <a href="/account/loginOk.do">마이페이지</a><br>
+        <a href="/account/deleteForm.do">회원탈퇴</a><br>
+        <a href="/account/selectList.do">리스트</a>
+        <hr>
+        <label>주소 테스트</label><br>
+        <a href="/sample/sampleAddress.do">주소 입력</a>
+        <hr>
+        <label>voice</label><br>
+        <a href="/voice/writeForm.do">등록</a><br>
+        <a href="/voice/list.do">목록</a>
+        <hr>
+        <label>Product</label><br>
+        <a href="/product/writeForm.do">등록</a><br>
+        <a href="/product/productList.do">목록</a>
+    </aside>
+    <section>
+        <c:if test="${req == null}">
+            <jsp:include page="resources/body.html"/>
+        </c:if>
+        <c:if test="${req != null}">
+            <jsp:include page="${req}"/>
+        </c:if>
+    </section>
+    <footer>
+        <h1>footer 영역</h1>
+    </footer>
+    <dialog id="dialog">
+        <p id="p"></p>
+        <button type="button" onclick="closeDialog()">확인</button>
+    </dialog>
+    </body>
+</c:if>
 </html>
