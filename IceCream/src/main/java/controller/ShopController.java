@@ -85,7 +85,7 @@ public class ShopController {
         int startPage = 0;
         int endPage = 0;
         // 한 페이지당 표현할 게시글 수
-        int INDEX_COUNT = 5;
+        int INDEX_COUNT = 10;
         // 페이지 표시할 갯수
         int VIEW_PAGE_COUNT = 3;
         // 전체 계정 갯수
@@ -141,7 +141,7 @@ public class ShopController {
         int startPage = 0;
         int endPage = 0;
         // 한 페이지당 표현할 게시글 수
-        int INDEX_COUNT = 5;
+        int INDEX_COUNT = 10;
         // 페이지 표시할 갯수
         int VIEW_PAGE_COUNT = 3;
 
@@ -249,6 +249,25 @@ public class ShopController {
         modelAndView.addObject("dto", dto);
         modelAndView.addObject("req", "shop/view.jsp");
         modelAndView.setViewName("../main.jsp");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/shop/delete.do")
+    public ModelAndView delete(HttpServletRequest request) {
+        // 파라미터 파싱
+        int pg = Integer.parseInt(request.getParameter("pg"));
+        int num = Integer.parseInt(request.getParameter("num"));
+
+        // 데이터 처리
+        int result = service.delete(num);
+
+        // 뷰처리 및 파라미터 공유
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("pg", pg);
+        modelAndView.addObject("result", result);
+
+        modelAndView.setViewName("list.do");
 
         return modelAndView;
     }

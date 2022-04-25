@@ -17,8 +17,9 @@
     <div class="tableTab" style="width: 100%; min-height: 400px">
         <table>
             <tr>
-                <th style="width: 60%">매장 이름</th>
+                <th style="width: 50%">매장 이름</th>
                 <th style="width: 30%">전화번호</th>
+                <th></th>
                 <th></th>
             </tr>
             <c:forEach items="${list}" var="dto">
@@ -26,6 +27,7 @@
                     <td>${dto.name}</td>
                     <td>${dto.tel}</td>
                     <td><a href="/shop/view.do?pg=${pg}&num=${dto.num}">상세보기</a></td>
+                    <td><a href="/shop/delete.do?pg=${pg}&num=${dto.num}">삭제</a></td>
                 </tr>
             </c:forEach>
         </table>
@@ -38,7 +40,7 @@
             <c:if test="${pg == i}">
                 <a href="/shop/list.do?pg=${i}" id="currentPage">${i}</a>&nbsp;
             </c:if>
-            <c:if test="${pg > i && pg < i}">
+            <c:if test="${pg > i || pg < i}">
                 <a href="/shop/list.do?pg=${i}">${i}</a>&nbsp;
             </c:if>
         </c:forEach>

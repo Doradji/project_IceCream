@@ -68,7 +68,7 @@
     <br>
     <table style="margin: auto; width: 1000px;">
         <tr>
-            <th style="width: 20%; text-align: center; height: 20px">제목</th>
+            <th style="width: 20%; text-align: center; height: 20px; ">제목</th>
             <td style="width: 80%; border-left: lightgrey 1px dotted">
                 &emsp;${dto.title}
             </td>
