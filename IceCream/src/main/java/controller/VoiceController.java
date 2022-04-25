@@ -79,9 +79,12 @@ public class VoiceController {
             // 저장할 파일 이름
             String fileName = contentFile.getOriginalFilename();
 
+            System.out.println("----- Voice write.do ---------");
             System.out.println("--------- 파일 업로드 테스트 ---------");
             System.out.println("filePath : " + filePath);
             System.out.println("fileName : " + fileName);
+
+            dto.setFileName(fileName);
 
             File file = new File(filePath, fileName);
             try {
@@ -92,15 +95,18 @@ public class VoiceController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            dto.setFileName(fileName);
         }
-
 
         dto.setId(request.getParameter("id"));
         dto.setContent(request.getParameter("content"));
         dto.setTitle(request.getParameter("title"));
 
         int result = service.insert(dto);
+
+        System.out.println("dto.Id : " + dto.getId());
+        System.out.println("dto.Content : " + dto.getContent());
+        System.out.println("dto.title : " + dto.getTitle());
+        System.out.println("dto.fileName : " + dto.getFileName());
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("result", result);
