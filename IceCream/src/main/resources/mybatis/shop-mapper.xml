@@ -62,7 +62,7 @@
     <select id="selectListSearch" parameterType="shop.dto.SearchDTO" resultType="shopDTO">
         <![CDATA[
         select *
-        from (select ROWNUM rn, tt.* from (select * from shop where name like '%'||#{search}||'%' order by name asc) tt)
+        from (select ROWNUM rn, tt.* from (select * from shop where name like '%' || #{search} || '%' order by name asc) tt)
         where rn >= #{startNum}
           and rn <= #{endNum}
         ]]>
