@@ -53,25 +53,72 @@
         }).open();
     }
 </script>
-
 <style type="text/css">
+	body{
+    	background-color: #dee9ff;
+	}
+	.form{
+		padding: 50px 0;
+	}
+
+	.form form{
+    	background-color: #fff;
+    	max-width: 700px;
+    	margin: auto;
+    	padding: 50px 70px;
+    	border-top-left-radius: 30px;
+    	border-top-right-radius: 30px;
+    	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+	}
+	
+	.button{
+    	border-radius: 30px;
+    	padding: 5px 20px;
+    	font-size: 18px;
+    	font-weight: bold;
+    	background-color: #5791ff;
+    	border: none;
+    	color: white;
+	}
+	
+	.box {
+		border-radius: 20px;
+    	margin-bottom: 10px;
+    	padding: 10px 20px;
+    	border: 1px solid lightgray;
+	}
+	 .tel {
+		border-radius: 20px;
+		size: 30px;
+		padding: 10px 20px;
+		border: 1px solid lightgray;
+	}
+	
     table{
     	margin: auto;
-        width: 450px;
+    	padding: 10px 20px;
+        width: 600px;
         border-collapse: collapse;
-        border: 1px solid black;
-        font-family: Gothic;
+        border: 1px solid lightgary;
+        font-family: Gothic;       
+    }
+    .table {
+    	border-radius : 20px;
     }
     th {
-    	width: 20%;
-    	border: 1px solid black;
+    	border-radius : 20px;
+    	border: 1px solid lightgray;
         padding: 5px;
     }
     td{
-        border: 1px solid black;
+        border: 1px solid lightgray;
         padding: 5px;
     }
     th.center{
+        text-align: center;
+        width: 15%;
+    }
+    td.center{
         text-align: center;
     }
 </style>
@@ -80,87 +127,87 @@
 	<header>
 		<h1 class="smallHeader">Sign Up</h1>
 	</header>
-	<form action="write.do" name="form" id="form1" method="post" onsubmit="inputCheck(); return false;">
-		<div>
-			<table>
-				<tr>
-					<th class="center">이름</th>
-					<td>
-						<input type="text" name="name" id="name" placeholder="*필수 입력">
-					</td>
-				</tr>
-				<tr>
-					<th class="center">아이디</th>
-					<td>
-						<input type="text" name="id" id="id" placeholder="*필수 입력">
-						<input type="button" value="중복체크" onclick="checkId()">
-					</td>
-				</tr>
-				<tr>
-					<th class="center">비밀번호</th>
-					<td>
-						<input type="password" name="pass" id="pass" placeholder="*필수 입력">
-					</td>
-				</tr>
-				<tr>
-					<th class="center">비밀번호 재확인</th>
-					<td>
-						<input type="password" name="repass" id="repass" placeholder="*필수 입력">
-					</td>
-				</tr>
-				<tr>
-					<th class="center">성별</th>
-					<td>
-						<input style="width: 50px" type="radio" name="gender" value="남">남
-						<input style="width: 50px" type="radio" name="gender" value="여">여
-					</td>
-				</tr>
-				<tr>
-					<th class="center">전화 번호</th>
-					<td>
+	<div class="form">
+	<form action="write.do" name="form" id="form" method="post" onsubmit="inputCheck(); return false;">
+	<div class="table">
+		<table>
+			<tr>
+				<th class="center">이름</th>
+				<td>
+					<input class="box" style="width: 100%" type="text" name="name">
+				</td>
+			</tr>
+			<tr>
+				<th class="center">아이디</th>
+				<td>
+					<input class="box" type="text" name="id" id="id" placeholder="*필수 입력">
+					<input class="box" type="button" value="중복체크" onclick="checkId()">
+				</td>
+			</tr>
+			<tr>
+				<th class="center">비밀번호</th>
+				<td>
+					<input class="box" style="width: 100%" type="text" name="pass" id="pass" placeholder="* 비밀번호 입력">
+				</td>
+			</tr>
+			<tr>
+				<th class="center">비밀번호 재확인</th>
+				<td>
+					<input class="box" style="width: 100%" type="text" name="repass" id="repass" placeholder="* 비밀번호 재확인">
+				</td>
+			</tr>
+			<tr>
+				<th class="center">성별</th>
+				<td style="height: 20%">
+					<input class="box" type="radio" name="gender" value="남"> 남
+					<input class="box" type="radio" name="gender" value="여"> 여
+				</td>
+			</tr>
+			<tr>
+				<th class="center">이메일</th>
+				<td>
+					<input class="box" style="width: 100%" type="email" name="email" placeholder="*이메일 입력">
+				</td>
+			</tr>
+			<tr>
+				<th class="center">전화번호</th>
+				<td>
 					<!-- 입력 수 지정 및 숫자만 입력 가능하도록 정규식 사용 -->
-                    <input type="text" name="tel1" id="tel1" maxlength="3" style="width: 20%"
-                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
-                    <input type="text" name="tel2" id="tel2" maxlength="4" style="width: 20%"
-                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
-                    <input type="text" name="tel3" id="tel3" maxlength="4" style="width: 20%"
+                    <input class="tel" type="text" name="tel1" id="tel1" maxlength="3" style="width: 20%"
+                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"> -
+                    <input class="tel" type="text" name="tel2" id="tel2" maxlength="4" style="width: 20%"
+                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"> -
+                    <input class="tel" type="text" name="tel3" id="tel3" maxlength="4" style="width: 20%"
                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                </td>
-				</tr>
-				<tr>
-					<th class="center">주소</th>
-					<td>
-						<!-- 우편번호 검색을 위한 주소 api 사용 -->
-						<input type="text" name="addr1" id="postcode" placeholder="우편번호" readonly>
-						<input type="button" onclick="DaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" style="width: 100%" name="addr2" id="roadAddress" placeholder="도로명주소" readonly><br>
-						<input type="text" style="width: 100%" name="addr3" id="jibunAddress" placeholder="지번주소" readonly><br>
+				</td>
+			</tr>
+			<tr>
+				<th class="center">주소</th>
+				<td>
+					<!-- 우편번호 검색을 위한 주소 api 사용 -->
+						<input class="box" type="text" name="addr1" id="postcode" placeholder="우편번호" readonly>
+						<input class="box" type="button" onclick="DaumPostcode()" value="우편번호 찾기"><br>
+						<input class="box" style="width: 100%" type="text" name="addr2" id="roadAddress" placeholder="도로명주소" readonly>
+						<input class="box" style="width: 100%" type="text" name="addr3" id="jibunAddress" placeholder="지번주소" readonly>
 						<span id="guide" style="color:#999;display:none"></span>
-						<input style="width: 80%" name="addr4" type="text" id="detailAddress" placeholder="상세주소">
-					</td>
-				</tr>
-				<tr>
-					<th class="center">이메일</th>
-					<td>
-						<input type="email" style="width: 100%" name="email">
-					</td>
-				</tr>
-				<tr>
-					<th class="center">생일</th>
-					<td>
-						<input style="width: 100%" type="date" name="birth">
-					</td>
-				</tr>
-				<tr align="center">
-					<td colspan="2">
-						<input type="submit" value="회원가입">
-						<input type="reset" value="다시 작성">
-					</td>
-				</tr>
-			</table>
-		</div>
+						<input class="box" style="width: 80%" name="addr4" type="text" id="detailAddress" placeholder="상세주소">
+				</td>
+			</tr>
+			<tr>
+				<th class="center">생일</th>
+				<td>
+					<input class="box" style="width: 100%" type="date" name="birth">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="center">
+					<input class="button" type="submit" value="회원가입">&nbsp;
+					<button class="button" type="reset">다시 작성</button>
+			
+		</table>
+	</div>
 	</form>
-
+</div>
 <!-- Bootstrap core JS-->
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
