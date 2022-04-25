@@ -76,7 +76,7 @@
             <tr>
                 <th>전화 번호</th>
                 <td>
-                    <input type="text" name="tel1" id="tel1" maxlength="3" style="width: 30%"
+                    <input type="text" name="tel1" id="tel1" maxlength="4" style="width: 30%"
                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
                     <input type="text" name="tel2" id="tel2" maxlength="4" style="width: 30%"
                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
