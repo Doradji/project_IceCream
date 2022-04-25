@@ -104,7 +104,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="file" name="productImg" id="productImg" accept="image/*" value="../storage/${dto.fileName}">
+					<input type="file" name="productImg" id="productImg" accept="image/*" value="../upload/${dto.fileName}">
 				</td>
 				<input type="hidden" id="num" name="num" value="${dto.num}">
 			</tr>

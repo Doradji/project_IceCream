@@ -43,7 +43,7 @@
 		<p class="lead">제품 분류 : ${dto.productType}</p>
 		<hr class="my-4">
 		<p>
-			<img src="../storage/${dto.fileName}">
+			<img src="../upload/${dto.fileName}">
 		</p>
 		<hr class="my-4">
 		<p>${dto.explain}</p>

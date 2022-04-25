@@ -45,7 +45,7 @@ function viewPage(num){
 				<div class="col">
 					<div class="card" onclick="viewPage(${dto.num})">
 						<%-- <img src="../storage/${dto.fileName}" class="card-img-top"> --%>
-						<img src="../storage/${dto.fileName}" class="card-img-top"
+						<img src="../upload/${dto.fileName}" class="card-img-top"
 							style="height: 450px;">
 						<div class="card-body">
 							<h5 class="card-title">${dto.name}</h5>

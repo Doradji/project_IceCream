@@ -44,7 +44,7 @@
 		<hr class="my-4">
 		<p>${dto.content}</p>
 		<hr class="my-4">
-		<a href="../storage/${dto.fileName}" download>${dto.fileName}</a><br><br>
+		<a href="../upload/${dto.fileName}" download>${dto.fileName}</a><br><br>
 		
 		<c:if test="${memType == 1}">
 			<a class="btn btn-primary btn-lg" role="button" onclick="modifyView(${dto.num})">수정</a>
