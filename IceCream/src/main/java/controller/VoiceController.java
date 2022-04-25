@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -451,16 +452,16 @@ public class VoiceController {
 	@RequestMapping(value = "/voice/mailAskResult.do") 
 	public ModelAndView mailAskResult(HttpServletRequest request) {
 		 // 발신자의 메일 주소
-	    final String username ="dudcjsv1746@naver.com";
+	    final String username = request.getParameter("recipient");
 	    
 	    // 발신자의 PASSWORD
 	    final String password = "rla1746"; 
 	   
 	    // 수신자의 메일 주소
-	    String recipient = request.getParameter("recipient"); 
+	    String recipient = username;
 	    
 	    // 수신자에게 보낼 메일 제목
-	    String subject = request.getParameter("subject");
+	    String subject = request.getParameter("title");
 	   
 	    // 수신자에게 보낼 메일 내용
 	    String content = request.getParameter("content");
@@ -525,8 +526,13 @@ public class VoiceController {
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
+		
+		HttpSession session2 = request.getSession();
+		String userId = (String)session2.getAttribute("memId");
+		System.out.println(userId);
+		
 		VoiceDTO dto=new VoiceDTO();
-		dto.setId(request.getParameter("id"));
+		dto.setId(userId);
 		dto.setContent(request.getParameter("title"));
 		dto.setTitle(request.getParameter("content"));
 		

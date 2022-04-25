@@ -47,7 +47,9 @@
         <li class="sidebar-nav-item"><a href="/event/selectList.do">이벤트</a></li>
         <li class="sidebar-nav-item"><a href="/notice/selectList.do">공지사항</a></li>
         <li class="sidebar-nav-item"><a href="/voice/list.do">고객게시판</a></li>
+         <c:if test="${memId != null}">
         <li class="sidebar-nav-item"><a href="/voice/mailAsk.do">메일문의</a>
+        </c:if>
     </ul>
 </nav>
 <!-- Header-->

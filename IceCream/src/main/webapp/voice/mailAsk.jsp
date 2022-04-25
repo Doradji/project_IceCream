@@ -87,12 +87,12 @@ body {
             </div>
             
             <div class="form-group">
-                <input type="text" class="form-control item" id="recipient" name="recipient"
+                <input type="hidden" class="form-control item" id="recipient" name="recipient" value="dudcjsv1746@naver.com"
                     placeholder="받는사람 메일주소">
             </div>
             <div class="form-group">
                  <input type="text" class="form-control item" id="title" name="title"
-                    placeholder="제목">
+                    placeholder="메일 제목">
             </div>
             <div class="form-group">
                     <textarea name="content" id="content" style="width: auto; height: 200px" placeholder="내용을 입력해 주세요"></textarea>

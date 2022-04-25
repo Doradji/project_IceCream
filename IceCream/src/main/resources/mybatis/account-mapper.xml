@@ -4,24 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.account">
 
-    <insert id="insert" parameterType="accountDTO">
-        insert into account
-        values (#{id}, #{pass}, #{name}, 2, sysdate, #{gender}, #{tel1}, #{tel2}, #{tel3}, #{addr1}, #{addr2}, #{addr3}, #{addr4}, #{email}, #{birth})
-    </insert>
+	<insert id="insert" parameterType="accountDTO">
+		insert into account
+		values (#{id}, #{pass}, #{name}, 2, sysdate, #{gender}, #{tel1}, #{tel2},
+		#{tel3}, #{addr1}, #{addr2}, #{addr3}, #{addr4}, #{email}, #{birth})
+	</insert>
 
-    <select id="login" parameterType="java.util.Map" resultType="accountDTO">
-        select name, accountType
-        from account
-        where id = #{id} and pass = #{pass}
-    </select>
+	<select id="login" parameterType="java.util.Map"
+		resultType="accountDTO">
+		select name, accountType
+		from account
+		where id = #{id} and pass = #{pass}
+	</select>
 
-    <select id="selectOne" parameterType="String" resultType="accountDTO">
-        select *
-        from account
-        where id = #{id}
-    </select>
+	<select id="selectOne" parameterType="String"
+		resultType="accountDTO">
+		select *
+		from account
+		where id = #{id}
+	</select>
 
-    <select id="selectList" parameterType="java.util.Map" resultType="accountDTO">
+	<select id="selectList" parameterType="java.util.Map"
+		resultType="accountDTO">
 		<![CDATA[
         select *
         from (select rownum rn, tt.*
@@ -31,29 +35,29 @@
         ]]>
 	</select>
 
-    <select id="selectTotal" resultType="int">
-        select count(*) as cnt
-        from account
-    </select>
+	<select id="selectTotal" resultType="int">
+		select count(*) as cnt
+		from account
+	</select>
 
-    <update id="modify" parameterType="accountDTO">
-        update account
-        set pass=#{pass},
-            tel1=#{tel1},
-            tel2=#{tel2},
-            tel3=#{tel3},
-            addr1=#{addr1},
-            addr2=#{addr2},
-            addr3=#{addr3},
-            addr4=#{addr4},
-            email=#{email},
-            birth=#{birth}
-        where id = #{id}
-    </update>
+	<update id="modify" parameterType="accountDTO">
+		update account
+		set pass=#{pass},
+		tel1=#{tel1},
+		tel2=#{tel2},
+		tel3=#{tel3},
+		addr1=#{addr1},
+		addr2=#{addr2},
+		addr3=#{addr3},
+		addr4=#{addr4},
+		email=#{email},
+		birth=#{birth}
+		where id = #{id}
+	</update>
 
-    <delete id="delete" parameterType="String">
-        delete account
-        where id = #{id}
-    </delete>
+	<delete id="delete" parameterType="String">
+		delete account
+		where id = #{id}
+	</delete>
 
 </mapper>

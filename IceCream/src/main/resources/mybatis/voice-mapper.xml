@@ -5,9 +5,7 @@
 <mapper namespace="mybatis.voice">
     <!-- 게시물 추가(덧글 아님) -->
     <insert id="insert" parameterType="voiceDTO">
-        insert into voice
-        values (#{id}, #{content}, #{title}, voice_seq.nextval,
-                #{fileName}, voice_seq.currval, 0, 0, sysdate)
+       insert into voice (id, content, title, num, logtime) values (#{id}, #{content}, #{title}, voice_seq.nextval, sysdate)
     </insert>
     <!-- 덧글 추가전 사전 준비 -->
     <update id="increase" parameterType="voiceDTO">
