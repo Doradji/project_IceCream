@@ -28,6 +28,9 @@
 </script>
 </head>
 <body>
+<header class="smallHeader">
+	    <h1>Sign Out</h1>
+	</header>
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top"><i
         class="fas fa-angle-up"></i></a>
