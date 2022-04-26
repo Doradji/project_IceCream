@@ -32,8 +32,16 @@
 		<input type="button" value="홈으로" onclick="location.href='../main.do'">
 	</div>
 </c:if>
-<c:if test="${result == 0 }">
-	
+<c:if test="${result == 0 || result == null }">
+	<header class="smallHeader">
+		<h1>회원 정보 수정</h1>
+	</header>
+	<br>
+	<p align="center" style="font-size: 15px;">수정에 실패했습니다.</p>
+	<div align="center">
+		<input type="button" class="ui-button" value="홈으로" onclick="location.href='../main.do'">&nbsp;
+		<input type="button" class="ui-button" value="뒤로가기" onclick="history.back();">
+	</div>
 </c:if>
 
 <!-- Scroll to Top Button-->
