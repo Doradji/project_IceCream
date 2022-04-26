@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css?v=2" rel="stylesheet"/>
-<script type="text/javascript" src="../script/accountCheck.js"></script>
+<script type="text/javascript" src="../script/accountCheck.js?v=1"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function DaumPostcode() {

@@ -57,3 +57,36 @@ function checkId() {
 		window.open("checkId.do?id="+sId, "", "width=450 height=100 left=500 top=200")
 	}
 }
+
+// modifyForm 입력 검사
+function checkModify(){        
+        var form = document.getElementById("form");
+
+        if(!form.pass.value){
+            alert("변경할 비밀번호를 입력하세요.");
+            form.pass.focus();           
+        } else if(!form.repass.value){
+            alert("변경할 비밀번호 재확인을 입력하세요.");
+     		form.repass.focus();
+        } else if(form.pass.value != form.repass.value){
+            alert("비밀번호를 재확인하세요");
+            form.pass.focus();
+        } else if(!form.email.value){
+            alert("변경할 이메일을 입력하세요");
+            form.email.focus();
+        } else if(!form.tel1.value){
+            alert("변경할 전화번호를 입력하세요.");
+            form.tel1.focus();
+        } else if(!form.tel2.value){
+            alert("변경할 전화번호를 입력하세요.");
+            form.tel2.focus();
+        } else if(!form.tel3.value){
+            alert("변경할 전화번호를 입력하세요.");
+            form.tel3.focus();
+        } else if(!form.addr1.value) {
+            alert("변경할 주소를 입력하세요.");
+            form.addr1.focus();
+        } else {
+			form.submit();
+		}        
+}
