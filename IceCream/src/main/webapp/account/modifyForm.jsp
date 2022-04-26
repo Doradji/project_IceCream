@@ -100,7 +100,7 @@
     	padding: 10px 20px;
         width: 600px;
         border-collapse: collapse;
-        border: 1px solid lightgary;
+        border: 1px solid lightgray;
         font-family: Gothic;       
     }
     .table {
