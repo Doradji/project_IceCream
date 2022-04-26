@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css?v=2" rel="stylesheet"/>
-<script type="text/javascript" src="../script/accountCheck.js?v=1"></script>
+<script type="text/javascript" src="../script/accountCheck.js?v=2"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function DaumPostcode() {
@@ -149,13 +149,13 @@
 			<tr>
 				<th class="center">비밀번호</th>
 				<td>
-					<input class="box" style="width: 100%" type="text" name="pass" id="pass" placeholder="* 변경할 비밀번호 입력">
+					<input class="box" style="width: 100%" type="password" name="pass" id="pass" placeholder="* 변경할 비밀번호 입력">
 				</td>
 			</tr>
 			<tr>
 				<th class="center">비밀번호 재확인</th>
 				<td>
-					<input class="box" style="width: 100%" type="text" name="repass" id="repass" placeholder="* 변경할 비밀번호 재확인">
+					<input class="box" style="width: 100%" type="password" name="repass" id="repass" placeholder="* 변경할 비밀번호 재확인">
 				</td>
 			</tr>
 			<tr>
