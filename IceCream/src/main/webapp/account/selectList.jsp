@@ -6,9 +6,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="../assets/favicon.ico"/>
+	<!-- Font Awesome icons (free version)-->
+	<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+	<!-- Simple line icons-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+		  rel="stylesheet"/>
+	<!-- Google fonts-->
+	<!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" /> -->
+	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="../css/styles.css?v=2" rel="stylesheet"/>
 <link rel="stylesheet" href="../css/sample.css">
 </head>
 <body>
+<header>
+	<h1>회원리스트</h1>
+</header>
 	<!-- 목록보기 -->
 	<div style="height: 170px;">
 		<table>
@@ -55,4 +70,9 @@
 	
 	<a href="/">메인</a>
 </body>
+<!-- Bootstrap core JS-->
+<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="../script/scripts.js"></script>
 </html>
