@@ -8,8 +8,7 @@
 <link rel="stylesheet" href="../css/sample.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-    function sample4_execDaumPostcode() {
+    function DaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -34,51 +33,50 @@
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample4_postcode').value = data.zonecode;
-                document.getElementById("sample4_roadAddress").value = roadAddr;
-                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-                
-                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                if(roadAddr !== ''){
-                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-                } else {
-                    document.getElementById("sample4_extraAddress").value = '';
-                }
-
-                var guideTextBox = document.getElementById("guide");
-                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-                if(data.autoRoadAddress) {
-                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-                    guideTextBox.style.display = 'block';
-
-                } else if(data.autoJibunAddress) {
-                    var expJibunAddr = data.autoJibunAddress;
-                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-                    guideTextBox.style.display = 'block';
-                } else {
-                    guideTextBox.innerHTML = '';
-                    guideTextBox.style.display = 'none';
-                }
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("roadAddress").value = roadAddr;
+                document.getElementById("jibunAddress").value = data.jibunAddress;
+            	document.getElementById("detailAddress").focus();// 상세주소 포커스
             }
         }).open();
     }
 </script>
+<style type="text/css">
+    .box {
+		border-radius: 20px;
+    	margin-bottom: 10px;
+    	padding: 10px 20px;
+    	border: 1px solid lightgray;    	
+	}
+    .table {
+    	border-radius : 20px;
+    }	
+	th {
+    	border-radius : 20px;
+    	border: 1px solid lightgray;
+        padding: 5px;
+    }
+    td{
+        border: 1px solid lightgray;
+        padding: 5px;
+    }
+</style>
 </head>
 <body>
+	<div class="table">
 	<table>
 			<tr>
 				<th class="center">주소</th>
 				<td>
-					<input type="text" id="sample4_postcode" placeholder="우편번호">
-					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-					<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
-					<span id="guide" style="color:#999;display:none"></span>
-					<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-					<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+					<input class="box" type="text" name="addr1" id="postcode" placeholder="우편번호" readonly>
+						<input class="box" type="button" onclick="DaumPostcode()" value="우편번호 찾기"><br>
+						<input class="box" style="width: 100%" type="text" name="addr2" id="roadAddress" placeholder="도로명주소" readonly>
+						<input class="box" style="width: 100%" type="text" name="addr3" id="jibunAddress" placeholder="지번주소" readonly>
+						<span id="guide" style="color:#999;display:none"></span>
+						<input class="box" style="width: 80%" name="addr4" type="text" id="detailAddress" placeholder="상세주소">
 				</td>
 			</tr>
 	</table>
+	</div>
 </body>
 </html>
