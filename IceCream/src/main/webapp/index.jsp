@@ -73,51 +73,51 @@
         <a href="/">처음으로</a><br>              
       
 		<hr>
-        <label>회원 관리</label><br>
+        <label>◆ 회원 관리 ◆</label><br>
         <a href="/account/writeForm.do">회원 가입</a><br>
         <a href="/account/selectList.do">회원 리스트</a><br>
         <a href="/account/deleteForm.do">회원 탈퇴</a>
                 
         <hr>
-        <label>공지사항 관리</label><br>
+        <label>◆ 공지사항 관리 ◆</label><br>
         <a href="/notice/writeForm.do">공지사항 등록</a><br>
         <a href="/notice/selectList.do">공지사항 리스트</a><br>
         
         <hr>
-        <label>매장 관리</label><br>
+        <label>◆ 매장 관리 ◆</label><br>
         <a href="/shop/writeForm.do">가계 등록</a><br>
         <a href="/shop/list.do">가계 리스트</a>
         
         <hr>
-        <label>이벤트 관리</label><br>
+        <label>◆ 이벤트 관리 ◆</label><br>
         <a href="/event/writeForm.do">이벤트 등록</a><br>
         <a href="/event/selectList.do">이벤트 리스트</a><br>
         
         <hr>
-        <label>고객문의 관리</label><br>
+        <label>◆ 고객문의 관리 ◆</label><br>
         <a href="/voice/writeForm.do">고객문의 등록</a><br>
         <a href="/voice/list.do">고객문의 리스트</a>
         
         <hr>
-        <label>제품 관리</label><br>
+        <label>◆ 제품 관리 ◆</label><br>
         <a href="/product/writeForm.do">제품 등록</a><br>
         <a href="/product/productList.do">제품 리스트</a>
 
 		<hr>
-        <label>텍스트 편집기</label><br>
+        <label>◆ 텍스트 편집기 ◆</label><br>
         <a href="/sample/sampleSmartEditor.do">텍스트에디터(only text)</a>
                 
         <hr>
-        <label>지도 테스트</label><br>
+        <label>◆ 지도 테스트 ◆</label><br>
         <a href="/sample/sampleMapDefault.do">기본 지도</a><br>
         <a href="/sample/sampleMapMarker.do">마커 및 다이얼로그 표시 지도</a>
 
         <hr>
-        <label>메일 테스트</label><br>
+        <label>◆ 메일 테스트 ◆</label><br>
         <a href="/sample/sendMail.do">단순 메일 보내기</a>
 		
 		<hr>
-        <label>주소 테스트</label><br>
+        <label>◆ 주소 테스트 ◆</label><br>
         <a href="/sample/sampleAddress.do">주소 입력</a>
     </aside>
     <section>

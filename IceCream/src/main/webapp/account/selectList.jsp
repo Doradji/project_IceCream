@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="../css/sample.css">
 </head>
 <body>
-<header>
+<header class="smallHeader">
 	<h1>회원리스트</h1>
 </header>
 	<!-- 목록보기 -->
@@ -35,6 +35,7 @@
 				<th>전화번호</th>
 				<th>가입일</th>
 			</tr>
+			<br>
 			<c:forEach var="dto" items="${list }">
 				<tr align="center">
 					<td>${dto.name }</td>
@@ -66,9 +67,10 @@
 		<c:if test="${endPage < totalP }">
 			[<a class="paging" href="account/selectList.do?pg=${endPage+1 }">다음</a>]
 		</c:if>
+	</div>	
+	<div align="center">
+		<a href="/">메인</a>
 	</div>
-	
-	<a href="/">메인</a>
 </body>
 <!-- Bootstrap core JS-->
 <script
